@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Hampton-in-Arden Tennis Club - Member Sign-In Page</title>
+    <title>Hampton-in-Arden Tennis Club - Admin Sign-In Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="-1">
@@ -47,8 +47,8 @@
     <!-- CSS links -->
     <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
     <!-- <link rel="stylesheet" href="css/base.css" />  -->
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="bower_components/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
     <style type="text/css">
       .fullwidth {
         width: 90%;
@@ -78,7 +78,7 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <li><a href="/fullindex.html">Home</a></li>
-        <li><a href="javascript: routeMember()">Members</a></li>
+        <li><a href="javascript: routeAdmin()">Members</a></li>
         <li class="active"><a href="ourclub.html">Our Club</a></li>
         <li><a href="/playing.html">Playing</a>
         <li><a href="/juniors/index.html">Juniors</a></li>
@@ -100,8 +100,8 @@
       <p>
         Please sign-in below with your User ID and PIN (that you use for booking courts)
       </p>
-      <div id="signinpanel">
-        <form id="signin" name="signin" action="/signin.asp" method="POST" data-abide>
+      <div id="adminsigninpanel">
+        <form id="adminsignin" name="adminsignin" action="/adminsignin.asp" method="POST" data-abide>
           <div class="userid-field">
             <label>User ID:
               <input type="text" name="frmUserId" id="frmUserId" placeholder="Your User ID" required pattern="[0-9]+" autofocus />
@@ -117,11 +117,12 @@
           <input type="hidden" id="refurl" name="refurl" value="/members.html" />
           <a href="javascript: logMeIn()" name="loginSubmit" id="loginSubmit" class="medium button">Sign-In</a>
         </form>   
+<!-- 
         <p>
           <a href="#" data-reveal-id="forgotPasswordModal" title="Forgotten User ID or password"> I have forgotten my User ID and/or password&raquo;</a>
         </p>
-
-      </div>    <!--    /signinpanel    -->
+ -->
+      </div>    <!--    /adminsigninpanel    -->
     </div>
   </div>
 
@@ -141,7 +142,7 @@
         </p>
       </div>
     </div>
-
+<!-- 
     <div class="row toprow">
         <div class="large-9 bigfooter columns">
           <div class="row">
@@ -202,7 +203,7 @@
           </div>
         </div>
     </div>
-
+ -->
     <!-- Second row - with copyright info etc -->
     <div class="row bottomrow hide-for-small">
       <div class="large-4 columns">
@@ -228,58 +229,33 @@
   <!--    Reveal Modals begin                         -->
 
 
-  <!--   forgotPasswordModal    -->
 
-    <div id="forgotPasswordModal" class="reveal-modal small" data-reveal>
-
-    <h3>Forgot User ID or PIN</h3>
-    <p>
-      Complete and submit the form below and your User ID and PIN will be sent to your email address.
-    </p>
-    <div id="forgotpanel">
-      <form id="forgot" name="forgot" action="reminduser.asp" method="POST" data-abide>
-        <div class="forename-field">
-          <label>First name:
-            <input type="text" name="frmForename" id="frmForename" placeholder="Your first name" required />
-          </label>
-          <small class="error">Your first name must be completed</small>
-        </div>
-        <div class="surname-field">
-          <label>Surname:
-            <input type="text" name="frmSurname" id="frmSurname" placeholder="Your surname" required />
-          </label>
-          <small class="error">You must supply your surname</small>
-        </div>
-        <div class="email-field">
-          <label>Email address from your application / renewal form:
-            <input type="text" name="frmEmail" id="frmEmail" placeholder="Your email address that you supplied when joining or renewing your membership" required />
-          </label>
-          <small class="error">You must supply the email address you gave us when joining or renewing your membership at the club</small>
-        </div>
-        <button name="forgotSubmit" id="forgotSubmit">Remind Me</button>
-      </form>   
-      <a class="close-reveal-modal">&#215;</a>
-    </div>    <!--    /forgotpanel    -->
-
-  </div>   <!--    /forgotPasswordModal    -->
-  
+ 
   <!--    Reveal Modals end                           -->
 
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/foundation/js/foundation.min.js"></script>
-    <script src="/js/app.js"></script>
-    <script src="http://l2.io/ip.js?var=myip"></script>
-    <script src="/js/sessions.js"></script>
-<!-- 
-    <script src="/js/login.js"></script>
-     
+    <!--
+    <script src="bower_components/foundation/js/foundation.forms.js"></script>
+    -->
     <script src="/bower_components/handlebars/handlebars.js"></script>
-    <script src="/js/members.js"></script>
-    <script src="/js/maintwitterfeed.js"></script>
-    <script src="/js/wordpress.js"></script>
-    <script src="/js/eventlist.js"></script>
-    <script src="/js/today.js"></script>
+    <script src="/bower_components/sammy/lib/sammy.js"></script>
+<!-- 
+    <script src="js/picker.js"></script>
+    <script src="js/picker.date.js"></script>
+    <script src="js/picker.time.js"></script>
  -->
+    <script src="js/legacy.js"></script>
+    <script src="js/app.js"></script>
+<!-- 
+    <script src="http://l2.io/ip.js?var=myip"></script>
+ -->
+    <script src="js/adminsessions.js"></script> 
+<!--
+    <script src="js/handlebars-templates.js"></script> 
+-->
+    <script src="js/admin.js"></script> 
 
   </body>
 </html>

@@ -349,7 +349,7 @@ function editTournament(id) {
 $(function() { 
 
 	// Set signed-in status
-	setSignedIn();
+	setAdminSignedIn();
 
 	// Now run the main Sammy route
 	app.run('#/');

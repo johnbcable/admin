@@ -1,22 +1,54 @@
 <!doctype html>
-<html class="no-js" lang="en" CODEPAGE="65001">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hampton-in-Arden Tennis Club - Administration Functions</title>
-    <!--   Stylesheets   -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" type="image/gif" href="animated_favicon1.gif">    
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hampton-in-Arden Tennis Club - Admin Sign-In Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hamptontennis.org.uk/fullindex.html">
+    <meta property="og:image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
     <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <!-- <link rel="stylesheet" href="css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
-    <!-- pickadate.js styling  -->
-    <link rel="stylesheet" href="./css/lib/themes/default.css" id="theme_base">
-    <link rel="stylesheet" href="./css/lib/themes/default.date.css" id="theme_date">
-    <link rel="stylesheet" href="./css/lib/themes/default.time.css" id="theme_time">
-    <!--  end of pickadate.js styling  -->
     <style type="text/css">
       .foundicon-settings {
         color: white;
@@ -113,7 +145,7 @@
   <!--   Define the footer area  -->
   
   <footer class="footer" id="footer" role="contentinfo">
-
+<!-- 
     <div class="row toprow">
         <div class="large-9 bigfooter columns">
           <div class="row">
@@ -175,7 +207,7 @@
           </div>
         </div>
     </div>
-
+ -->
     <!-- Second row - with copyright info etc -->
     <div class="row bottomrow hide-for-small">
       <div class="large-4 columns">
@@ -246,7 +278,14 @@
     -->
 
     <script id="tournamentlist-template" type="x-handlebars-template">
-      <h4>Currently Listed Upcoming Tournaments</h4>
+      <div class="row">
+        <div class="large-9 medium-9 small-6 columns">
+          <h4>Currently Listed Upcoming Tournaments</h4>
+        </div>
+        <div class="large-3 medium-3 small-6 columns">
+          <a href="newtournament.html" class="medium button fullwidth">New Tournament</a>
+        </div>
+      </div>
       {{#if allTournaments}}
       <table width="100%">
         <thead>
@@ -362,22 +401,22 @@
           <div class="row">
             <div class="large-4 medium-4 small-12 columns">
               <label for="tourstart">Starts On: &nbsp; (dd/mm/yyyy)</label>
-              <input type="text" name="tourstart" id="tourstart" size="10" maxlength="10" tabindex="5" value="{{tourstart}}" class="datefield datepicker" />
+              <input type="date" name="tourstart" id="tourstart" size="10" maxlength="10" tabindex="5" value="{{tourstart}}" />
             </div>    <!--   /large-4    -->
 
             <div class="large-2 medium-2 small-12 columns">
               <label for="tourstarttime">At:&nbsp;(hhmm)</label>
-                <input type="text" name="tourstarttime" id="tourstarttime" size="5" maxlength="4" tabindex="6" value="{{sortablestarttime}}" class="timefield timepicker" />
+                <input type="time" name="tourstarttime" id="tourstarttime" size="5" maxlength="4" tabindex="6" value="{{sortablestarttime}}"  />
             </div>
 
             <div class="large-4 medium-4 small-12 columns datepicker">
               <label for="tourend">Ends On: &nbsp; (dd/mm/yyyy)</label>
-              <input type="text" name="tourend" id="tourend" size="10" maxlength="10" tabindex="7" value="{{tourend}}" class="datefield datepicker" />
+              <input type="date" name="tourend" id="tourend" size="10" maxlength="10" tabindex="7" value="{{tourend}}" />
             </div>
 
             <div class="large-2 medium-2 small-12 columns">
               <label for="tourendtime">At: &nbsp; (hhmm)</label>
-              <input type="text" name="tourendtime" id="tourendtime" size="5" maxlength="4" tabindex="8"  value="{{sortableendtime}}" class="timefield timepicker" />
+              <input type="time" name="tourendtime" id="tourendtime" size="5" maxlength="4" tabindex="8"  value="{{sortableendtime}}" />
             </div>
 
           </div>    <!--    /row    -->
@@ -391,17 +430,17 @@
             <div class="row">
               <div class="large-4 medium-4 small-12 columns">
                 <label for="tourfinalsday">Finals Day: &nbsp; (dd/mm/yyyy) </label>
-                <input type="text" name="tourfinalsday" id="tourfinalsday" size="10" maxlength="10" tabindex="9" data-value="10/10/2013" value="{{tourfinalsday}}" class="datefield datepicker" />
+                <input type="date" name="tourfinalsday" id="tourfinalsday" size="10" maxlength="10" tabindex="9" data-value="{{tourfinalsday}}" value="{{tourfinalsday}}" />
               </div>
   
               <div class="large-4 medium-4 small-12 columns">
                 <label for="finalsstarttime">Starting At: &nbsp; (hhmm) </label>
-                <input type="text" name="finalsstarttime" id="finalsstarttime" size="5" maxlength="4" tabindex="10" value="{{sortablefinalsstarttime}}" class="timefield timepicker" />
+                <input type="time" name="finalsstarttime" id="finalsstarttime" size="5" maxlength="4" tabindex="10" value="{{sortablefinalsstarttime}}"  />
               </div>
 
               <div class="large-4 medium-4 small-12 columns"
                 <label for="finalsendtime"> Ending At: &nbsp; (hhmm)</label>
-                <input type="text" name="finalsendtime" id="finalsendtime" size="5" maxlength="4" tabindex="11" value="{{sortablefinalsendtime}}" class="timefield timepicker" />
+                <input type="time" name="finalsendtime" id="finalsendtime" size="5" maxlength="4" tabindex="11" value="{{sortablefinalsendtime}}"  />
               </div>
 
             </div>    <!--    /row    -->
@@ -516,7 +555,7 @@
           <h3>Upcoming events</h3>
         </div>
         <div class="large-3 medium-3 small-6 columns">
-          <a href="../juniors/newevent.html" class="medium button fullwidth">New Event</a>
+          <a href="newevent.html" class="medium button fullwidth">New Event</a>
         </div>
       </div>
       {{#if allEvents}}
@@ -632,20 +671,24 @@
   <!--    End of area for any Handlebars templates    -->
 
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/foundation/js/foundation.min.js"></script>
     <!--
     <script src="bower_components/foundation/js/foundation.forms.js"></script>
     -->
-    <script src="bower_components/handlebars/handlebars.js"></script>
-    <script src="bower_components/sammy/lib/sammy.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/sammy/lib/sammy.js"></script>
+<!-- 
     <script src="js/picker.js"></script>
     <script src="js/picker.date.js"></script>
     <script src="js/picker.time.js"></script>
+ -->
     <script src="js/legacy.js"></script>
     <script src="js/app.js"></script>
+<!-- 
     <script src="http://l2.io/ip.js?var=myip"></script>
-    <script src="js/sessions.js"></script> 
+ -->
+    <script src="js/adminsessions.js"></script> 
 <!--
     <script src="js/handlebars-templates.js"></script> 
 -->
