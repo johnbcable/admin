@@ -84,23 +84,21 @@
     <div class="large-10 medium-12 small-12 large-offset-1 columns">
 
     <p>
-      Fill in the form below with details of the new tournament. 
-      <br />
-      Notes:<br />
+      <span style="font-weight: bold; text-decoration: underline;">Notes</span>:<br />
       <ol>
         <li>Each tournament must have a start date</li>
         <li>You may leave the end date blank if this is a one-day tournament</li>
         <li>For one-day tournaments, please fill in the start and end times. Otherwise these can be left blank</li>
         <li>Only complete Finals Day information if there is a designated Finals Day for this tournament.</li>
-      </ol><br />
-      Click on Submit when the new tournament details are ready for submission.
+      </ol>
+      Click on Submit when the new tournament details are completed.
     </p>
     <form method="get" action="set_tournament.asp">
       <fieldset>
         <legend>Details of New Tournament</legend>
         <div>
           <label for="tournote">Name/Title for Tournament</label>
-          <input type="text" name="tournote" id="tournote" size="60" maxlength="120" tabindex="1" />
+          <input type="text" name="tournote" id="tournote" size="60" maxlength="120" tabindex="1" placeholder="e.g. Junior Full-Ball Singles Tournament" />
         </div>
         <div>
         </div>
@@ -108,7 +106,7 @@
           <label for="tourwho">Who the tournament is for (<small>e.g. Open to Mini-Tennis Green and Full Ball juniors</small>)</label>
           <div class="row">
             <div class="large-12 medium-12 small-12 columns">
-              <input type="text" name="tourwho" id="tourwho" size="60" maxlength="120" tabindex="2" placeholder="Open to Mini-Tennis Green and Full Ball juniors" />
+              <input type="text" name="tourwho" id="tourwho" size="60" maxlength="120" tabindex="2" placeholder="e.g. Open to Mini-Tennis Green and Full Ball juniors" />
             </div>
           </div>
         </div>
@@ -120,7 +118,7 @@
             </div>
             <div class="large-6 medium-6 small-6 columns">
               <p>
-                e.g. &pound;6.50 per person
+                <small>e.g. &pound;6.50 per person</small>
               </p>
             </div>
           </div>
@@ -190,7 +188,7 @@
         <div class="panel">
           <h5>Finals Day</h5>
           <p>
-            If there is a separate Finals Day for this tournament, then please enter the details here.
+            If there is a separate Finals Day for this tournament, then please enter the details here. Otherwise leave these boxes blank.
           </p>
           <div>
             <label for="tourfinalsday">Finals Day:</label>
@@ -236,7 +234,7 @@
         <div id="submitblock" align="right">
               <input type="hidden" name="tourid" value="-1">
               <p>
-                <input align="right" class="large button" type="submit" value="Submit">
+                <input align="right" class="large button" type="submit" value="Submit &raquo;">
               </p>
         </div>
       </fieldset>

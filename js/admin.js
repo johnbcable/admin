@@ -155,7 +155,7 @@ function editEvent(id) {
 // Display future tournament list
 function displayTournamentList() {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=8";
+	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=4";
 
 	console.log("Inside displayTournamentList");
 
