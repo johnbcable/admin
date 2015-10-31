@@ -1,0 +1,661 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hampton-in-Arden Tennis Club - Administration Functions</title>
+    <!--   Stylesheets   -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/gif" href="animated_favicon1.gif">    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">    
+    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- pickadate.js styling  -->
+    <link rel="stylesheet" href="./css/lib/themes/default.css" id="theme_base">
+    <link rel="stylesheet" href="./css/lib/themes/default.date.css" id="theme_date">
+    <link rel="stylesheet" href="./css/lib/themes/default.time.css" id="theme_time">
+    <!--  end of pickadate.js styling  -->
+    <style type="text/css">
+      .foundicon-settings {
+        color: white;
+        font-size: 200%;
+      }
+      input.timefield {
+        width: 4em;
+      }
+      input.datefield {
+        width: 10em;
+      }
+    </style>
+  </head>
+  <body>
+
+<!--
+<nav class="top-bar" data-options"is_hover: false">
+-->
+<!--
+<div class="contain-to-grid">
+-->
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <a href="index.html"><a href="http://hamptontennis.org.uk"><img src="./img/small_logo.gif" /></a></a><br />
+        <!-- <h1><a href="#">Hampton-in-Arden Tennis Club </a></h1>   -->
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="has-dropdown">
+          <a href="#/">Admin Home</a>
+          <ul class="dropdown">
+            <li><a href="#/coaches" class="medium button">Coaches</a></li>
+            <li><a href="#/tournaments" class="medium button">Tournaments</a></li>
+            <li><a href="#/events" class="medium button">Events</a></li>
+            <li><a href="#/quickmessage" class="medium button">Quick Messages</a></li>
+          </ul>
+        </li>
+        <li><a href="http://hamptontennis.org.uk/index.html">Main Tennis Club Site</a>
+        <li><a href="http://hamptontennis.org.uk/juniors">Juniors Home Page</a>
+      </ul>
+    </section>
+
+  </nav>
+<!--
+</div>
+-->
+
+  <!--   Main content area       -->
+
+
+  <div class="row">
+
+    <div class="large-1 medium-1 hide-for-small">
+      &nbsp;
+    </div>
+
+    <div class="large-10 medium-10 small-12 columns">
+
+      <h2>Administering the Tennis Club System</h2>
+
+      <div class="notprint" id="adminmenu">
+        <ul type="none" class="inline-list">
+          <li><a href="#/coaches" class="medium button">Coaches</a></li>
+          <li><a href="#/tournaments" class="medium button">Tournaments</a></li>
+          <li><a href="#/events" class="medium button">Events</a></li>
+          <li><a href="#/quickmessage" class="medium button">Quick Message</a></li>
+        </ul>
+      </div>
+
+      <div id="main">
+        
+        <h3>Welcome to the tennis club admin side!</h3>
+
+      </div>   <!--  where all the action takes place -->
+
+    </div>    <!--    /large-10    -->
+
+    <div class="large-1 medium-1 hide-for-small">
+      &nbsp;
+    </div>
+
+  </div>    <!--    /row    -->
+    
+
+  <!--   end of content area     -->
+
+  <!--   Define the footer area  -->
+  
+  <footer class="footer" id="footer" role="contentinfo">
+
+    <div class="row toprow">
+        <div class="large-9 bigfooter columns">
+          <div class="row">
+            <div class="large-3 medium-3 small-12 clublogo columns">
+                <p class="footermenuhead">&nbsp;</p>
+                <a href="http://hamptontennis.org.uk"><img src="./img/small_logo.gif" /></a>
+                <br />
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns">
+              <p class="footermenuhead">Our Club</p>
+              <ul>
+                <li><a href="juniors/contact.html" title="Contact the club">Contact Us</a></li>
+                <li><a href="facilities.html" title="Facilities at our club">Facilities</a></li>
+                <li><a href="juniors/joinus.html" title="Join the club">Join Us</a></li>
+                <li><a href="juniors/faqs.html" title="Frequently asked questions">FAQ&apos;s</a></li>
+                <li><a href="juniors/clubmark.html" title="Policies and procedures for running the club">Policies &amp; Procedures</a></li>
+              </ul>
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns">
+              <p class="footermenuhead">Playing</p>
+              <ul>
+                <li><a href="league.html" title="Playing for Hampton in the Coventry and Disytrict League">Coventry League</a></li>
+                <li><a href="singlesboxleagues.html" title="Internal singles box leagues">Box Leagues</a></li>
+                <li><a href="tournaments.html" title="Tournaments">Tournaments</a></li>
+                <li><a href="juniors/socialtennis.html" title="Provision for social tennis at our club">Social Tennis</a></li>
+                <li><a href="juniors/coaching.html" title="Opportunities for coaching at oru club whatever your age or ability">Coaching</a></li>
+                <li><a href="friendlies.html" title"Friendly matches organised against other clubs">Friendlies</a></li>
+              </ul>
+            </div>
+            <div class="large-3 medium-3 small-12 columns">
+              <p class="footermenuhead">Members</p>
+               <ul class="signedin noshow">
+                <li><a href="myprofile.html" title="My details held by the club">My Details</a></li>
+                <li><a href="directory.html" title="Search the club members list">Directory</a></li>
+                <li><a href="galleryindex.html" title="Photo galleries">Galleries</a></li>
+                <li><a href="juniors/documents.html" title="Archive for documents and forms used at the club">Document Library</a></li>
+                <li><a href="signout.asp" title="Sign-out from the members area">Sign-Out &raquo;</a></li>
+               </ul>
+               <ul class="notsignedin noshow">
+                <li><a href="login.html" title="Sign-in to the members area">Sign In &raquo;</a></li>
+              </ul>
+            </div>
+
+          </div>
+      </div>
+        <div class="large-3 medium-3 social hide-for-small columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <h3 class"footermenuhead">Stay in Touch</h3>
+              <ul class="inline-list">
+                <li class="facebook"><a href="http://facebook.com/hamptontennis" title="Facebook"></a></li>
+                <li class="twitter"><a href="http://twitter.com/hamptontennis" title="Twitter"></a></li>
+                <li class="wordpress"><a href="http://hamptontennis.wordpress.com" title="Wordpress"></a></li>
+                <li class="flickr"><a href="http://www.flickr.com/photos/103781054@N07/" title="Flickr"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Second row - with copyright info etc -->
+    <div class="row bottomrow hide-for-small">
+      <div class="large-4 columns">
+        <p>Hampton-in-Arden Tennis Club</p>
+      </div>
+      <div class="large-4 columns">
+          &nbsp;
+      </div>
+      <div class="large-4 columns">
+          <p>&copy; JC 2014. All rights reserved</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!--  end of footer definition  -->
+
+  <!--    Start of area for any Handlebars templates    -->
+
+
+    <script id="coachlist-template" type="x-handlebars-template">
+      <h4>Current Coaching Staff</h4>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Charge rates</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each allCoaches}}
+          <tr>
+            <td>{{forename1}} {{surname}}</td>
+            <td>
+              Hourly: &pound;{{hourlyrate}}<br />
+              Half-hourly: &pound;{{halfhourlyrate}}
+            </td>
+            <td>
+              <a href="/admin/#/coaches/{{uniqueref}}" class="small button coachedit" data-name="{{surname}}">Edit</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </script>
+
+    <script id="coachedit-template" type="x-handlebars-template">
+      {{#each allCoaches}}
+      <h4>Editing details for {{forename1}} {{surname}}</h4>
+      <p>
+        Qualifications:  {{qualifications}}
+      </p>
+      <p>
+        Awards:  {{awards}}
+      </p>
+      <p>
+        Hourly Rate:  {{hourlyrate}}
+      </p>
+      <p>
+        Half-Hourly Rate:  {{halfhourlyrate}}
+      </p>
+      {{/each}}
+    </script>
+
+    <!--  Tournaments templates    -->
+
+    <script id="tournamentlist-template" type="x-handlebars-template">
+      <h4>Currently Listed Upcoming Tournaments</h4>
+      {{#if allTournaments}}
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Tournament Title</th>
+            <th>Dates</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each allTournaments}}
+          <tr>
+            <td>{{tourtitle}}</td>
+            <td>
+              Start date: {{tourstart}} <br />
+              Finish date: {{tourend}}<br />
+
+              {{#if tourfinalsday}} Finals Day:                  (if specified) {{/if}}
+            </td>
+            <td>
+              <a href="/admin/#/tournaments/{{tournamentid}}" class="small button">Edit</a>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      <p>
+        There are no upcoming tournaments to Edit
+      </p>
+      {{/if}}
+    </script>
+
+    <script id="tournamentedit-template" type="x-handlebars-template">
+      {{#each allTournaments}}
+    <form method="post" action="set_tournament.asp" class="custom">
+
+      <div class="row">
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+        <div class="large-10 medium-10 small-12 columns">
+
+          <ul class="tabs" data-tab>
+            <li class="tab-title active"><a href="#panel2-1">Main details</a></li>
+            <li class="tab-title"><a href="#panel2-2">Finals Day</a></li>
+          </ul>
+
+          <div class="tabs-content">
+            <div class="content active" id="panel2-1">
+
+              <p class="panel">
+                Update the details of the tournament in the form below. All boxes must be completed with the exception of Finals Day information (if there is no finals day). Click on Save Changes when the updated tournament details are ready to be saved.
+              </p>
+
+              <label for="tournote">Name/Title for Tournament</label>
+              <input type="text" name="tournote" id="tournote" size="60" maxlength="120" tabindex="1" value="{{tourtitle}}" />
+            </div>
+
+            <div class="large-1 medium-1 hide-for-small columns">
+              &nbsp;
+            </div>
+
+          </div>    <!--    /row    -->
+
+          <div class="row">
+
+            <div class="large-1 medium-1 hide-for-small columns">
+              &nbsp;
+            </div>
+
+            <div class="large-10 medium-10 small-12 columns">
+              <label for="tourwho">Who the tournament is for &nbsp; e.g. all Mini-Tennis Red / Orange</label>
+              <input type="text" name="tourwho" id="tourwho" size="60" maxlength="120" tabindex="2" value="{{tourwho}}"/>
+            </div>
+
+            <div class="large-1 medium-1 hide-for-small columns">
+              &nbsp;
+            </div>
+
+          </div>    <!--    /row    -->
+
+          <div class="row">
+
+            <div class="large-1 medium-1 hide-for-small columns">
+              &nbsp;
+            </div>
+
+            <div class="large-5 medium-5 small-6 columns">
+              <label for="tourcategory">Type of Tournament</label>
+              <select name="tourcategory" id="tourcategory" tabindex="3">
+                <option value="JUNIOR" {{#equalsTo tourcategory "JUNIOR"}}selected{{/equalsTo}}>Juniors Tournament</option>
+                <option value="ADULT" {{#equalsTo tourcategory "ADULT"}}selected{{/equalsTo}}>Adult tournament</option>
+                <option value="EXTERNAL" {{#equalsTo tourcategory "EXTERNAL"}}selected{{/equalsTo}}>External competition</option>
+              </select>
+            </div>
+
+            <div class="large-5 medium-5 small-6 columns">
+              <label for="tourcost">Cost per person / pair:</label>
+              <input type="text" name="tourcost" id="tourcost" size="60" maxlength="60" tabindex="4" value="{{tourcost}}" />
+            </div>
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+      </div>    <!--    /row   -->
+
+      <div class="row">
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+        <div class="large-10 medium-10 small-12 columns">
+
+          <hr />
+ 
+          <div class="row">
+            <div class="large-4 medium-4 small-12 columns">
+              <label for="tourstart">Starts On: &nbsp; (dd/mm/yyyy)</label>
+              <input type="text" name="tourstart" id="tourstart" size="10" maxlength="10" tabindex="5" value="{{tourstart}}" class="datefield datepicker" />
+            </div>    <!--   /large-4    -->
+
+            <div class="large-2 medium-2 small-12 columns">
+              <label for="tourstarttime">At:&nbsp;(hhmm)</label>
+                <input type="text" name="tourstarttime" id="tourstarttime" size="5" maxlength="4" tabindex="6" value="{{sortablestarttime}}" class="timefield timepicker" />
+            </div>
+
+            <div class="large-4 medium-4 small-12 columns datepicker">
+              <label for="tourend">Ends On: &nbsp; (dd/mm/yyyy)</label>
+              <input type="text" name="tourend" id="tourend" size="10" maxlength="10" tabindex="7" value="{{tourend}}" class="datefield datepicker" />
+            </div>
+
+            <div class="large-2 medium-2 small-12 columns">
+              <label for="tourendtime">At: &nbsp; (hhmm)</label>
+              <input type="text" name="tourendtime" id="tourendtime" size="5" maxlength="4" tabindex="8"  value="{{sortableendtime}}" class="timefield timepicker" />
+            </div>
+
+          </div>    <!--    /row    -->
+
+          <div class="row panel">
+            <h6>Finals Day</h6>
+            <p>
+              If there is a separate Finals Day for this tournament, then please enter the details here. Otherwise make sure this is left blank.
+            </p>
+
+            <div class="row">
+              <div class="large-4 medium-4 small-12 columns">
+                <label for="tourfinalsday">Finals Day: &nbsp; (dd/mm/yyyy) </label>
+                <input type="text" name="tourfinalsday" id="tourfinalsday" size="10" maxlength="10" tabindex="9" data-value="10/10/2013" value="{{tourfinalsday}}" class="datefield datepicker" />
+              </div>
+  
+              <div class="large-4 medium-4 small-12 columns">
+                <label for="finalsstarttime">Starting At: &nbsp; (hhmm) </label>
+                <input type="text" name="sortablefinalsstarttime" id="finalsstarttime" size="5" maxlength="4" tabindex="10" value="{{sortablefinalsstarttime}}" class="timefield timepicker" />
+              </div>
+
+              <div class="large-4 medium-4 small-12 columns"
+                <label for="finalsendtime"> Ending At: &nbsp; (hhmm)</label>
+                <input type="text" name="finalsendtime" id="finalsendtime" size="5" maxlength="4" tabindex="11" value="{{sortablefinalsendtime}}" class="timefield timepicker" />
+              </div>
+
+            </div>    <!--    /row    -->
+
+          </div>    <!--    /row panel    -->
+
+          <hr />
+
+        </div>    <!--    /large-10    -->
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+      </div>    <!--    /row for dates and times     -->
+
+      <div class="row">
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+        <div class="large-10 medium-10 small-12 columns">
+          <label for="tourcontact">For further information or any questions:</label>
+          <input type="text" name="tourcontact" id="tourcontact" size="60" maxlength="120" tabindex="12" value="{{tourcontact}}" />
+        </div>
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+      </div>    <!--    /row    -->
+
+      <!--  Now for the checkboxes governing subsequent workflow    -->
+
+      <div class="row checkboxes">
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+        <div class="large-10 medium-10 small-12 columns">
+
+          <div class="row panel">
+            <h6>Communications</h6>
+
+            <div class="large-12 medium-12 small-12 columns">
+              <label for="emailcheckbox">
+                <input type="checkbox" id="emailcheckbox">
+                <span class="custom checkbox" style="margin-right: 10px;"></span>Quick message to all members about this tournament?
+              </label>
+            </div>
+
+            <div class="large-12 medium-12 small-12 columns">
+              <label for="eventcheckbox">
+                <input type="checkbox" id="eventcheckbox">
+                <span class="custom checkbox" style="margin-left: 10px;"></span>Add/update the event calendar with this tournament?
+              </label>
+            </div>
+
+        </div>
+
+        <div class="large-1 medium-1 hide-for-small columns">
+          &nbsp;
+        </div>
+
+      </div>     <!--    
+
+
+
+      <!--    end of checkboxes area    -->
+
+      <div class="row">
+
+        <div class="large-4 medium-4 hide-for-small columns">
+          &nbsp;
+        </div>
+
+        <div class="large-4 medium-4 small-12 columns">
+
+          <div id="submitblock" align="right">
+                <input type="hidden" name="tourid" value="{{tournamentid}}">
+                <input type="hidden" name="toururl" value="{{toururl}}">
+                <p>
+                  <input align="right" class="large button" type="submit" value="Save Changes">
+                </p>
+          </div>
+        </div>
+
+        <div class="large-4 medium-4 hide-for-small columns">
+          &nbsp;
+        </div>
+
+      </div>
+
+    </form>
+    </div>
+      {{/each}}
+ 
+  </div>
+
+  </script>
+
+    <!--  End of Tournaments templates    -->
+
+    <!--  Events templates    -->
+
+    <script id="eventlist-template" type="x-handlebars-template">
+
+      <div class="row">
+        <div class="large-9 medium-9 small-6 columns">
+          <h3>Upcoming events</h3>
+        </div>
+        <div class="large-3 medium-3 small-6 columns">
+          <a href="../juniors/newevent.html" class="medium button fullwidth">New Eevent</a>
+        </div>
+      </div>
+      {{#if allEvents}}
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Start<br />Time</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each allEvents}}
+          <tr>
+            <td>{{dateofevent}}</td>
+            <td>{{eventtime}}</td>
+            <td>{{eventnote}}</td>
+            <td><a href="#/events/{{eventid}}" class="small button">Edit</a></td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      <p>
+        There are no upcoming events available to Edit
+      </p>
+      {{/if}}
+    </script>   
+
+        </div>
+        <hr />
+     </script>
+
+    <script id="eventedit-template" type="x-handlebars-template">
+      {{#each allEvents}}
+      <h4>Amending details for an upcoming event</h4>
+      <form method="get" action="set_event.asp">
+        <fieldset>
+          <legend>Details of the Event</legend>
+          <div>
+            <label for="eventnote">Name/Title for Event</label>
+            <input type="text" name="eventnote" id="eventnote" size="60" maxlength="120" tabindex="1" value="{{eventnote}}"/>
+          </div>
+
+          <div>
+            <label for="eventdate"> Event Starts On:</label>
+            <div class="row datepicker" id="eventdatecontainer" >
+              <input class="small-3 columns" tabindex="2" name="eventdate" id="eventdate" size="16" type="text" value="{{eventdate}}"> 
+            </div>
+          </div>
+
+<!--
+          <div>
+            <label for="eventdate"> Event Starts On:</label>
+            <div class="row">
+              <div class="large-3 medium-3 small-6 columns datepicker">
+                <input type="text" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" value="{{eventdate}}" />
+              </div>
+              <div class="large-9 medium-9 small-6 columns">
+                <p>
+                  (dd/mm/yyyy) e.g. 09/02/2008 = 9 February 2008
+                </p>
+              </div>
+            </div>
+          </div>
+-->  
+
+          <div>
+            <label for="eventtime"> Event Starts At:</label>
+            <div class="row">
+              <div class="large-3 medium-3 small-6 columns">
+                <input type="text" name="eventtime" id="eventtime" size="5" maxlength="4" value="{{eventtime}}" tabindex="3" />
+              </div>
+              <div class="large-9 medium-9 small-6 columns">
+                <p>
+                  (hhmm) e.g. 0910 = ten past nine in the morning
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="eventtype">Type of Event</label>
+            <select name="eventtype" id="eventtype" tabindex="4">
+              <option value="EVENT">General event e.g. Finals Day, Open Day</option>
+              <option selected value="JUNIOR">Juniors event</option>
+              <option value="SOCIAL">Social event e.g. Annual Dinner / Dance, Cocktails Evening etc</option>
+              <option value="MATCH">Home Coventry League Matches</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="eventreport">Poster / report for the event</label>
+            <input type="text" name="eventreport" id="eventreport" size="50" maxlength="50" tabindex="5" value="{{eventreport}}"/>
+          </div>
+
+          <div id="submitblock" align="right">
+                <input type="hidden" name="eventid" value="{{eventid}}">
+                <p>
+                  <input align="right" class="large button" type="submit" value="Save Changes">
+                </p>
+          </div>
+        </fieldset>
+      </form>
+      {{/each}}
+    </script>
+
+    <!--  End of Events templates    -->
+
+
+
+  <!--    End of area for any Handlebars templates    -->
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <!--
+    <script src="bower_components/foundation/js/foundation.forms.js"></script>
+    -->
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="bower_components/sammy/lib/sammy.js"></script>
+    <script src="js/picker.js"></script>
+    <script src="js/picker.date.js"></script>
+    <script src="js/picker.time.js"></script>
+    <script src="js/legacy.js"></script>
+    <script src="js/app.js"></script>
+    <script src="http://l2.io/ip.js?var=myip"></script>
+    <script src="js/sessions.js"></script> 
+<!--
+    <script src="js/handlebars-templates.js"></script> 
+-->
+    <script src="js/admin.js"></script> 
+
+  </body>
+</html>

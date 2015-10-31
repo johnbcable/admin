@@ -1,0 +1,14 @@
+//
+//  File to have all placeholder declarations
+//
+
+%clearfix {
+	@include clearfix;
+}
+%message {
+	padding: .5em;
+	margin-bottom: .5em;
+	border-radius: .15em;
+	border: 1px solid;
+}
+

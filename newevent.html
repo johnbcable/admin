@@ -1,0 +1,233 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hampton-in-Arden Tennis Club - Juniors - Putting a New Event Into the Calendar</title>
+    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+
+<!--
+<nav class="top-bar" data-options"is_hover: false">
+-->
+<!--
+<div class="contain-to-grid">
+-->
+  <nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <a href="index.html"><a href="http://hamptontennis.org.uk"><img src="./img/small_logo.gif" /></a></a><br />
+        <!-- <h1><a href="#">Hampton-in-Arden Tennis Club </a></h1>   -->
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="coaching.html">Coaching</a></li>
+        <li><a href="socialtennis.html">Social Tennis</a>
+        <li><a href="compete.html">Compete</a>
+        <li><a href="holidaycamps.html">Holiday Clubs</a></li>
+        <li><a href="search.html">Search &raquo;</a></li>
+      </ul>
+    </section>
+
+  </nav>
+<!--
+</div>
+-->
+
+  <!-- Header -->
+
+  <div class="row">
+    <div class="large-12 columns">
+      <h2>Adding a New Event Into the Calendar</h2>
+      <hr />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-8 medium-12 small-12 panel columns">
+
+    <p>
+      Fill in the form below with details of the new event. All boxes must be completed with the exception of 
+      the Event Starts At box (which may be left blank). Click on Submit when the new event details are ready 
+      for submission.
+    </p>
+    <form method="get" action="set_event.asp">
+      <fieldset>
+        <legend>Details of New Event</legend>
+        <div>
+          <label for="eventnote">Name/Title for Event</label>
+          <input type="text" name="eventnote" id="eventnote" size="60" maxlength="120" tabindex="1" />
+        </div>
+        <div>
+          <label for="eventdate"> Event Starts On:</label>
+          <div class="row">
+            <div class="large-3 medium-3 small-6 columns">
+              <input type="text" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" onBlur="javascript:checkdate(this)" />
+            </div>
+            <div class="large-9 medium-9 small-6 columns">
+              <p>
+                (dd/mm/yyyy) e.g. 09/02/2008 = 9 February 2008
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="eventtime"> Event Starts At:</label>
+          <div class="row">
+            <div class="large-3 medium-3 small-6 columns">
+              <input type="text" name="eventtime" id="eventtime" size="5" maxlength="4" tabindex="3" />
+            </div>
+            <div class="large-9 medium-9 small-6 columns">
+              <p>
+                (hhmm) e.g. 0910 = ten past nine in the morning
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="eventtype">Type of Event</label>
+          <select name="eventtype" id="eventtype" tabindex="4">
+            <option value="EVENT">General event e.g. Finals Day, Open Day</option>
+            <option selected value="JUNIOR">Juniors event</option>
+            <option value="SOCIAL">Social event e.g. Annual Dinner / Dance, Cocktails Evening etc</option>
+            <option value="MATCH">Home Coventry League Matches</option>
+          </select>
+        </div>
+        <div id="submitblock" align="right">
+              <input type="hidden" name="eventid" value="-1">
+              <p>
+                <input align="right" class="large button" type="submit" value="Submit">
+              </p>
+        </div>
+      </fieldset>
+    </form>
+    </div>
+
+    <div id="coachlist" class="large-4 medium-4 small-12 coachlist columns">
+    <h4>Contact a Coach</h4>
+    <script id="coachlist-template" type="x-handlebars-template">
+    <ul>
+        {{#each allCoaches}}
+        <li>
+          <a href="{{url}}">{{forename1}} {{surname}}</a>
+          <p class="mobile">mobile: {{mobilephone}}</p>
+        </li>
+        {{/each}}
+    </ul>
+
+    <hr />
+      
+    <a href="coaching_schedule.html" class="large button">Coaching Schedule</a><br />
+    <a href="paying.html" class="large button">Paying for Coaching</a>
+
+    </script>
+
+    </div>    <!--    /coachlist    -->
+
+  </div>
+
+
+  <!--   Define the footer area  -->
+  
+  <!-- First row contains big footer menu and social mdeia stuff -->
+
+  <footer class="footer" role="contentinfo">
+
+    <div class="row toprow">
+        <div class="large-9 bigfooter columns">
+          <div class="row">
+            <div class="large-3 medium-3 small-12 clublogo columns">
+                <p class="footermenuhead"><a href="index.html">Home</a></p>
+                <a href="http://hamptontennis.org.uk"><img src="./img/logo.gif" /></a>
+                <br />
+            </div>
+            <div class="large-3 medium-3 small-12 columns">
+                <p class="footermenuhead">Services</p>
+                <ul>
+                  <li><a href="contact.html" title="">Contact Us</a></li>
+                  <li><a href="coaching.html" title="">Coaching</a></li>
+                  <li><a href="holidaycamps.html" title="">Holiday Clubs</a></li>
+                  <li><a href="socialtennis.html" title="">Social Tennis</a></li>
+                  <li><a href="compete.html" title="">Competing</a></li><li><a href="faqs.html" title="">FAQ&apos;s</a></li>
+                </ul>
+            </div>
+            <div class="large-3 medium-3 small-12 columns">
+                <p class="footermenuhead">Coaching</p>
+                <ul>
+                  <li><a href="coaching.html">Overview</a></li>
+                  <li><a href="junior_coaching.html">Junior Groups</a></li>
+                  <li><a href="one-to-one.html">One-to-One</a></li>
+                  <li><a href="adult_coaching.html">Adults</a></li>
+                  <li><a href="paying.html">Coaching Fees</a></li>
+                  <li><a href="coaching_schedule.html">Schedule</a></li>
+                  <li><a href="minitennis.html">Mini-Tennis</a></li>
+                  
+                </ul>
+
+            </div>
+            <div class="large-3 medium-3 small-12 columns">
+                <p class="footermenuhead">Coaches</p>
+                 <ul>
+                  <li><a href="ianpoole.html" title="Head Coach - Ian Poole">Ian Poole</a></li>
+                  <li><a href="sampeace.html" title="Performance Coach - Sam Peace">Sam Peace</a></li>
+                  <li><a href="belkacemchefri.html" title="Coach - Belkacem Chefri">Bel Chefri</a></li>
+                  
+                  <li><a href="matttew.html" title="Coach - Matt Tew">Matt Tew</a></li>
+                  <li><a href="nathanwiggin.html" title="Coach - Nathan Wiggin">Nathan Wiggin</a></li>
+                  <li><a href="zachjones.html" title="Coach - Zach Jones">Zach Jones</a></li><li><a href="samhiskett.html" title="Coach - Sam Hiskett">Sam Hiskett</a></li>
+               </ul>
+            </div>
+          </div>
+      </div>
+        <div class="large-3 medium-3 social hide-for-small columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <h3 class"footermenuhead">Stay in Touch</h3>
+              <ul class="inline-list">
+                <li class="facebook"><a href="http://facebook.com/hamptontennis" title="Facebook"></a></li>
+                <li class="twitter"><a href="http://twitter.com/hamptontennis" title="Twitter"></a></li>
+                <li class="wordpress"><a href="http://hamptontennis.wordpress.com" title="Wordpress"></a></li>
+                <li class="flickr"><a href="http://www.flickr.com/photos/103781054@N07/" title="Flickr"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Second row - with copyright info etc -->
+    <div class="row bottomrow hide-for-small">
+      <div class="large-4 columns">
+        <p>Hampton-in-Arden Tennis Club</p>
+      </div>
+      <div class="large-4 columns">
+          &nbsp;
+      </div>
+      <div class="large-4 columns">
+          <p>&copy; JC 2013. All rights reserved</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!--  end of footer definition  -->
+
+
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="bower_components/handlebars/handlebars.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dateval.js"></script>
+    <script src="js/coachlist.js"></script>
+  </body>
+</html>

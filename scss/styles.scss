@@ -1,0 +1,23 @@
+// Global Foundation Settings
+@import "partials/base";
+
+// Import Compass support
+@import "compass";
+
+//  Compass Sprite Helper (for social networking icons)
+@import "social/*.png";
+
+// Import default style sheet for default index.html from Foundation
+// Comment this import out for production
+// @import "partials/_app.scss";
+
+// Lastly, import any locally defined scss
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/fonts";
+@import "partials/normalize";
+// @import "partials/base";
+@import "partials/placeholders";
+@import "partials/layout";
+@import "partials/modules";
+@import "partials/print";
