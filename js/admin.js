@@ -34,7 +34,7 @@ function displayCoachList() {
 		//	eventsfound = true;
 
 		//Get the HTML from the template   in the script tag
-	    var theTemplateScript = $("#coachlist-template").html(); 
+	   var theTemplateScript = $("#coachlist-template").html(); 
 
 	   //Compile the template
 	    var theTemplate = Handlebars.compile (theTemplateScript); 
@@ -155,7 +155,7 @@ function editEvent(id) {
 // Display future tournament list
 function displayTournamentList() {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=8";
+	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=4";
 
 	console.log("Inside displayTournamentList");
 
@@ -349,7 +349,7 @@ function editTournament(id) {
 $(function() { 
 
 	// Set signed-in status
-	setSignedIn();
+	setAdminSignedIn();
 
 	// Now run the main Sammy route
 	app.run('#/');

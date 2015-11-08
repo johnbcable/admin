@@ -173,6 +173,13 @@ function setTour(tourobj, debugflag)
 	var sWinner = new String(tourobj.touryear);
 	var RS, RS2, Conn, SQL1, SQL2, dbconnect, uniqref;
 	var mDateObj, dummy1;
+	var resultObj = new Object();
+	var e;
+	//
+	resultObj.result = true;
+	resultObj.errno = 0;
+	resultObj.description = new String("").toString();
+	//
 	//
 	dbconnect=Application("hamptonsportsdb");
 	Conn = Server.CreateObject("ADODB.Connection");
@@ -241,16 +248,24 @@ function setTour(tourobj, debugflag)
 
 
 	SQL1 = new String(SQLstart+SQLmiddle+SQLend).toString();;
-	// if ( ! debugflag)
 	if (! debugflag) {
-		RS2 = Conn.Execute(SQL1);
+		try {
+			RS = Conn.Execute(SQL1);
+		}
+		catch(e) {
+			resultObj.result = false;
+			resultObj.errno = (e.number & 0xFFFF);
+			resultObj.description += e.description;
+			resultObj.sql = new String(SQLstart+SQLmiddle+SQLend).toString();
+		}
+		return(resultObj);
 	}
 	// RS2.Close();
 	Conn.Close();
 	RS2 = null;
 	Conn = null;
 
-	return(SQL1);
+	return(resultObj);
 }
 // ================================================================
 function printTour(tourObj)
@@ -344,7 +359,12 @@ function deleteTour(tournamentid, debugflag)
 	if ( ! debugflag) {
 		RS = Conn.Execute(SQL1);
 		// RS.Close();
+		// Now also look for any events related to this tournament and 
+		// delete them as well
+
+
 	}
+
 
 	Conn.Close();
 	RS = null;

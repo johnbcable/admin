@@ -26,6 +26,7 @@ var SQLresult = new String("").toString();
 var newEventID = -1;
 var editURL = new String("").toString();
 var dateArray;
+<<<<<<< HEAD
 
 // var debugging=current_debug_status();
 var updating=false;  // if true we will update the database
@@ -37,6 +38,20 @@ if (m_id == "" || m_id =="null" || m_id == "undefined")
 {
 	m_id = Trim(new String(Request.QueryString("tourid")));
 	if (m_id == "" || m_id =="null" || m_id == "undefined")
+=======
+var resultObject = new Object();
+
+// var debugging=current_debug_status();
+var updating=true;  // if true we will update the database
+debugging = false;   // if true we will display debug info
+
+// Process form/querystring parameters
+m_id = Trim(new String(Request.Form("tourid")));
+if (m_id == "" || m_id =="null" || m_id == "undefined" || m_id == "-1")
+{
+	m_id = Trim(new String(Request.QueryString("tourid")));
+	if (m_id == "" || m_id =="null" || m_id == "undefined" || m_id == "-1")
+>>>>>>> 81b3a992287fd6b8d25be33382accd45158013e1
 	{
 		m_id = new String("0").toString();
 	}
@@ -66,7 +81,7 @@ if (m_end == "" || m_end =="null" || m_end == "undefined")
 	m_end = Trim(new String(Request.QueryString("tourend")));
 	if (m_end == "" || m_end =="null" || m_end == "undefined")
 	{
-		m_end = new String("null").toString();
+		m_end = new String("").toString();
 	}
 }
 m_finalsday = Trim(new String(Request.Form("tourfinalsday")));
@@ -93,7 +108,7 @@ if (m_contact == "" || m_contact =="null" || m_contact == "undefined")
 	m_contact = Trim(new String(Request.QueryString("tourcontact")));
 	if (m_contact == "" || m_contact =="null" || m_contact == "undefined")
 	{
-		m_contact = new String("").toString();
+		m_contact = new String("Please contact one of our coaches for further information.").toString();
 	}
 }
 m_starttime = Trim(new String(Request.Form("tourstarttime")));
@@ -127,6 +142,11 @@ if (m_finalsstart == "" || m_finalsstart =="null" || m_finalsstart == "undefined
 	}
 }
 m_finalsend = Trim(new String(Request.Form("finalsendtime")));
+
+if (debugging) {
+	Response.Write("Finals end time as originally received ["+m_finalsend+"]<br /><br />");
+}
+
 if (m_finalsend == "" || m_finalsend =="null" || m_finalsend == "undefined")
 {
 	m_finalsend = Trim(new String(Request.QueryString("finalsendtime")));
@@ -186,6 +206,58 @@ if (m_event == "" || m_event =="null" || m_event == "undefined")
 	}
 }
 
+// ================================================================
+// Now do cross field checks
+//
+// 1.  If end date hasnt been supplied, set to start date
+//
+if (m_end == "") {
+	m_end = new String(m_start);  // One-day tournament assumed
+}
+//
+// 2.  If m_start == m_end then we must have at least a start time
+//
+if (m_end == m_start) {
+	if (m_starttime == "") {
+		if (m_endtime == "") {
+			// No times specified - defaults to mid-day
+			m_starttime = new String("12:00:00");
+		} else {
+			m_starttime = new String(m_endtime);
+		}
+	} else {   // We have a start time
+		if (m_endtime == "") {
+			// No end time specified - defaults to 5pm
+			m_endtime = new String(m_starttime);
+		} 
+	}
+}
+//
+//  3.  If we have a finals day, then we must allocate start end end times
+//
+if (m_finalsday == "") {
+	// No finals day, make sure and set start and end times on finals day to null
+	m_finalsstart = new String("");
+	m_finalsend = new String("");
+} else {
+	// We have a finals day
+	if (m_finalsstart == "") {
+		// No start time - defauls to mid-day
+		if (m_finalsend == "") {
+			// No times specified - defaults to mid-day
+			m_finalsstart = new String("12:00:00");
+		} else {
+			m_finalsstart = new String(m_finalsend);
+		}
+	} else {   // We have a start time on finals day
+		if (m_finalsend == "") {
+			// No end time specified - defaults to 5pm
+			m_finalsend = new String("17:00:00");
+		} 
+	}
+}
+
+
 // ==============================================================================
 // if this is a new one, add skeleton record and get its unique id back into m_id
 // or now retrieve existing tournament details
@@ -194,13 +266,13 @@ if (! (m_id == "0"))  {
 	tourObj = getTour(m_id);  // Retrieve the existing tournament record
 }  
 else {
-	tourObj = newTour(true);
-	m_id = tourObj.tournamentid;
+	// New tournament 
+	m_id = newTour();
+	tourObj = getTour(m_id);
 	if (debugging) {
 		Response.Write("We have created a new dummy tournament and the ID = "+m_id+".<br />");
 	}
 }
-
 
 // Update tournament Object with data from submitting form
 
@@ -230,11 +302,17 @@ if (debugging)
 
 // Now update the tournament record with an id of m_id
 
-updateSQL = setTour(tourObj, true);
+resultObject = setTour(tourObj);
 
-if (debugging)
-{
-	Response.Write("SQL to be used in update is:<br /><br />"+updateSQL+"<br /><hr /><br />")
+if ( ! (resultObject.result)) {
+	// Update failed in some way
+	// Send out debug info to screen
+	Response.Write("<h4>Update failed</h4>");
+	Response.Write("<p>Error number:  "+resultObject.errno+"</p>");
+	Response.Write("<p>Description:  "+resultObject.description+"</p>");
+	Response.Write("<p>SQL used:  "+resultObject.sql+"</p>");
+	Response.Write("====================================================");
+	Response.End();
 }
 
 // Workflow implications - see if we need to send a quick message and/or if 
@@ -258,25 +336,54 @@ if (debugging)
 
 if (m_event == checkboxon) {
 
+	// Can only do an event if this is a one-day tournament or
+	// if it has a specified Finals day
+	// Finals Day will take precedence
+
+	var oneday = (tourObj.tourstart == tourObj.tourend) ? true : false;
+	var separatefinals = (tourObj.tourfinalsday) ? true : false;
+	var evstart = new String("").toString();
+	var evend = new String("").toString();
+
+	if (oneday || separatefinals)  // either one-day tournament or Finals Day
+	{
+		if (separatefinals) {
+			// Finals day so use that start/end time
+			evstart = new String(tourObj.finalsstarttime);
+			evend = new String(tourObj.finalsendtime);
+		} else {
+			// One-day tournamwnt with no Finals Day
+			evstart = new String(tourObj.tourstarttime);
+			evend = new String(tourObj.tourendtime);
+		}
+	}
+
 	//  Retrieve event detail relating to this tournament if it exists
 	newEventID = null;
 	eventObj = getEventForTournament(m_id);
 	if (! eventObj) {
-		newEventID = newEvent();  // This will create a new row in the table ...
-		eventid = newEventID;
-		eventObj = getEventByID(eventid);
-		// Update this new event with defaults from the tournament
-		dummy = new String(m_start).toString();
-		dateArray = m_start.split("/");  // the year should now be in dataArray(2)
-		dummy = new String(dateArray[2]).toString();
-		eventObj.eventyear = parseInt(dummy);
-		eventObj.eventtype = new String("EVENT").toString();
-		eventObj.eventdate = tourObj.tourstart;
-		eventObj.eventtime = tourObj.tourstarttime;
-		eventObj.eventnote = tourObj.tourtitle;
-		eventObj.linktable = "tournaments";
-		eventObj.linkid = tourObj.tournamentid;
-		updateSQL2 = setEvent(eventObj, true);
+
+		if (oneday || separatefinals) {
+			newEventID = newEvent();  // This will create a new row in the table ...
+			eventid = newEventID;
+			eventObj = getEventByID(eventid);
+			// Update this new event with defaults from the tournament
+			dummy = new String(m_start).toString();
+			dateArray = m_start.split("/");  // the year should now be in dateArray(2)
+			dummy = new String(dateArray[2]).toString();
+			eventObj.eventyear = parseInt(dummy);
+			eventObj.eventtype = new String("TOURNAMENT").toString();
+			eventObj.eventdate = evstart;
+			eventObj.eventtime = tourObj.tourstarttime;
+			eventObj.eventnote = tourObj.tourtitle;
+			eventObj.eventreport = null;
+			eventObj.enddate = evend;
+			eventObj.fixturelink = null;
+			eventObj.tourlink = "tournaments.html";
+			eventObj.holidaylink = "holidaycamps.html";
+			eventObj.advert = null;
+			updateSQL2 = setEvent(eventObj, true);
+		}
 		if (debugging) {
 			Response.Write("<br />SQL used for setEvent is <br /<br />"+updateSQL2+"<br />");
 		}
@@ -323,7 +430,7 @@ if (debugging) {
 if (debugging)
 	Response.End();
 
-Response.Redirect("#/");
+Response.Redirect("http://hamptontennis.org.uk/admin/#/tournaments");
 
 %>
 
