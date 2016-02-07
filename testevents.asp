@@ -30,11 +30,6 @@ displaydate = "";
 // var debugging=current_debug_status();
 var debugging = false;
 
-ConnObj = Server.CreateObject("ADODB.Connection");
-RS = Server.CreateObject("ADODB.RecordSet");
-ConnObj.Open(dbconnect);
-SQL1 = "SELECT MAX(eventid) AS lastevent FROM events";
-
 
 // End of page start up coding
 %>
@@ -87,6 +82,12 @@ if (debugging)
 	<div id="content">
 			<h1>Administration:<b>&nbsp;Testing Event Functions</b></h1>
 <%
+
+ConnObj = Server.CreateObject("ADODB.Connection");
+RS = Server.CreateObject("ADODB.RecordSet");
+ConnObj.Open(dbconnect);
+SQL1 = "SELECT MAX(eventid) AS lastevent FROM events";
+
 Response.Write("<h1>Firstly, fetching event data from last created event</h1>");
 var latestevent = -1;
 RS = ConnObj.Execute(SQL1);

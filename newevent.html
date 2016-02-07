@@ -103,19 +103,19 @@
           <div class="row">
             <div class="large-3 medium-3 small-6 columns">
               <label for="eventdate"> Start Date:</label>
-              <input type="date" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" onBlur="javascript:checkdate(this)" placeholder="dd/mm/yyyy" /><br />
+              <input type="date" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" onBlur="javascript:checkdate(this)" /><br />
             </div>
             <div class="large-3 medium-3 small-6 columns">
               <label for="eventtime"> Start Time:</label>
-              <input type="time" name="eventtime" id="eventtime" size="5" maxlength="4" tabindex="3" placeholder="hhmm" />
+              <input type="time" name="eventtime" id="eventtime" size="8" maxlength="8" tabindex="3" />
             </div>
             <div class="large-3 medium-3 small-6 columns">
               <label for="enddate"> End Date:</label>
-              <input type="date" name="enddate" id="enddate" size="10" maxlength="10" tabindex="2" onBlur="javascript:checkdate(this)" placeholder="dd/mm/yyyy" /><br />
+              <input type="date" name="enddate" id="enddate" size="10" maxlength="10" tabindex="4" onBlur="javascript:checkdate(this)"  /><br />
             </div>
             <div class="large-3 medium-3 small-6 columns">
               <label for="endtime"> End Time:</label>
-              <input type="time" name="endtime" id="endtime" size="5" maxlength="4" tabindex="3" placeholder="hhmm" />
+              <input type="time" name="endtime" id="endtime" size="8" maxlength="8" tabindex="5"  />
             </div>
           </div>
           <div class="row">
@@ -129,7 +129,7 @@
 
         <div>
           <label for="eventtype">Type of Event</label>
-          <select name="eventtype" id="eventtype" tabindex="4">
+          <select name="eventtype" id="eventtype" tabindex="6">
             <option value="EVENT">General event e.g. Finals Day, Open Day</option>
             <option selected value="JUNIOR">Juniors event</option>
             <option value="SOCIAL">Social event e.g. Annual Dinner / Dance, Cocktails Evening etc</option>

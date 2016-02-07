@@ -9,6 +9,7 @@ var pagetitle = new String("Updating Details of Event");
 // Now for any variables local to this page
 var m_eventdate, m_eventtime, m_eventnote, m_eventtype, m_eventid, m_eventreport;
 var vdate, m_eventyear;   // m_eventyear is always calculated from m_eventdate
+var m_debug;
 var ConnObj;
 var RS,RS2,RS3;
 var SQLStmt, SQL2, SQL3;
@@ -28,6 +29,16 @@ m_eventtime = Trim(new String(Request.QueryString("eventtime")));
 m_eventnote = Trim(new String(Request.QueryString("eventnote")));
 m_eventtype = Trim(new String(Request.QueryString("eventtype")));
 m_eventreport = Trim(new String(Request.QueryString("eventreport")));
+m_debug = Trim(new String(Request.QueryString("debug")));
+
+// Set debugging dependent on querystring override
+if (m_debug == "y" || m_debug == "Y") {
+	debugging = true;
+} else {
+	debugging = false;
+}
+
+
 // Flag if this is a new member insertion 
 newone = (m_eventid == "-1");
 // reset if null
@@ -38,8 +49,6 @@ if (m_eventdate=="undefined" || m_eventdate == "null" || m_eventdate == "")
 }
 if (m_eventtime=="undefined" || m_eventtime == "null" || m_eventtime == "")
 	m_eventtime = new String("00:00:00").toString();
-else
-	m_eventtime = new String(m_eventtime.substr(0,2)+":"+m_eventtime.substr(2)+":00").toString();
 if (m_eventnote=="undefined" || m_eventnote == "null" || m_eventnote == "")
 	m_eventnote = new String("No event title supplied").toString();
 if (m_eventtype=="undefined" || m_eventtype == "null" || m_eventtype == "")
@@ -47,9 +56,26 @@ if (m_eventtype=="undefined" || m_eventtype == "null" || m_eventtype == "")
 if (m_eventreport=="undefined" || m_eventreport == "null" || m_eventreport == "")
 	m_eventreport = new String("").toString();
 
+// What sort of mtime value to we have
+if (m_eventtime.length < 8) {
+	// not in 8-character form so we need to split and reformat
+	timearr = m_eventtime.split(":");
+	m_eventtime = new String(Lpad(timearr[0],2,"0")+":"+Lpad(timearr[1],2,"0"));
+}
+
 // Calculate event year from event date
-vdate = new Date(m_eventdate.substr(6),m_eventdate.substr(3,2),m_eventdate.substr(0,2));
-m_eventyear = new String(vdate.getFullYear()).toString();
+// What sort of inout date do we have
+if (m_eventdate.length > 8) {
+	// HTML5 yyyy-mm-dd format
+	m_eventyear= new Number(m_eventdate.substr(0,4));
+
+} else {
+	// assume in dd/mm/yyyy format
+	m_eventyear = new Number(m_eventdate.substr(6,4))
+}
+if (isNaN(m_eventyear)) {
+	// we have an invalid date
+}
 
 // Do DB update
 ConnObj=Server.CreateObject("ADODB.Connection");
@@ -73,6 +99,7 @@ if (debugging)
 	Response.Write("m_eventtime = "+m_eventtime+"<br />");
 	Response.Write("m_eventnote = "+m_eventnote+"<br />");
 	Response.Write("m_eventreport = "+m_eventreport+"<br />");
+	Response.Write("vdate = "+vdate+"<br />");
 	Response.Write("m_eventyear = "+m_eventyear+"<br />");
 	Response.Write("<br />SQL1 = ["+SQL1+"]<br />");
 }

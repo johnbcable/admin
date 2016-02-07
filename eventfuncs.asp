@@ -79,8 +79,12 @@ function getEventByID(eventid)
 		eventObj.eventnote = new String(RS("eventnote")).toString();
 		eventObj.eventid = new Number(RS("eventid")).valueOf();
 		eventObj.eventreport = new String(RS("eventreport")).toString();
-		eventObj.linktable = new String(RS("linktable")).toString();
-		eventObj.linkid = new String(RS("linkid")).toString();
+		eventObj.enddate = new String(RS("enddate")).toString();
+		eventObj.endtime = new String(RS("endtime")).toString();
+		eventObj.fixturelink = new String(RS("fixturelink")).toString();
+		eventObj.tourlink = new String(RS("tourlink")).toString();
+		eventObj.holidaylink = new String(RS("holidaylink")).toString();
+		eventObj.advert = new String(RS("advert")).toString();
 		RS.MoveNext();
 	}
 	RS.Close();
@@ -99,13 +103,23 @@ function getEventByID(eventid)
 		eventObj.eventnote="";
 	if (eventObj.eventreport=="null" || eventObj.eventreport=="undefined")
 		eventObj.eventreport="";
-	if (eventObj.linktable=="null" || eventObj.linktable=="undefined")
-		eventObj.linktable="";
+	// If no end date, default to event (start) date
+	if (eventObj.enddate=="null" || eventObj.enddate=="undefined")
+		eventObj.enddate=eventObj.eventdate;
+	// If no end time, default to start time
+	if (eventObj.endtime=="null" || eventObj.endtime=="undefined")
+		eventObj.eventdtime="";
+	if (eventObj.fixturelink=="null" || eventObj.fixturelink=="undefined")
+		eventObj.fixturelink="";
+	if (eventObj.tourlink=="null" || eventObj.tourlink=="undefined")
+		eventObj.tourlink="";
+	if (eventObj.holidaylink=="null" || eventObj.holidaylink=="undefined")
+		eventObj.holidaylink="";
+	if (eventObj.advert=="null" || eventObj.advert=="undefined")
+		eventObj.advert="";
 
 	if (eventObj.eventyear=="null" || eventObj.eventyear=="undefined")
 		eventObj.eventyear=new String("").toString();
-	if (eventObj.linkid=="null" || eventObj.linkid=="undefined")
-		eventObj.linkid=new Number(-1);
 
 	// Make sure date fields are reformatted as dd/mm/yyyy
 	mDateObj=new Date(eventObj.eventdate);
@@ -115,6 +129,12 @@ function getEventByID(eventid)
 	else
 		eventObj.eventdate = ddmmyyyy(mDateObj);
 
+	mDateObj=new Date(eventObj.enddate);
+	dummy1 = mDateObj.valueOf();
+	if (dummy1 == 0) // no date in database
+		eventObj.enddate = "";
+	else
+		eventObj.enddate = ddmmyyyy(mDateObj);
 
 	return (eventObj);
 }
@@ -141,8 +161,12 @@ function getEventForTournament(tournamentid)
 		Eventobj.eventnote = new String(RS("eventnote")).toString();
 		Eventobj.eventid = new Number(RS("eventid")).valueOf();
 		Eventobj.eventreport = new String(RS("eventreport")).toString();
-		Eventobj.linktable = new String(RS("linktable")).toString();
-		Eventobj.linkid = new Number(RS("linkid")).valueOf();
+		EventObj.enddate = new String(RS("enddate")).toString();
+		EventObj.endtime = new String(RS("endtime")).toString();
+		EventObj.fixturelink = new String(RS("fixturelink")).toString();
+		EventObj.tourlink = new String(RS("tourlink")).toString();
+		EventObj.holidaylink = new String(RS("holidaylink")).toString();
+		EventObj.advert = new String(RS("advert")).toString();
 		RS.MoveNext();
 	}
 	else
@@ -168,8 +192,12 @@ function printEvent(eventObj)
 		sReport += "Year of event: "+eventObj.eventyear +"<br />";
 		sReport += "Type of event: "+eventObj.eventtype +"<br />";
 		sReport += "Further info about event: "+eventObj.eventreport +"<br />";
-		sReport += "Link table for event: "+eventObj.linktable +"<br />";
-		sReport += "ID for link on link table: "+eventObj.linkid +"<br />";
+		sReport += "End date for event: "+eventObj.enddate +"<br />";
+		sReport += "End tiem for event: "+eventObj.endtime +"<br />";
+		sReport += "Link to fixtures (if present): "+eventObj.fixturelink+"<br />";
+		sReport += "Link to tournaments (if present): "+eventObj.tourlink +"<br />";
+		sReport += "Link to holiday clubs (if present): "+eventObj.holidaylink +"<br />";
+		sReport += "Link to advert for this event (if present): "+eventObj.advert +"<br />";
 
 	}	
 	else
@@ -258,16 +286,7 @@ function setEvent(eventobj, debugflag)
 	} else {
 		SQLmiddle += "eventreport = '"+eventobj.eventreport+"', ";
 	}
-	if (eventobj.linktable == "" | eventobj.linktable == "null" || eventobj.linktable == "undefined") {
-		SQLmiddle += "linktable=null, ";
-	} else {
-		SQLmiddle += "linktable = '"+eventobj.linktable+"', ";
-	}
-	if (eventobj.linkid < 1) {
-		SQLmiddle += "linkid=null, ";
-	} else {
-		SQLmiddle += "linkid = "+eventobj.linkid+", ";
-	}
+
 
 	// Now deal with the date and time fields, dates first
 	if (! (eventobj.eventdate == "" || eventobj.eventdate == "null" || eventobj.eventdate == "undefined"  ))
