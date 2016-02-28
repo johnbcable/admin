@@ -108,7 +108,7 @@ function getEventByID(eventid)
 		eventObj.enddate=eventObj.eventdate;
 	// If no end time, default to start time
 	if (eventObj.endtime=="null" || eventObj.endtime=="undefined")
-		eventObj.eventdtime="";
+		eventObj.endtime="";
 	if (eventObj.fixturelink=="null" || eventObj.fixturelink=="undefined")
 		eventObj.fixturelink="";
 	if (eventObj.tourlink=="null" || eventObj.tourlink=="undefined")

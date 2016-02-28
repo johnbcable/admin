@@ -95,7 +95,7 @@ while (! RS.EOF) {
 	Response.Write("<p>Inside RS loop from "+SQL1+"<br /></p>");
 	Response.Write("<p>RS(0) = "+RS(0)+"<br /></p>");
 	latestevent = new Number(RS(0));
-	Response.Write("<p>lestetevent after assignment inside loop = "+latestevent+"<br /></p>");
+	Response.Write("<p>latestevent after assignment inside loop = "+latestevent+"<br /></p>");
 	RS.MoveNext();
 }
 RS.Close();
