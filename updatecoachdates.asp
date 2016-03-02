@@ -22,7 +22,7 @@ var uniqueref;
 var coachingobject = new Object();
 var today = new Date();
 
-var debugging = true;  // Production = false
+var debugging = false;  // Production = false
 
 // defaults for variables
 coachingobject.startdate = new String(ddmmyyyy(today));
@@ -83,7 +83,7 @@ if (coachingobject.fees30 == "" || coachingobject.fees30 =="null" || coachingobj
 Conn = Server.CreateObject("ADODB.Connection");
 RS = Server.CreateObject("ADODB.RecordSet");
 Conn.Open(dbconnect);
-SQLstart = new String("UPDATE coaching_dates ")
+SQLstart = new String("UPDATE coaching_schedules ")
 SQLend = new String(" WHERE schedule_role = 'NEXT'").toString();
 SQLmiddle = new String("SET ").toString();
 SQLmiddle += " fees_hour='"+coachingobject.fees60+"',";
@@ -160,7 +160,7 @@ if (debugging) {
 // On completion, redirect to coachingmondays.html
 
 if (! debugging) {
-	Response.Redirect("./coachingday?day=MON.html");
+	Response.Redirect("./coachingday.html?day=MON");
 }
 
 Response.End();

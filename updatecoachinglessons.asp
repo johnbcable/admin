@@ -515,7 +515,7 @@ for (var j=0; j<10; j++) {
 // On completion, redirect back to the same lesson day
 
 if (! debugging) {
-	Response.Redirect("/coachingday.html?day="+lesson_day);
+	Response.Redirect("./coachingday.html?day="+lesson_day);
 }
 
 Response.End();

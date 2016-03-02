@@ -46,10 +46,10 @@
     <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
     <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
     <!-- CSS links -->
-    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+    <link rel="stylesheet" href="/bower_components/foundation/css/normalize.css" />
     <!-- <link rel="stylesheet" href="css/base.css" />  -->
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="bower_components/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
     <script src="/js/CSJSRequestObject.js"></script>
     <style type="text/css">
     li.current a {
@@ -66,13 +66,13 @@
         <div class="row">
 
           <ul class="breadcrumbs hide-for-small">
-            <li><a href="http://hamptontennis.org.uk/coachingsetup.html">Dates</a></li>
-            <li><a href="http://hamptontennis.org.uk/coachingday.html?day=MON">Mondays</a></li>
-            <li><a href="http://hamptontennis.org.uk/coachingday.html?day=TUE">Tuesdays</a></li>
-            <li><a href="http://hamptontennis.org.uk/coachingday.html?day=WED">Wednesdays</a></li>
-            <li><a href="http://hamptontennis.org.uk/coachingday.html?day=THU">Thursdays</a></li>
-            <li><a href="http://hamptontennis.org.uk/coachingday.html?day=FRI">Fridays</a></li>
-            <li><a href="http://hamptontennis.org.uk/coachingday.html?day=SAT">Saturdays</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingsetup.html">Dates</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingday.html?day=MON">Mondays</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingday.html?day=TUE">Tuesdays</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingday.html?day=WED">Wednesdays</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingday.html?day=THU">Thursdays</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingday.html?day=FRI">Fridays</a></li>
+            <li><a href="http://hamptontennis.org.uk/admin/coachingday.html?day=SAT">Saturdays</a></li>
           </ul>
 
         </div>
@@ -115,7 +115,7 @@
 
       <script id="coachinglessons-template" type="x-handlebars-template">
       {{#if allCoachingLessons}}
-      <form method="POST" action="/updatecoachinglessons.asp">
+      <form method="POST" action="./updatecoachinglessons.asp">
         <fieldset>
 
           {{#each allCoachingLessons}}
