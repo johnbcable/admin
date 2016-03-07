@@ -25,7 +25,11 @@ var SQLStmt, SQL2, SQL3;
 var kount;
 var memberknt;
 var dbconnect=Application("hamptonsportsdb");
+<<<<<<< HEAD
 var debugging=true;
+=======
+var debugging=false;
+>>>>>>> 3511ed4dc8b5b1ba8efa750ccc0efdb17e9a9e22
 var updating=true;
 // Set up default greeting strings
 strdate = datestring();
