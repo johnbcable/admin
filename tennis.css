@@ -1,0 +1,116 @@
+<style type="text/css">
+
+p   {}
+.horizontalmenu 	{
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 11px;
+	text-decoration: none;
+	vertical-align : center;
+	background-color : #aed2ac;
+}
+.horizontalmenu:hover	{
+	font-weight : bold;
+	cursor: hand;
+	text-decoration: underline;
+}
+.horizontalmenu:link	{
+}
+.horizontalmenu:visited	{
+}
+.verticalmenu	{
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 11px;
+	text-decoration: none;
+	vertical-align : center;
+}
+.verticalmenu:hover	{
+	font-weight : bold;
+	cursor: hand;
+	text-decoration : underline;
+}
+.verticalmenu:link	{
+}
+.verticalmenu:visited	{
+}
+BODY	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 10px;
+	font-weight : normal;
+	vertical-align : top;
+}
+
+H1 {
+   margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-family:Verdana;
+	font-weight:normal; margin-left:0cm; margin-right:0cm; margin-top:0cm
+}
+
+TD	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 12px;
+	font-weight : normal;
+	vertical-align : top;
+}
+
+.tdfont	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 12px;
+	font-weight : normal;
+	vertical-align : top;
+}
+
+.tdsmall	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 10px;
+	font-weight : normal;
+	vertical-align : top;
+	height: 22px;
+}
+
+.tdnine	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 9px;
+	font-weight : normal;
+	vertical-align : top;
+}
+
+.resulted	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 9px;
+	font-weight : normal;
+	vertical-align : top;
+	background-color: "#aed2ac"
+}
+
+.tdeight	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 8px;
+	font-weight : normal;
+	vertical-align : top;
+}
+
+.courtcirc	{
+	margin : 0px 0px;
+	font-family : Verdana, Arial, Helvetica;
+	font-size : 8px;
+	font-weight : normal;
+	vertical-align : top;
+}
+
+.articleauthor	{
+	margin : 0px 2px;
+	font-family : Verdana, Arial, Helvetica;
+	font-weight : normal;
+	vertical-align : top;
+   align : right;
+}
+
+</style>

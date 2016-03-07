@@ -1,0 +1,158 @@
+//
+// Styling for module elements that appear on more than one page
+// ====================================================================
+
+// Message types loop 
+// N.B.   Sass 3.3 onwards can use associative arrays (maps) to do this
+// ====================================================================
+
+@each $message-type in $message-types {
+	$type: 		nth($message-type, 1);	
+	$color: 	nth($message-type, 2);	
+
+	.message-#{$type} {
+		@include message($color);
+	}
+}
+
+//  Footer styles
+//  ====================================================================
+
+.footer {
+	margin-top: emCalc(24px);
+	a {
+		color: $body-font-color;
+	}
+	.footermenuhead {
+		margin-top: emCalc(20px);
+		margin-left: 10%;
+		color: $medium-grey;
+	}
+/* 	.sponsorsrow {
+		background-color: $sponsors-row-bg-color;
+		text-align: center;
+		h4 {
+			margin-top: emCalc(20px);
+			padding-left: 10px; 
+		}
+		.sponsorslinks {
+			padding-left: emCalc(20px);
+		}
+		img {
+			display: inline-block;
+			margin: emCalc(20px);
+			width: emCalc(140px);
+		}
+	}
+ */
+ 	.toprow {
+		background-color: $footer-toprow-color;
+		padding-top: emCalc(20px);
+		.bigfooter {
+/* 			a {
+				width: 100%;
+				margin: 0 auto;
+				text-align: left;
+			}
+ */
+			ul {
+				list-style-type: none;
+				padding: 0;
+				li a {
+					margin-left: 10%;
+					font-size: emCalc(12px);
+					text-decoration: none;
+					color: $light-grey;
+					display: block;
+					&:hover {
+						background: $light-grey;
+						color: $dark-grey;
+					}
+				}
+			}
+		}
+		.clublogo {
+			text-align: center;
+			img {
+				max-width: 50%;
+				margin: 0 auto;
+			}
+		}
+
+	}
+
+	.bottomrow {
+		background-color: $bottomrow-bg-color;
+		color: $medium-grey;
+		.contactsummary {
+			margin-top: emCalc(16px);
+		}
+	}
+
+	.footnav {
+		ul {
+			margin: emCalc(5px) 0 0 0;
+		}
+		li {
+			margin-left: 0;
+			margin-right: emCalc(15px);
+		}
+		a {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+}
+
+//  Social media icons in the footer area
+//  ==================================================
+.social {
+	$height: social-sprite-height(facebook);
+	$width: social-sprite-width(facebook);
+/*
+ 	h3 {
+		margin-top: emCalc(20px);
+	}
+ */
+ 	ul {
+		float: left;
+	}
+	li {
+		a {
+			display: inline-block;
+			height: $height;
+			width: $width;
+			/*   CSS image replacement  
+			text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			*/
+		}
+		&.facebook a {
+			@include social-sprite(facebook);
+			&:hover {
+				@include social-sprite(facebook-hover);
+			}
+		}
+		&.twitter a {
+			@include social-sprite(twitter);
+			&:hover {
+				@include social-sprite(twitter-hover);
+			}
+		}
+		&.wordpress a {
+			@include social-sprite(wordpress);
+			&:hover {
+				@include social-sprite(wordpress-hover);
+			}
+		}
+		&.flickr a {
+			@include social-sprite(flickr);
+			&:hover {
+				@include social-sprite(flickr-hover);
+			}
+		}
+	}
+}

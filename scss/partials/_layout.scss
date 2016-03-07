@@ -1,0 +1,133 @@
+// ====================================================================
+// Layout styles, should only contain rules relating to the structure
+// ====================================================================
+
+// Styles for the top navigation bar
+//
+.top-bar {
+	.title-area {
+		img {
+			position: relative;
+			top: 0;
+			left: 0;
+			overflow: auto;
+			margin-bottom: emCalc(10px);
+		}
+	}
+	.name 
+		h1 {
+		font-family: $logo-font-family;
+		text-transform: uppercase;
+		font-size: emCalc(14px);
+/*
+ 		padding-left: 0;
+		margin-left: 0;
+ */
+ 		}
+}
+// Must override default background color from Foundation core styles
+.top-bar-section ul {
+	background-color: $black;
+}
+
+// Styles for the header element on pages where it appears
+//
+header {
+	.mainbanner {
+		position: relative;
+		width: 100%;  // for IE
+		img {
+			width: 100%;
+		}
+		h2 {
+			position: absolute; 
+   			bottom: 0; 
+   			left: 0; 
+   			width: 100%; 
+   			font-family: $header-font-family;
+			color: white; 
+			letter-spacing: -1px;  
+		    background: rgb(0, 0, 0); /* fallback color */
+		    background: rgba(0, 0, 0, 0.6);
+		    padding-left: 30px;
+		    overflow: hidden;
+		}
+	}
+}
+
+// Styles for the button elements on pages where they appear
+//
+.button {
+	width: 100%;  // Make sure button fills width of container
+	text-align: center;
+}
+
+// Styles for controlling the showing of menu trees
+//
+.noshow  {
+	display: none;
+}
+
+
+/********************************************
+ *    Area for media query styles 
+ ********************************************/
+
+@media screen and (max-width: 500px) {
+
+	.top-bar {
+		.title-area {
+			img {
+				position: relative;
+				top: emCalc(5px);
+				left: emCalc(10px);
+				overflow: auto;
+				margin-bottom: emCalc(10px);
+			}
+		}
+	}
+
+	.button {
+		width: 90%;
+		margin: emCalc(10px) auto emCalc(10px) auto;
+	}
+
+	.footer {
+		.footermenuhead {
+			text-align: center;
+		}
+		.toprow {
+			ul {
+				li {
+					margin: 0;
+					padding: 0;
+					a {
+						display: block;
+						text-align: center;
+						background: $dark-grey;
+						color: $light-grey;
+						height: emCalc(40px);
+						font-size: emCalc(16px);
+						vertical-align: middle;
+						margin: 0;
+						padding: 0;
+						&:hover {
+							background: $light-grey;
+							color: $dark-grey;
+						}
+					}
+				}
+			}
+			.clublogo {
+				text-align: center;
+				img {
+					max-width: 50%;
+					margin: 0 auto;
+				}
+			}
+
+		}
+	}
+
+}    // end of media query for smartphones
+

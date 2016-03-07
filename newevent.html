@@ -1,0 +1,164 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hampton-in-Arden Tennis Club - Adding New Event to Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hamptontennis.org.uk/fullindex.html">
+    <meta property="og:image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
+    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+    <!-- <link rel="stylesheet" href="css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <style type="text/css">
+    li.current a {
+      background-color: white;
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+   
+    <div class="row">
+
+      <div class="large-10 medium-10 small-11 large-offset-1 medium-offset-1 columns">
+        <div class="row">
+
+          <ul class="breadcrumbs hide-for-small">
+            <li><a href="http://hamptontennis.org.uk/admin/adminlogin.html">Login</a></li>
+            <li class="current"><a href="http://hamptontennis.org.uk/admin/newevent.html">Event Details</a></li>
+            <li class="unavailable"><a href="http://hamptontennis.org.uk/admin/eventthankyou.html">Finish - Thank You</a></li>
+          </ul>
+
+        </div>
+
+        <div class="large-1 medium-1 columns">
+          <img src="./img/small_logo.gif" style="vertical-align: middle; display: inline-block;"/>
+        </div>
+        <div class="large-10 medium-10 columns">
+          <h2 style="vertical-align: middle; padding: 0;">Details of New Event for the Calendar</h2>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="large-8 medium-12 small-12 panel large-offset-2 columns">
+
+    <p>
+      Fill in the form below with details of the new event. All boxes must be completed with the exception of 
+      the Event Starts At box (which may be left blank). Click on Submit when the new event details are ready 
+      for submission.
+    </p>
+    <form method="get" action="set_event.asp">
+      <fieldset>
+        <legend>Details of New Event</legend>
+        <div>
+          <label for="eventnote">Name/Title for Event</label>
+          <input type="text" name="eventnote" id="eventnote" size="60" maxlength="120" tabindex="1" />
+        </div>
+        <div class="row">
+          <div class="row">
+            <div class="large-3 medium-3 small-6 columns">
+              <label for="eventdate"> Start Date:</label>
+              <input type="date" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" onBlur="javascript:checkdate(this)" /><br />
+            </div>
+            <div class="large-3 medium-3 small-6 columns">
+              <label for="eventtime"> Start Time:</label>
+              <input type="time" name="eventtime" id="eventtime" size="8" maxlength="8" tabindex="3" />
+            </div>
+            <div class="large-3 medium-3 small-6 columns">
+              <label for="enddate"> End Date:</label>
+              <input type="date" name="enddate" id="enddate" size="10" maxlength="10" tabindex="4" onBlur="javascript:checkdate(this)"  /><br />
+            </div>
+            <div class="large-3 medium-3 small-6 columns">
+              <label for="endtime"> End Time:</label>
+              <input type="time" name="endtime" id="endtime" size="8" maxlength="8" tabindex="5"  />
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-12 medium-12 small-12 columns">
+              <p text-align="center">
+                N.B. Leave the End Date blank if the same as the start date.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="eventtype">Type of Event</label>
+          <select name="eventtype" id="eventtype" tabindex="6">
+            <option value="EVENT">General event e.g. Finals Day, Open Day</option>
+            <option selected value="JUNIOR">Juniors event</option>
+            <option value="SOCIAL">Social event e.g. Annual Dinner / Dance, Cocktails Evening etc</option>
+            <option value="MATCH">Home Coventry League Matches</option>
+          </select>
+        </div>
+        <div id="submitblock" align="right">
+              <input type="hidden" name="eventid" value="-1">
+              <p>
+                <input align="right" class="large button" type="submit" value="Submit">
+              </p>
+        </div>
+      </fieldset>
+    </form>
+    </div>
+
+ 
+    <!--  Handlebars template definitions -->
+
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/foundation/js/foundation.min.js"></script>
+<!-- 
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+
+    <script src="http://l2.io/ip.js?var=myip"></script>
+-->
+    <script src="/js/app.js"></script>    <!-- Foundation kicks in -->
+    <script src="js/adminsessions.js"></script>
+
+  </body>
+</html>

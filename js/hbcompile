@@ -1,0 +1,6 @@
+echo > handlebars-templates.js
+cp getTemplate.js handlebars-templates.js
+handlebars handlebars/ >> handlebars-templates.js
+chmod 777 handlebars-templates.js
+
+

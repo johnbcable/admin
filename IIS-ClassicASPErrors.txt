@@ -1,0 +1,28 @@
+
+By default IIS will mask ASP errors with its own 500 page irrespective of setting the web.config as per http://faq.tollon.net/Custom_Error_Pages_-_Windows_2008
+
+To pass classic asp errors you need to add an additional directive in the web.config file:
+
+<configuration>
+    <system.webServer>
+         <httpErrors existingResponse="PassThrough" />
+    </system.webServer>
+</configuration>
+
+Please note for ASP.NET this additional directive is not required.
+
+So for example to point to custom 500 page called Custom500.asp this would be as follows.
+
+<configuration>
+  <system.webServer>
+      <httpErrors existingResponse="PassThrough" />
+      <httpErrors errorMode="Custom" defaultResponseMode="File" >
+      <remove statusCode="500" />
+      <remove statusCode="500" subStatusCode="100" />
+      <error statusCode="500" subStatusCode="101" path="/Custom500.asp" responseMode="ExecuteURL" />
+       </httpErrors>
+  </system.webServer>
+</configuration>
+
+I hope that makes sense
+

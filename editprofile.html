@@ -1,0 +1,245 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hampton-in-Arden Tennis Club - My Club Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hamptontennis.org.uk/index.html">
+    <meta property="og:image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
+    <link rel="stylesheet" href="/bower_components/foundation/css/normalize.css" />
+    <!-- <link rel="stylesheet" href="/css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <style type="text/css">
+    li.current a {
+      background-color: white;
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+   
+    <div class="row">
+
+      <div class="large-10 medium-10 small-11 large-offset-1 medium-offset-1 columns">
+        <div class="row">
+
+          <ul class="breadcrumbs hide-for-small">
+            <li><a href="http://hamptontennis.org.uk/renewlogin.html">Login</a></li>
+            <li class="current"><a href="http://hamptontennis.org.uk/renewprofile.html">My Details</a></li>
+            <li class="unavailable"><a href="http://hamptontennis.org.uk/renewpreferences.html">My Preferences</a></li>
+            <li class="unavailable"><a href="http://hamptontennis.org.uk/renewthankyou.html">Finish - Thank You</a></li>
+          </ul>
+
+        </div>
+
+        <div class="large-1 medium-1 columns">
+          <img src="./img/small_logo.gif" style="vertical-align: middle; display: inline-block;"/>
+        </div>
+        <div class="large-10 medium-10 columns">
+          <h2 style="vertical-align: middle; padding: 0;">My Details Held By The Club</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-10 medium-10 large-offset-1 medium-offset-1 columns">
+          <p style="padding: 10px 30px;">
+            Please check over the information that we hold about you (shown below) and update with any changes to ensure the information is accurate and up-to-date.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+    <div class="row">
+      <div id="mydetails" class="large-10 medium-10 small-11 large-offset-1 medium-offset-1 columns"></div>
+    </div>
+
+ 
+    <!--  Handlebars template definitions -->
+
+    <!--  myprofile-template              -->
+
+      <script id="myprofile-template" type="x-handlebars-template">
+      {{#if myProfile}}
+      {{#each myProfile}}
+      <form method="POST" action="/renewprofile.asp">
+        <fieldset>
+          <legend>Personal Details</legend>
+          <div class="row">
+            <div class="large-3 medium-3 small-12 columns">
+              <label for="surname">Surname:</label>
+              <input type="text" name="surname" id="surname" size="30" maxlength="60" tabindex="2" value="{{surname}}" autofocus/>
+            </div>
+            <div class="large-3 medium-3 small-12 columns">
+              <label for="forename1">Forename:</label>
+              <input type="text" name="forename1" id="forename1" size="30" maxlength="60" tabindex="3" value="{{forename1}}"/>
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+              <label for="dob">Date of birth:</label>
+              <input type="text" name="dob" id="dob" size="30" maxlength="60" tabindex="4" value="{{dob}}" placeholder="dd/mm/yyyy" />
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+              <label for="gender">Gender (M/F):</label>
+              <input type="text" name="gender" id="gender" size="2" maxlength="1" tabindex="5" value="{{gender}}"/>
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+                <label for="britishtennisno">BTM Number:</label>
+                <input type="text" name="britishtennisno" id="britishtennisno" size="10" maxlength="9" tabindex="6" value="{{britishtennisno}}"/>
+            </div>
+          </div>
+        </fieldset>   <!--   end of personal details area  -->
+
+        <fieldset>
+          <legend>Postal Address</legend>
+          <div class="row">
+            <div class="large-6 medium-6 small-12 columns">
+              <label for="address1">Address:</label>
+            </div>
+           <div class="large-6 medium-6 small-12 columns">
+              <input type="text" name="address1" id="address1" size="10" maxlength="9" tabindex="7" value="{{address1}}"/>
+              <input type="text" name="address2" id="address2" size="10" maxlength="9" tabindex="8" value="{{address2}}"/>
+              <input type="text" name="address3" id="address3" size="10" maxlength="9" tabindex="9" value="{{address3}}"/>
+              <input type="text" name="address4" id="address4" size="10" maxlength="9" tabindex="10" value="{{address4}}"/>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="large-6 medium-6 small-12 columns">
+              <label for="postcode">Postcode:</label>
+            </div>
+            <div class="large-6 medium-6 small-12 columns">
+              <input type="text" name="postcode" id="postcode" size="10" maxlength="9" tabindex="11" value="{{postcode}}"/>
+            </div>
+          </div>
+        </fieldset>    <!--    end of postal address details -->
+
+        <fieldset>
+          <legend>Contact Details</legend>
+          <div class="row">
+            <div class="large-6 medium-6 small-12 columns">
+              <label for="email">Email:</label>
+            </div>
+            <div class="large-6 medium-6 small-12 columns">
+              <input type="text" name="email" id="email" size="64" maxlength="64" tabindex="12" value="{{email}}"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-3 medium-3 small-12 columns">
+              <p>Phone numbers:</p>
+            </div>
+            <div class="large-2 medium-2 columns hide-for-small">&nbsp;</div>
+            <div class="large-3 medium-3 small-12 columns">
+              Home:&nbsp;&nbsp;&nbsp;<input type="text" name="homephone" id="homephone" size="20" maxlength="20" tabindex="13" value="{{homephone}}"/>
+            </div>
+            <div class="large-1 medium-1 columns hide-for-small">&nbsp;</div>
+            <div class="large-3 medium-3 small-12 columns">
+              Mobile:&nbsp;<input type="text" name="mobilephone" id="mobilephone" size="20" maxlength="20" tabindex="14" value="{{mobilephone}}"/>
+            </div>
+          </div>
+          <div class="panel">
+            <h4>Emergency Contact Details</h4>
+            <p>
+              Please provide us details of who to contact in the event of any emergency. If relevant, please also provide any pertinent medical information relating to yourself.
+            </p>
+            <div class="row">
+              <div class="large-6 medium-6 small-12 columns">
+                <label for="emergencyname">Name:</label>
+                <input type="text" name="emergencyname" id="emergencyname" size="20" maxlength="20" tabindex="15" value="{{emergencyname}}"/>
+              </div>
+
+              <div class="large-6 medium-6 small-12 columns">
+                <label for="emergencyphone">Phone:</label>
+                <input type="text" name="emergencyphone" id="emergencyphone" size="20" maxlength="20" tabindex="16" value="{{emergencyphone}}"/>
+              </div>
+            </div>
+
+            <div>
+              <label for="medicalinfo">Relevant medical information:</label>
+              <textarea name="medicalinfo" id="medicalinfo" maxlength="150" rows="3" cols="50" tabindex="17">  {{medicalinfo}}
+              </textarea>
+            </div>
+
+          </div>  <!-- end of emergency contact information -->
+        </fieldset>    <!-- end of contact information -->
+
+        <div id="submitblock" align="right" style="margin-top: 10px;">
+              <input type="hidden" name="uniqueref" value="{{uniqueref}}">
+              <p>
+                <input align="right" class="large button" type="submit" value="Save and Continue &raquo;" />
+              </p>
+        </div>
+
+      </form>
+      {{/each}}
+      {{else}}
+        <h3>No details on file</h3>
+      {{/if}}
+    </script>
+
+    <!--  end of myprofile-template       -->
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="http://l2.io/ip.js?var=myip"></script>
+    <script src="/js/app.js"></script>    <!-- Foundation kicks in -->
+    <script src="/js/sessions.js"></script>
+    <script src="/js/myprofile.js"></script>
+
+      <!--    Google Analytics    -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65278110-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+</body>
+</html>
