@@ -18,18 +18,15 @@ var pagetitle = new String("Updating Details of Event");
 var m_eventdate, m_eventtime, m_eventnote, m_eventtype, m_eventid, m_eventreport;
 var vdate, m_eventyear;   // m_eventyear is always calculated from m_eventdate
 var m_enddate, m_endtime;
+var eventObj = new Object();
 var m_debug;
 var ConnObj;
 var RS,RS2,RS3;
-var SQLStmt, SQL2, SQL3;
+var SQLStmt, SQL2, SQL3, updateSQL;
 var kount;
 var memberknt;
 var dbconnect=Application("hamptonsportsdb");
-<<<<<<< HEAD
 var debugging=true;
-=======
-var debugging=false;
->>>>>>> 3511ed4dc8b5b1ba8efa750ccc0efdb17e9a9e22
 var updating=true;
 // Set up default greeting strings
 strdate = datestring();
@@ -49,9 +46,7 @@ m_debug = Trim(new String(Request.QueryString("debug")));
 // Set debugging dependent on querystring override
 if (m_debug == "y" || m_debug == "Y") {
 	debugging = true;
-} else {
-	debugging = false;
-}
+} 
 
 // Flag if this is a new member insertion 
 newone = (m_eventid == "-1");
@@ -78,7 +73,7 @@ if (m_endtime=="undefined" || m_endtime == "null" || m_endtime == "")
 else
 	m_endtime = new String(m_endtime.substr(0,2)+":"+m_endtime.substr(2)+":00").toString();
 
-// What sort of mtime value to we have
+// What sort of mtime value do we have
 if (m_eventtime.length < 8) {
 	// not in 8-character form so we need to split and reformat
 	timearr = m_eventtime.split(":");
@@ -103,16 +98,48 @@ if (isNaN(m_eventyear)) {
 ConnObj=Server.CreateObject("ADODB.Connection");
 RS=Server.CreateObject("ADODB.Recordset");
 ConnObj.Open(dbconnect);
+if (debugging) {
+	Response.Write("m_eventid from initial submission is now "+m_eventid);
+}
 if (newone)
 {
-	// eventdate. eventtime, eventyear, eventtype, eventnote, eventid, eventreport
-	// INSERT into EVENTS (eventdate,eventtime,eventyear,eventtype,eventnote,eventreport) values('13/01/2008','14:00:00',2008,'EVENT','Junior Tournament 2007 (Completion)','')
-	SQL1 = new String("INSERT into EVENTS ([eventdate], [eventtime], [eventyear], [eventtype], [eventnote], [eventreport], [enddate], [endtime]) VALUES('"+m_eventdate+"','"+m_eventtime+"',"+m_eventyear+",'"+m_eventtype+"','"+m_eventnote+"','"+m_eventreport+"','"+m_enddate+"','"+m_endtime+"')").toString();
+	// Create the new event
+	if (debugging) {
+		Response.Write("New event - need to generate new DB entry. m_eventid is now "+m_eventid);
+	}
+	m_eventid = newEvent();
 }
-else
+if (debugging) {
+	Response.Write("m_eventid is now "+m_eventid);
+}
+// Retrieve event by its ID
+eventObj = getEventByID(m_eventid);
+
+// Update local event object
+eventObj.eventdate = new String(m_eventdate).toString();
+eventObj.eventtime = new String(m_eventtime).toString();
+eventObj.eventyear = new String(m_eventyear).toString();
+eventObj.eventtype = new String(m_eventtype).toString();
+eventObj.eventnote = new String(m_eventnote).toString();
+eventObj.eventid = new Number(m_eventid).valueOf();
+eventObj.eventreport = new String(m_eventreport).toString();
+eventObj.enddate = new String(m_enddate).toString();
+eventObj.endtime = new String(m_endtime).toString();
+eventObj.fixturelink = new String("").toString();
+eventObj.tourlink = new String("").toString();
+eventObj.holidaylink = new String("").toString();
+eventObj.advert = new String("").toString();
+
+if (debugging)
 {
-	SQL1 = new String("UPDATE EVENTS set eventdate='"+m_eventdate+"',eventtime='"+m_eventtime+"',eventyear="+m_eventyear+",eventtype='"+m_eventtype+"',eventnote='"+m_eventnote+"',eventreport='"+m_eventreport+"', enddate='"+m_enddate+"'endtime='"+m_endtime+"'  WHERE eventid = "+m_eventid).toString();
+	printEvent(eventObj);
 }
+
+// Update database from event object
+if (updating) {
+	updateSQL = setEvent(eventObj, false);
+}
+
 if (debugging)
 {
 	Response.Write("current_debug_status()<br />");
@@ -124,11 +151,9 @@ if (debugging)
 	Response.Write("m_eventnote = "+m_eventnote+"<br />");
 	Response.Write("m_eventreport = "+m_eventreport+"<br />");
 	Response.Write("m_eventyear = "+m_eventyear+"<br />");
-	Response.Write("<br />SQL1 = ["+SQL1+"]<br />");
+	Response.Write("<br />updateSQL = ["+updateSQL+"]<br />");
 }
-if (updating)
-	RS = ConnObj.Execute(SQL1);
-// set real unique id
+
 RS=null;
 ConnObj.Close();
 ConnObj=null;
