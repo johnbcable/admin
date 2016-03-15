@@ -99,18 +99,18 @@ ConnObj=Server.CreateObject("ADODB.Connection");
 RS=Server.CreateObject("ADODB.Recordset");
 ConnObj.Open(dbconnect);
 if (debugging) {
-	Response.Write("m_eventid from initial submission is now "+m_eventid);
+	Response.Write("m_eventid from initial submission is now "+m_eventid+"<br />");
 }
 if (newone)
 {
 	// Create the new event
 	if (debugging) {
-		Response.Write("New event - need to generate new DB entry. m_eventid is now "+m_eventid);
+		Response.Write("New event - need to generate new DB entry. m_eventid is now "+m_eventid+"<br />");
 	}
 	m_eventid = newEvent();
 }
 if (debugging) {
-	Response.Write("m_eventid is now "+m_eventid);
+	Response.Write("m_eventid is now "+m_eventid+"<br />");
 }
 // Retrieve event by its ID
 eventObj = getEventByID(m_eventid);

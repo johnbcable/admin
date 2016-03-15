@@ -33,48 +33,65 @@ var debugging = false;
 
 // End of page start up coding
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Hampton-In-Arden Tennis Club Home Page</title>
-	<link rel="stylesheet" media="screen" type="text/css" href="layout.css" />
-	<link rel="stylesheet" media="screen" type="text/css" href="colours.css" />
-	<link rel="stylesheet" media="screen" type="text/css" href="typography.css" /> 
-	<link rel="stylesheet" media="print" type="text/css" href="print3col.css" /> 
-	<!-- Comment out the next style sheet if runniung in production -->
-<%
-if (debugging)
-{
-%>
-<link rel="stylesheet" media="screen" type="text/css" href="borders.css" />
-<%
-}
-%>
-</head>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hampton-in-Arden Tennis Club - Adding New Event to Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hamptontennis.org.uk/fullindex.html">
+    <meta property="og:image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
+    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+    <!-- <link rel="stylesheet" href="css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <style type="text/css">
+    li.current a {
+      background-color: white;
+      font-weight: bold;
+    }
+    </style>
+  </head>
 <body>
-<!--   1.  Branding   -->
-<div id="branding">
-	<a href="index.asp" id="homelink"><img id="clublogo" src="images/logo.gif" alt="Hampton-In-Arden Sports Club logo" /></a>
-	<h1>Hampton-In-Arden Sports Club</h1>
-	<h2>Tennis Section</h2>
-
-<!--   2.  Navigation   -->
-	<div id="nav_main">
-		<ul id="topmenu">
-			<li id="nav_ourclub"><a href="aboutus.asp">Our Club</a></li>
-			<li id="nav_coaching"><a href="juniors/coaching.html">Coaching</a></li>
-			<li id="nav_playing"><a href="playing.asp">Playing</a></li>
-			<li id="nav_links"><a href="juniors/index.html">Juniors</a></li>
-			<li id="nav_contact"><a href="juniors/contact.html">Contact</a></li>
-			<li id="nav_members"><a href="members.asp">Members</a></li>
-		</ul>
-		<p id="today">
-			<%= displaydate %>&nbsp;<%= strtime %>
-		</p>
-	</div>
-	
-</div>
 
 <div id="wrapper">
 
@@ -123,7 +140,7 @@ Response.Write("<h2>Tournament: "+eventObj.eventnote+" - by ID ("+eventObj.event
 Response.Write(printEvent(eventObj));
 Response.Write("<br />");
 Response.Write("Update the event object with new title etc and save back to DB <br />");
-eventObj.eventnote = "Update title for new event";
+eventObj.eventnote = "Updated title for new event";
 eventObj.eventdate = "01/09/2014";
 eventObj.eventtype = "ADULT";
 eventObj.eventid = newEventID;
@@ -150,19 +167,8 @@ var deleteSQL = deleteEvent(newEventID, false);
 Response.Write("The deletion SQL was:<br /><br />"+deleteSQL+"<br /><br /><hr />");
 
 %>		
-	</div>
-	
-<!--     4.      Supplementary navigation    -->
-	<div id="leftcolumn">
-	</div>
-
-<!--    5.   Supplementary content     -->	
-	<div id="rightcolumn">
-
-	</div>
 </div>
 
-<!--     6.    Site info     -->
 
 </body>
 </html>
