@@ -118,7 +118,7 @@ if (newone)
 {
 	// Create the new event
 	if (debugging) {
-		Response.Write("New event - need to generate new DB entry. m_eventid is now "+m_eventid+"<br />");
+		Response.Write("New event - need to generate new DB entry.<br />");
 	}
 	m_eventid = newEvent();
 }
@@ -155,7 +155,7 @@ if (updating) {
 
 if (debugging)
 {
-	Response.Write("current_debug_status()<br />");
+	Response.Write("<h2>After update via set_event (if updating)</h2>");
 	Response.Write("m_eventid = "+m_eventid+"<br />");
 	Response.Write("m_eventdate = "+m_eventdate+"<br />");
 	Response.Write("m_eventtime = "+m_eventtime+"<br />");
