@@ -26,7 +26,7 @@ var SQLStmt, SQL2, SQL3, updateSQL;
 var kount;
 var memberknt;
 var dbconnect=Application("hamptonsportsdb");
-var debugging=true;
+var debugging=false;
 var updating=true;
 // Set up default greeting strings
 strdate = datestring();
@@ -48,18 +48,29 @@ if (m_debug == "y" || m_debug == "Y") {
 	debugging = true;
 } 
 
+if (debugging)
+{
+	Response.Write("<h2>On entry to set_event.asp</h2>");
+	Response.Write("m_eventid = "+m_eventid+"<br />");
+	Response.Write("m_eventdate = "+m_eventdate+"<br />");
+	Response.Write("m_eventtime = "+m_eventtime+"<br />");
+	Response.Write("m_enddate = "+m_enddate+"<br />");
+	Response.Write("m_endtime = "+m_endtime+"<br />");
+	Response.Write("m_eventnote = "+m_eventnote+"<br />");
+	Response.Write("m_eventreport = "+m_eventreport+"<br /><br />");
+}
+
 // Flag if this is a new member insertion 
 newone = (m_eventid == "-1");
-// reset if null
+
+// resets if incoming values are null
 if (m_eventdate=="undefined" || m_eventdate == "null" || m_eventdate == "")
 {
 	today = new Date();
 	m_eventdate = new String(ddmmyyyy(today)).toString();
 }
 if (m_eventtime=="undefined" || m_eventtime == "null" || m_eventtime == "")
-	m_eventtime = new String("00:00:00").toString();
-else
-	m_eventtime = new String(m_eventtime.substr(0,2)+":"+m_eventtime.substr(2)+":00").toString();
+	m_eventtime = new String("00:00").toString();
 if (m_eventnote=="undefined" || m_eventnote == "null" || m_eventnote == "")
 	m_eventnote = new String("No event title supplied").toString();
 if (m_eventtype=="undefined" || m_eventtype == "null" || m_eventtype == "")
@@ -69,15 +80,18 @@ if (m_eventreport=="undefined" || m_eventreport == "null" || m_eventreport == ""
 if (m_enddate=="undefined" || m_enddate == "null" || m_enddate == "")
 	m_enddate = new String(m_eventdate).toString();
 if (m_endtime=="undefined" || m_endtime == "null" || m_endtime == "")
-	m_endtime = new String("00:00:00").toString();
-else
-	m_endtime = new String(m_endtime.substr(0,2)+":"+m_endtime.substr(2)+":00").toString();
+	m_endtime = new String("00:00").toString();
 
-// What sort of mtime value do we have
+// What sort of time values do we have - reformat into standard format
 if (m_eventtime.length < 8) {
 	// not in 8-character form so we need to split and reformat
 	timearr = m_eventtime.split(":");
 	m_eventtime = new String(Lpad(timearr[0],2,"0")+":"+Lpad(timearr[1],2,"0"));
+}
+if (m_endtime.length < 8) {
+	// not in 8-character form so we need to split and reformat
+	timearr = m_endtime.split(":");
+	m_endtime = new String(Lpad(timearr[0],2,"0")+":"+Lpad(timearr[1],2,"0"));
 }
 
 // Calculate event year from event date
@@ -85,7 +99,6 @@ if (m_eventtime.length < 8) {
 if (m_eventdate.length > 8) {
 	// HTML5 yyyy-mm-dd format
 	m_eventyear= new Number(m_eventdate.substr(0,4));
-
 } else {
 	// assume in dd/mm/yyyy format
 	m_eventyear = new Number(m_eventdate.substr(6,4))
@@ -152,12 +165,13 @@ if (debugging)
 	Response.Write("m_eventreport = "+m_eventreport+"<br />");
 	Response.Write("m_eventyear = "+m_eventyear+"<br />");
 	Response.Write("<br />updateSQL = ["+updateSQL+"]<br />");
+	Response.End();
 }
 
 RS=null;
 ConnObj.Close();
 ConnObj=null;
 if ((! current_debug_status()) && updating )
-	Response.Redirect("/admin/#{/events");
+	Response.Redirect("/admin/#/events");
 %>
 

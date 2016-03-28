@@ -108,7 +108,7 @@ function getEventByID(eventid)
 		eventObj.enddate=eventObj.eventdate;
 	// If no end time, default to start time
 	if (eventObj.endtime=="null" || eventObj.endtime=="undefined")
-		eventObj.endtime="";
+		eventObj.eventtime="";
 	if (eventObj.fixturelink=="null" || eventObj.fixturelink=="undefined")
 		eventObj.fixturelink="";
 	if (eventObj.tourlink=="null" || eventObj.tourlink=="undefined")
@@ -263,6 +263,25 @@ function newEvent(debugflag)
 // ================================================================
 function setEvent(eventobj, debugflag)
 {
+	/*
+		Event Object
+
+	eventObj.eventdate = new String(m_eventdate).toString();
+	eventObj.eventtime = new String(m_eventtime).toString();
+	eventObj.eventyear = new String(m_eventyear).toString();
+	eventObj.eventtype = new String(m_eventtype).toString();
+	eventObj.eventnote = new String(m_eventnote).toString();
+	eventObj.eventid = new Number(m_eventid).valueOf();
+	eventObj.eventreport = new String(m_eventreport).toString();
+	eventObj.enddate = new String(m_enddate).toString();
+	eventObj.endtime = new String(m_endtime).toString();
+	eventObj.fixturelink = new String("").toString();
+	eventObj.tourlink = new String("").toString();
+	eventObj.holidaylink = new String("").toString();
+	eventObj.advert = new String("").toString();
+
+	*/	
+
 	debugflag = debugflag || false;
 	// Establish local variables
 	var RS, RS2, Conn, SQL1, SQL2, dbconnect, uniqref;
@@ -276,38 +295,78 @@ function setEvent(eventobj, debugflag)
 	SQLend = new String(" WHERE eventid="+eventobj.eventid).toString();
 	SQLmiddle = new String("SET ").toString();
 	SQLmiddle += "eventtype = '"+eventobj.eventtype+"', ";
-	if (eventobj.eventnote == "" | eventobj.eventnote == "null" || eventobj.eventnote == "undefined") {
+
+	// Now veriable length text fields
+
+	if (eventobj.eventnote == "" || eventobj.eventnote == "null" || eventobj.eventnote == "undefined") {
 		SQLmiddle += "eventnote = null, ";
 	} else {
 		SQLmiddle += "eventnote = '"+eventobj.eventnote+"', ";
 	}
-	if (eventobj.eventreport == "" | eventobj.eventreport == "null" || eventobj.eventreport == "undefined") {
+	if (eventobj.eventreport == "" || eventobj.eventreport == "null" || eventobj.eventreport == "undefined") {
 		SQLmiddle += "eventreport = null, ";
 	} else {
 		SQLmiddle += "eventreport = '"+eventobj.eventreport+"', ";
 	}
-
+	if (eventobj.fixturelink == "" || eventobj.fixturelink == "null" || eventobj.fixturelink == "undefined") {
+		SQLmiddle += "fixturelink = null, ";
+	} else {
+		SQLmiddle += "fixturelink = '"+eventobj.fixturelink+"', ";
+	}
+	if (eventobj.tourlink == "" || eventobj.tourlink == "null" || eventobj.tourlink == "undefined") {
+		SQLmiddle += "tourlink = null, ";
+	} else {
+		SQLmiddle += "tourlink = '"+eventobj.tourlink+"', ";
+	}
+	if (eventobj.holidaylink == "" || eventobj.holidaylink == "null" || eventobj.holidaylink == "undefined") {
+		SQLmiddle += "holidaylink = null, ";
+	} else {
+		SQLmiddle += "holidaylink = '"+eventobj.holidaylink+"', ";
+	}
+	if (eventobj.advert == "" || eventobj.advert == "null" || eventobj.advert == "undefined") {
+		SQLmiddle += "advert = null, ";
+	} else {
+		SQLmiddle += "advert = '"+eventobj.advert+"', ";
+	}
 
 	// Now deal with the date and time fields, dates first
-	if (! (eventobj.eventdate == "" || eventobj.eventdate == "null" || eventobj.eventdate == "undefined"  ))
-		SQLmiddle += " eventdate='"+eventobj.eventdate+"', ";
-	else
+	if (eventobj.eventdate == "" || eventobj.eventdate == "null" || eventobj.eventdate == "undefined"  ) {
 		SQLmiddle += " eventdate=null, ";
+	}
+	else {
+		SQLmiddle += " eventdate='"+eventobj.eventdate+"', ";
+	}
+	if (eventobj.enddate == "" || eventobj.enddate == "null" || eventobj.enddate == "undefined"  ) {
+		SQLmiddle += " enddate=null, ";
+	}
+	else {
+		SQLmiddle += " enddate='"+eventobj.enddate+"', ";
+	}
 
-	// Make sure and uypdate the event year to match the event date
+
+	/* Make sure and update the event year to match the event date
 	mDateObj = new Date(eventobj.eventdate);
 	dummy1 = mDateObj.getFullYear();
 	eventobj.eventyear = new Number(dummy1).valueOf();
+	*/
+
 	SQLmiddle += "eventyear = "+eventobj.eventyear+", ";
 
 	// Now for the time fields
 	
 	if (! (eventobj.eventtime.length==8)) {
-		if ( ! (eventobj.eventtime.length==4))
+		if ( ! (eventobj.eventtime.length==5))
 			SQLmiddle += " eventtime=null"
 		else 
-			SQLmiddle += " eventtime = '"+eventobj.eventtime+"'";
+			SQLmiddle += " eventtime = '"+eventobj.eventtime+"', ";
 	}
+	if (! (eventobj.endtime.length==8)) {
+		if ( ! (eventobj.endtime.length==5))
+			SQLmiddle += " endtime=null"
+		else 
+			SQLmiddle += " endtime = '"+eventobj.endtime+"'";  // last one so no commas at end
+	}
+
 
 	SQL1 = new String(SQLstart+SQLmiddle+SQLend).toString();;
 	if ( ! debugflag) {
