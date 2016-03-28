@@ -146,7 +146,6 @@ function editEvent(id) {
 		// Handlebars.registerPartial("description", $("#shoe-description").html());    
 		$("#main").append (theTemplate(eventdata)); 
 
-		$('.datepicker').pickadate();
 
 	});  // end of function(data)
 
@@ -217,21 +216,6 @@ function editTournament(id) {
 		// Handlebars.registerPartial("description", $("#shoe-description").html());    
 					$("#main").append (theTemplate(tournamentdata)); 
 
-		$('.datepicker').pickadate( {
-			selectMonths: true,
-			selectYears: true,
-			format: 'dd/mm/yyyy',
-			formatSubmit: 'dd/mm/yyyy',
-			editable: true
-		});
-
-		$('.timepicker').pickatime( {
-			format: 'HHi',
-			formatSubmit: 'HHi',
-			editable: true,
-		    min: [9,0],
-    		max: [19,0]
-		});
 
 	});  // end of function(data)
 
