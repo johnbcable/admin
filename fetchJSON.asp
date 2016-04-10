@@ -102,7 +102,7 @@ If queryref > -1 Then
 	querylist(0) = "SELECT * FROM coaches ORDER BY [displayorder] ASC;"
 	querylist(1) = "SELECT * FROM coaches WHERE [uniqueref] = {{p1}};"
 	querylist(2) = "SELECT * FROM futureevents ORDER BY [sortabledate] ASC;"
-	querylist(3) = "SELECT * FROM futureevents WHERE [eventid] = {{p1}};"
+	querylist(3) = "SELECT Format([eventdate],'yyyy-mm-dd') as eventdate, eventtime, eventtype, eventnote, eventreport, Format([enddate],'yyyy-mm-dd') as enddate, endtime FROM futureevents WHERE [eventid] = {{p1}};"
 	querylist(4) = "SELECT * FROM futuretournaments ORDER BY [tourstart] ASC;"
 	querylist(5) = "SELECT * FROM alltournaments WHERE [tournamentid] = {{p1}};"
 	querylist(6) = "SELECT * FROM allmembers WHERE [onlinebookingid] < 5000 ORDER BY [surname], [forename1];"
@@ -117,6 +117,7 @@ If queryref > -1 Then
 	querylist(15) = "SELECT * from allmembers where mobilephone = '{{p1}}'"
 	querylist(16) = "SELECT title FROM winners WHERE year = {{p1}}"
 	querylist(19) = "SELECT [Name], [Type] FROM MSysObjects where [Type] = {{p1}} AND [Flags] = 0;"
+
 
 	strSQL = querylist(queryref)
 	origSQL = strSQL

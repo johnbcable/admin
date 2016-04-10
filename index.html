@@ -520,58 +520,57 @@
     <script id="eventedit-template" type="x-handlebars-template">
       {{#each allEvents}}
       <h4>Amending details for an upcoming event</h4>
+
       <form method="get" action="set_event.asp">
         <fieldset>
           <legend>Details of the Event</legend>
-          <div>
-            <label for="eventnote">Name/Title for Event</label>
-            <input type="text" name="eventnote" id="eventnote" size="60" maxlength="120" tabindex="1" value="{{eventnote}}"/>
-          </div>
+          <div class="row">
 
-          <div>
-            <label for="eventdate"> Event Starts On:</label>
-            <div class="row datepicker" id="eventdatecontainer" >
-              <input class="small-3 columns" tabindex="2" name="eventdate" id="eventdate" size="16" type="text" value="{{eventdate}}"> 
-            </div>
-          </div>
-
-<!--
-          <div>
-            <label for="eventdate"> Event Starts On:</label>
-            <div class="row">
-              <div class="large-3 medium-3 small-6 columns datepicker">
-                <input type="text" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" value="{{eventdate}}" />
-              </div>
-              <div class="large-9 medium-9 small-6 columns">
-                <p>
-                  (dd/mm/yyyy) e.g. 09/02/2008 = 9 February 2008
-                </p>
+            <div class="large-12 medium-12 small-12 columns">
+              <div>
+                <label for="eventnote">Name/Title for Event</label>
+                <input type="text" name="eventnote" id="eventnote" size="60" maxlength="120" tabindex="1" value="{{eventnote}}"/>
               </div>
             </div>
           </div>
--->  
 
-          <div>
-            <label for="eventtime"> Event Starts At:</label>
+          <div class="row">
             <div class="row">
               <div class="large-3 medium-3 small-6 columns">
-                <input type="text" name="eventtime" id="eventtime" size="5" maxlength="4" value="{{eventtime}}" tabindex="3" />
+                <label for="eventdate"> Start Date:</label>
+                <input type="date" name="eventdate" id="eventdate" size="10" maxlength="10" tabindex="2" value="{{eventdate}}" /><br />
               </div>
-              <div class="large-9 medium-9 small-6 columns">
-                <p>
-                  (hhmm) e.g. 0910 = ten past nine in the morning
+              <div class="large-3 medium-3 small-6 columns">
+                <label for="eventtime"> Start Time:</label>
+                <input type="time" name="eventtime" id="eventtime" size="8" maxlength="8" tabindex="3" value="{{eventtime}}" />
+              </div>
+              <div class="large-3 medium-3 small-6 columns">
+                <label for="enddate"> End Date:</label>
+                <input type="date" name="enddate" id="enddate" size="10" maxlength="10" tabindex="4"  value="{{enddate}}" /><br />
+              </div>
+              <div class="large-3 medium-3 small-6 columns">
+                <label for="endtime"> End Time:</label>
+                <input type="time" name="endtime" id="endtime" size="8" maxlength="8" tabindex="5" value="{{endtime}}" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 medium-12 small-12 columns">
+                <p text-align="center">
+                  N.B. Leave the End Date blank if the same as the start date.
                 </p>
               </div>
             </div>
           </div>
 
-          <div>
+        <div class="row">
+
+          <div class="large-5 medium-5 small-6 columns">
             <label for="eventtype">Type of Event</label>
             <select name="eventtype" id="eventtype" tabindex="4">
-              <option value="EVENT">General event e.g. Finals Day, Open Day</option>
-              <option selected value="JUNIOR">Juniors event</option>
-              <option value="SOCIAL">Social event e.g. Annual Dinner / Dance, Cocktails Evening etc</option>
-              <option value="MATCH">Home Coventry League Matches</option>
+              <option value="EVENT" {{#equalsTo eventtype "EVENT"}}selected{{/equalsTo}}>General event e.g. Finals Day, Open Day</option>
+              <option value="JUNIOR" {{#equalsTo eventtype "JUNIOR"}}selected{{/equalsTo}}>Juniors Event</option>
+              <option value="SOCIAL" {{#equalsTo eventtype "SOCIAL"}}selected{{/equalsTo}}>Social event e.g. Annual Dinner / Dance, Cocktails Evening etc.</option>
+              <option value="MATCH" {{#equalsTo eventtype "MATCH"}}selected{{/equalsTo}}>Home Coventry League Matches</option>
             </select>
           </div>
 
@@ -579,6 +578,8 @@
             <label for="eventreport">Poster / report for the event</label>
             <input type="text" name="eventreport" id="eventreport" size="50" maxlength="50" tabindex="5" value="{{eventreport}}"/>
           </div>
+
+        </div> 
 
           <div id="submitblock" align="right">
                 <input type="hidden" name="eventid" value="{{eventid}}">
