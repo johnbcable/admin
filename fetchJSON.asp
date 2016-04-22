@@ -10,7 +10,7 @@ Dim rsDB		   'Holds the recordset for the records in the database
 Dim strSQL         'Holds the SQL query to query the database	
 Dim dataSource	   'Holds the name of the data source from the Application object
 Dim dataResults    'Holds results from the JSON query
-Dim querylist(20)  'Array of queries
+Dim querylist(40)  'Array of queries
 Dim queryref       'Reference to query in querylist (default to 1)
 Dim p1, p2, p3     'Parameters (text)
 Dim paramknt       'Count of the number of parameters
@@ -116,7 +116,9 @@ If queryref > -1 Then
 	querylist(14) = "SELECT * FROM {{p1}}"
 	querylist(15) = "SELECT * from allmembers where mobilephone = '{{p1}}'"
 	querylist(16) = "SELECT title FROM winners WHERE year = {{p1}}"
+	querylist(17) = "SELECT * FROM fixturesetup where [teamname] = '{{p1}}'"
 	querylist(19) = "SELECT [Name], [Type] FROM MSysObjects where [Type] = {{p1}} AND [Flags] = 0;"
+
 
 
 	strSQL = querylist(queryref)
