@@ -1,0 +1,198 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hampton-in-Arden Tennis Club - Fixture Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hamptontennis.org.uk/index.html">
+    <meta property="og:image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
+    <link rel="stylesheet" href="/bower_components/foundation/css/normalize.css" />
+    <!-- <link rel="stylesheet" href="/css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/js/CSJSRequestObject.js"></script>
+    <style type="text/css">
+    li.current a {
+      background-color: white;
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+   
+    <div class="row">
+
+      <div class="large-10 medium-10 small-11 large-offset-1 medium-offset-1 columns">
+        <div class="row">
+
+          <ul class="breadcrumbs hide-for-small">
+            <li><a href="/fixturesetup.html#/fixtures/ladies/1">Ladies 1st</a></li>
+            <li><a href="fixturesetup.html#/fixtures/ladies/2">Ladies 2nd</a></li>
+            <li><a href="/fixturesetup.html#/fixtures/ladies/3">Ladies 3rd</a></li>
+            <li><a href="/fixturesetup.html#/fixtures/mens/1">Mens 1st</a></li>
+            <li><a href="/fixturesetup.html#/fixtures/mens/2">Mens 2nd</a></li>
+            <li><a href="/fixturesetup.html#/fixtures/mens/3">Mens 3rd</a></li>
+            <li><a href="/fixturesetup.html#/fixtures/mens/4">Mens 4th</a></li>
+            <li><a href="/fixturesetup.html#/fixtures/mens/5">Mens 5th</a></li>
+          </ul>
+
+        </div>
+
+        <div class="large-1 medium-1 columns">
+          <img src="./img/small_logo.gif" style="vertical-align: middle; display: inline-block;"/>
+        </div>
+        <div class="large-10 medium-10 columns">
+          <h3 class="fixturetitle" style="vertical-align: middle; padding: 0;"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-10 medium-10 large-offset-1 medium-offset-1 columns">
+          <p style="padding: 10px 30px;">
+            Please check over the information shown below about the forthcoming fixture schedule. Make changes as necessary.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!--  main content area re-used for each type of content  -->
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+
+      <div id="main"></div>
+      
+      <!-- <div id="receivedjson"></div> -->
+
+    </div>
+  </div>
+
+ 
+    <!--  Handlebars template definitions -->
+
+    <!--  fixturesetup-template              -->
+
+      <script id="fixturesetup-template" type="x-handlebars-template">
+      {{#if allFixtures}}
+      <form method="POST" action="/updatefixtures.asp">
+
+        <fieldset>
+
+          {{#each allFixtures}}
+          <div class="row">
+
+            <div class="large-3 medium-3 small-6 columns">
+              <label for="fixturedate_{{@index}}">Date:</label>
+              <input type="date" name="fixturedate_{{@index}}" id="fixturedate_{{@index}}" size="10" maxlength="10" tabindex="{{@index}}" value="{{fixturedate}}"  placeholder="dd/mm/yyyy" />
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+              <label for="homeoraway{{@index}}">Venue:</label>
+              <select name="homeoraway_{{@index}}" id="homeoraway_{{@index}}" tabindex="{{@index}}" >
+                <option value="-" {{#equalsTo homeoraway "-"}}selected{{/equalsTo}}>- Select -</option>
+                <option value="H" {{#equalsTo homeoraway "H"}}selected{{/equalsTo}}>Home</option>
+                <option value="A" {{#equalsTo homeoraway "A"}}selected{{/equalsTo}}>Away</option>
+              </select>
+            </div>
+            <div class="large-5 medium-5 small-12 columns">
+              <label for="opponents_{{@index}}">Opponents:</label>
+              <input type="text" name="opponents_{{@index}}" id="opponents_{{@index}}" size="30" maxlength="60" tabindex="{{@index}}" value="{{opponents}}"  placeholder="Opposing team name" />
+            </div>
+            <div class="large-1 medium-1 small-6 columns">
+              <label for="hamptonresult_{{@index}}">Us:</label>
+              <input type="number" name="hamptonresult_{{@index}}" id="hamptonresult_{{@index}}" size="2" maxlength="2" tabindex="{{@index}}" value="{{hamptonresult}}"  />
+            </div>
+            <div class="large-1 medium-1 small-6 columns">
+              <label for="opponentresult_{{@index}}">Them:</label>
+              <input type="number" name="opponentresult_{{@index}}" id="opponentresult_{{@index}}" size="2" maxlength="2" tabindex="{{@index}}" value="{{opponentresult}}"  />
+              <input type="hidden" name="fixtureid_{{@index}}" id="fixtureid_{{@index}}" value={{fixtureid}} />
+
+              <input type="hidden" name="fixtureyear_{{@index}}" id="fixtureyear_{{@index}}" value="{{fixtureyear}}" />
+              <input type="hidden" name="teamname_{{@index}}" name="teamname_{{@index}}" value="{{teamname}}" />
+
+            </div>
+
+          </div>
+          {{/each}}
+
+        </fieldset>   <!--   end league fixture setup area  -->
+
+
+        <div id="submitblock" align="right" style="margin-top: 10px;">
+              <p>
+                <input align="right" class="large button" type="submit" value="Save changes to the fixture schedule &raquo;" />
+              </p>
+        </div>
+
+      </form>
+      {{else}}
+        <h3>No fixture details on file</h3>
+      {{/if}}
+    </script>
+
+    <!--  end of fixturesetup-template       -->
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/sammy/lib/sammy.js"></script>
+    <!-- <script src="http://l2.io/ip.js?var=myip"></script> -->
+    <script src="/js/app.js"></script>    <!-- Foundation kicks in -->
+    <script src="/js/sessions.js"></script>
+    <script src="/js/fixturesetup.js"></script>
+
+      <!--    Google Analytics    -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65278110-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+</body>
+</html>

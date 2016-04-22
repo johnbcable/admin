@@ -19,7 +19,7 @@ var m_eventdate, m_eventtime, m_eventnote, m_eventtype, m_eventid, m_eventreport
 var vdate, m_eventyear;   // m_eventyear is always calculated from m_eventdate
 var m_enddate, m_endtime;
 var eventObj = new Object();
-var m_debug;
+var m_debug = new String("N").toString();
 var ConnObj;
 var RS,RS2,RS3;
 var SQLStmt, SQL2, SQL3, updateSQL;
