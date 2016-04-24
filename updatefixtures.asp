@@ -41,7 +41,7 @@ function debugWrite(message) {
 Conn = Server.CreateObject("ADODB.Connection");
 RS = Server.CreateObject("ADODB.RecordSet");
 Conn.Open(dbconnect);
-SQLstart = new String("UPDATE tennisfixtures ")
+SQLstart = new String("UPDATE fixturesetup ")
 
 // Retrieve POST'ed data
 
@@ -679,7 +679,7 @@ for (var j=0; j<fixtures.length; j++) {
 		SQLmiddle += " homeoraway='"+fixturedetail.homeoraway+"',";
 		SQLmiddle += " fixturenote='"+fixturedetail.fixturenote+"',";
 		SQLmiddle += " teamname='"+fixturedetail.teamname+"', ";
-		SQLmiddle += " opponents='"+fixturedetail.opponents+"'' ";
+		SQLmiddle += " opponents='"+fixturedetail.opponents+"', ";
 
 		// Now do date fields. If null dont insert them as part of the update clause
 		//  Access doesnt like setting date fields to ''

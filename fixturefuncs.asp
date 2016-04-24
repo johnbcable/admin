@@ -13,9 +13,9 @@ function getFixture(fixtureid)
 	var mDateObj, dummy1;
 	//
 	thefixture.fixtureid = new String(fixtureid).toString();
+	thefixture.fixturedate = new String("").toString();
 	thefixture.teamname = new String("").toString();
 	thefixture.venue = new String("").toString();
-	thefixture.fixturedate = new String("").toString();
 	thefixture.opponents = new String("").toString();
 	thefixture.pair1 = new String("").toString();
 	thefixture.pair2 = new String("").toString();
@@ -23,6 +23,7 @@ function getFixture(fixtureid)
 	thefixture.theirscore = new String("").toString();
 	thefixture.note = new String("").toString();
 	thefixture.season = new String("").toString();
+
 	//
 	dbconnect=Application("hamptonsportsdb");
 	Conn = Server.CreateObject("ADODB.Connection");
@@ -38,9 +39,14 @@ function getFixture(fixtureid)
 		mDateObj=new Date(RS("fixturedate"));
 		dummy1 = mDateObj.valueOf();
 		if (dummy1 == 0) // no date in database
+		{
 			thefixture.fixturedate = new String("").toString();
+		}
 		else
+		{
 			thefixture.fixturedate = new String(ddmmyyyy(mDateObj)).toString();
+		}
+		thefixture.fixtureyear
 		thefixture.fixturedate = new String(RS("fixturedate")).toString();
 		thefixture.opponents = new String(RS("opponents")).toString();
 		thefixture.pair1 = new String(RS("pair1")).toString();
