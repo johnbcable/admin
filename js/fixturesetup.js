@@ -2,7 +2,7 @@
 //    fixturesetup.js
 //
 
-var debugthis = true;    // Production = false
+var debugthis = false;    // Production = false
 
 // Utility functions
 

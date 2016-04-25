@@ -29,7 +29,7 @@ var fixturedate, fixtureid, opponents;
 var fixtures = new Array();
 var defaultyear = currentYear();
 
-var debugging = true;  // Production = false
+var debugging = false;  // Production = false
 
 function debugWrite(message) {
 	if (debugging) {
@@ -685,9 +685,9 @@ for (var j=0; j<fixtures.length; j++) {
 		//  Access doesnt like setting date fields to ''
 
 		if (! (fixturedetail.fixturedate == ""))
-			SQLmiddle += " fixturedate='"+fixturedetail.fixturedate+"',";
+			SQLmiddle += " fixturedate='"+fixturedetail.fixturedate+"' ";
 		else
-			SQLmiddle += " fixturedate=null,";
+			SQLmiddle += " fixturedate=null ";
 
 		// Default values into result object
 		resultObj.result = true;
@@ -718,7 +718,7 @@ for (var j=0; j<fixtures.length; j++) {
 // On completion, redirect appropriately
 
 if (! debugging) {
-	Response.Redirect("/fixturesetup.html#/");
+	Response.Redirect("./fixturesetup.html#/");
 }
 
 Response.End();
