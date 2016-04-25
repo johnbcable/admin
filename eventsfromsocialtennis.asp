@@ -106,18 +106,22 @@ while (mydate < real_end )
 			case "SUN":
 				start_time = "10:00:00";
 				end_time = "12:00:00";
+				m_note = "Sunday morning social tennis session";
 				break;
 			case "TUE":
 				start_time = "20:00:00";
 				end_time = "22:00:00";
+				m_note = "Tuesday evening social tennis session"
 				break;
 			case "FRI":
 				start_time = "20:00:00";
 				end_time = "22:00:00";
+				m_note = "Friday evening social tennis session"
 				break;
 			case "SAT":
 				start_time = "15:00:00";
 				end_time = "17:00:00";
+				m_note = "Saturday afternoon family social tennis session"
 				break;
 		}
 
@@ -128,7 +132,7 @@ while (mydate < real_end )
 		m_end = new String(end_time).toString();
 		m_year = curdate.getFullYear();
 
-		eventSQL = new String("INSERT INTO "+destinationtable+"([eventdate],[eventtime],[eventyear],[eventtype],[eventnote],[enddate],[endtime]) VALUES ('"+m_date+"','"+m_start+"',"+m_year+",'SOCIAL','','"+m_date+"','"+m_end+"')").toString();
+		eventSQL = new String("INSERT INTO "+destinationtable+"([eventdate],[eventtime],[eventyear],[eventtype],[eventnote],[enddate],[endtime]) VALUES ('"+m_date+"','"+m_start+"',"+m_year+",'SOCIALTENNIS','"+m_note+"','"+m_date+"','"+m_end+"')").toString();
 		if (debugging) {
 			Response.Write(eventSQL+"<br />");
 		}
