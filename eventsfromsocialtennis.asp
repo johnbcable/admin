@@ -54,7 +54,8 @@ RS2 = Server.CreateObject("ADODB.RecordSet");
 Conn.Open(dbconnect);
 
 // Firstly lets get the dates for the next coaching schedule.
-
+// Initial implementation - hard-code start and end date
+/*
 SQL1 = new String("SELECT start_date, end_date, break_start, break_end FROM coaching_schedules WHERE schedule_role = 'NEXT'").toString();
 
 RS=Conn.Execute(SQL1);// Only one row or absent so no loop
@@ -65,95 +66,80 @@ if (! RS.EOF) {
 	break_end = new Date(RS("break_end"));
 }
 RS.Close();
+*/
+
+start_date = new Date("10/03/2016");
+end_date = new Date("31/12/2016");
 
 if (debugging) {
 	Response.Write("<h4>After schedule retrieval</h4>");
 	Response.Write("<table>");
-	Response.Write("<tr><td>Start Date</td><td>End Date</td><td>Start of break</td><td>End of Break</td></tr>");
-	Response.Write("<tr><td>"+ddmmyyyy(start_date)+"</td><td>"+ddmmyyyy(end_date)+"</td><td>"+ddmmyyyy(break_start)+"</td><td>"+ddmmyyyy(break_end)+"</td></tr>");
+	Response.Write("<tr><td>Start Date</td><td>End Date</td></tr>");
+	Response.Write("<tr><td>"+ddmmyyyy(start_date)+"</td><td>"+ddmmyyyy(end_date)+"</td></tr>");
 	Response.Write("</table>");
 }
 
 // OK start loop from start_date 
 mydate = new Date(start_date);
-start_break = new Date(break_start);
-end_break = new Date(break_end);
 real_end = new Date(end_date);
-
-start_break = start_break.setDate(start_break.getDate() - 1);
-end_break = end_break.setDate(end_break.getDate() + 1);
 real_end = real_end.setDate(real_end.getDate() + 1);
 
-while (mydate < real_end ) {
-// for (var i=0; i < 60; i++) {
+while (mydate < real_end ) 
+{
+
+	// Social tennis runs on Tues and Fri evenings, Saturday afternoons and Sunday morning.
 
 	curdate = new Date(mydate);
 
 	if (debugging) {
 		Response.Write("<h5>"+ddmmyyyy(curdate)+"</h5>");
 	}
-	// if this date is in the break period, ignore it
-
-	if (curdate > start_break && curdate < end_break) {
-		if (debugging) {
-			Response.Write(curdate+" is in the break period ("+break_start+" to "+break_end+")");
-		}
-	}
-	else 
-	{
-		// We are not in the break period so 
 		// 1.  Get the day of curdate
-		// 2.  Retrieve all socialsessions for that day
-		// 3.  Set up SQL insertions based on these
+		// 2.  Set up SQL insertions if Tues, Fri, Sat or Sungg
 
 		// 1.  Get the day of curdate
 
 		curday = new String(weekdays[curdate.getDay()]).toString();
 		theday = (curday.substring(0,3)).toUpperCase();
 
-		if (! (theday == "SUN") ) {
-
-			// exclude Sundays
-
-			// 2.  Retrieve all socialsessions for that day
-
-			lessonSQL = new String("SELECT Format(start_time,'HH:mm:ss') AS start_time, Format(end_time,'HH:mm:ss') AS end_time, lesson_text FROM coaching_socialsessions WHERE lesson_day = '"+theday+"' AND start_time NOT LIKE '00:00:00' AND schedule_role = 'NEXT' ORDER BY lesson_id, group_display_order, start_time, end_time").toString();
-
-			RS = Conn.Execute(lessonSQL);
-			while (! RS.EOF) {
-
-				m_date = ddmmyyyy(curdate);
-				m_year = curdate.getFullYear();
-				m_start = new String(RS("start_time")).toString();
-				m_end = new String(RS("end_time")).toString();
-				m_text = new String(RS("lesson_text")).toString();
-
-
-				// 3.  Set up SQL insertion based on this data
-
-				eventSQL = new String("INSERT INTO "+destinationtable+"([eventdate],[eventtime],[eventyear],[eventtype],[eventnote],[enddate],[endtime]) VALUES ('"+m_date+"','"+m_start+"',"+m_year+",'COACHING','"+m_text+"','"+m_date+"','"+m_end+"')").toString();
-				if (debugging) {
-					Response.Write(eventSQL+"<br />");
-				}
-				if (updating) {
-					RS2 = Conn.Execute(eventSQL);
-				}
-
-				RS.MoveNext();
-			}
-			RS.Close();
-
+		switch (theday) {
+			case "SUN":
+				start_time = "10:00:00";
+				end_time = "12:00:00";
+				break;
+			case "TUE":
+				start_time = "20:00:00";
+				end_time = "22:00:00";
+				break;
+			case "FRI":
+				start_time = "20:00:00";
+				end_time = "22:00:00";
+				break;
+			case "SAT":
+				start_time = "15:00:00";
+				end_time = "17:00:00";
+				break;
 		}
 
+		// 3.  Set up SQL insertion based on this data
 
-	}
+		m_date = ddmmyyyy(curdate);
+		m_start = new String(start_time).toString();
+		m_end = new String(end_time).toString();
+		m_year = curdate.getFullYear();
+
+		eventSQL = new String("INSERT INTO "+destinationtable+"([eventdate],[eventtime],[eventyear],[eventtype],[eventnote],[enddate],[endtime]) VALUES ('"+m_date+"','"+m_start+"',"+m_year+",'SOCIAL','','"+m_date+"','"+m_end+"')").toString();
+		if (debugging) {
+			Response.Write(eventSQL+"<br />");
+		}
+		if (updating) {
+			RS2 = Conn.Execute(eventSQL);
+		}
 
 	mydate.setDate(mydate.getDate() + 1);  // Move on to the next day
 
 }
 
-
 Response.End();
-
 
 %>
