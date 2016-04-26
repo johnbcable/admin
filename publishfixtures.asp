@@ -30,7 +30,7 @@ var defaultyear = currentYear();
 var destinationtable;
 
 var debugging = false;  // Production = false
-var updating = false;   // Production = true
+var updating = true;   // Production = true
 
 function debugWrite(message) {
 	if (debugging) {
@@ -95,11 +95,13 @@ RS = Conn.Execute(SQL)
 while (! RS.EOF)
 {
 	// fixtureyear set up outside this loop
-	fixturedate = new String(RS["fixturedate"]).toString();
-	homeoraway = new String(RS["homeoraway"]).toString();
+	fixturedate = new String(RS("fixturedate")).toString();
+	homeoraway = new String(RS("homeoraway")).toString();
 	fixturenote = new String("").toString();
-	teamname = new String(RS["teamname"]).toString();
-	opponents = new String(RS["opponents"]).toString();
+	teamname = new String(RS("teamname")).toString();
+	opponents = new String(RS("opponents")).toString();
+
+	debugWrite("fixturedate="+fixturedate+", homeoraway="+homeoraway+", teamname="+teamname+", opponents="+opponents+"<br/>");
 
 	if (! (opponents == "NONE")) {   // ignore if no opponents
 
@@ -124,17 +126,15 @@ while (! RS.EOF)
 		SQL1 = new String(SQLstart+SQLmiddle+SQLend).toString();
 		resultObj.sql = new String(SQL1).toString();
 
-		if (! debugging) {
-			if ( updating ) {
-				try {
-					RS2 = Conn.Execute(SQL1);
-				}
-				catch(e) {
-					resultObj.result = false;
-					resultObj.errno = (e.number & 0xFFFF);
-					resultObj.description += e.description;
-					resultObj.sql = new String(SQL1).toString();
-				}
+		if ( updating ) {
+			try {
+				RS2 = Conn.Execute(SQL1);
+			}
+			catch(e) {
+				resultObj.result = false;
+				resultObj.errno = (e.number & 0xFFFF);
+				resultObj.description += e.description;
+				resultObj.sql = new String(SQL1).toString();
 			}
 		}
 
