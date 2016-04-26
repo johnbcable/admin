@@ -89,7 +89,7 @@ else
 
 // Now set up SQL to retrieve from fixturesetup
 
-SQL = new String("SELECT * FROM fixturesetup ORDER BY fixtureid");
+SQL = new String("SELECT Format(fixturedate,'dd/mm/yyyy') AS fixturedate, homeoraway, opponents, fixtureyear, teamname, fixturenote FROM fixturesetup ORDER BY fixtureid");
 RS = Conn.Execute(SQL)
 
 while (! RS.EOF)
@@ -116,7 +116,7 @@ while (! RS.EOF)
 		SQLmiddle += " '"+homeoraway+"',";
 		SQLmiddle += " '"+opponents+"',";
 		SQLmiddle += " "+fixtureyear+", ";
-		SQLmiddle += " "+teamname+"' ";
+		SQLmiddle += " '"+teamname+"' ";
 
 		// Default values into result object
 		resultObj.result = true;
