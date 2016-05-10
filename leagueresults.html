@@ -1,0 +1,447 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hampton-in-Arden Tennis Club - League Tennis Fixtures</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hamptontennis.org.uk/index.html">
+    <meta property="og:image" content="http://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
+    <link rel="stylesheet" href="/bower_components/foundation/css/normalize.css" />
+    <!-- <link rel="stylesheet" href="/css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <style type="text/css">
+    <style type="text/css">
+      .fullwidth {
+        width: 90%;
+        margin: 0 auto;
+      }
+      .whitepanel {
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #c0c0c0;
+        border-radius: 20px;
+      }
+      .btmnumber {
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="top-bar" role="navigation" data-topbar>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <a href="index.html"><img src="http://hamptontennis.org.uk/img/small_logo.gif" /></a><br />
+        <!-- <h1><a href="#">Hampton-in-Arden Tennis Club </a></h1>   -->
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="javascript: routeMember()">Members</a></li>
+        <li><a href="/ourclub.html">Our Club</a></li>
+        <li class="active"><a href="/playing.html">Playing</a>
+        <li><a href="/juniors/index.html">Juniors</a></li>
+        <li><a href="/search.html">Search &raquo;</a></li>
+      </ul>
+    </section>
+
+  </nav>
+
+
+  <!--     end of topbar navigation    -->
+
+  <!--     Main Content Area    -->
+
+    <div class="row">
+
+      <div id="fixturesform" class="large-10 medum-10 small-12 large-offset-1 medium-offset-1 columns">
+
+        <h3>League Tennis Fixtures for the Current Season</h3>
+
+        <form id="TournamentResultsForm">
+
+          <div class="row">
+
+            <div class="large-4 medium-4 small-6 columns">
+                <p style="text-align: right; margin-right: 10px; vertical-align: middle;">
+                  Select Your Team
+                </p>
+            </div>
+
+            <div class="large-4 medium-4 small-6 columns">
+              <select id="teamname" name="teamname">
+                <option value="Ladies 1st Team">Ladies 1st Team</option>
+                <option value="Ladies 2nd Team">Ladies 2nd Team</option>
+                <option value="Ladies 3rd Team">Ladies 3rd Team</option>
+                <option value="Mens 1st Team">Mens 1st Team</option>
+                <option value="Mens 2nd Team">Mens 2nd Team</option>
+                <option value="Mens 3rd Team">Mens 3rd Team</option>
+                <option value="Mens 4th Team">Mens 4th Team</option>
+                <option value="Mens 5th Team">Mens 5th Team</option>
+              </select>
+            </div>
+
+            <div class="large-4 medium-4 small-12 columns">
+
+              <p>
+<!-- 
+                <button id="mysubmit" name="mysubmit" class="small button fetchresults">Fetch</button>
+
+                <input type="submit" class="small submit-button fetchfixtures" id="mysubmit" name="mysubmit" value="Fetch &raquo;" />
+ -->
+               </p>
+
+            </div>
+
+          </div>    <!--    /row    -->
+
+        </form>
+
+        <hr />
+
+      </div>
+
+    </div>
+
+<!--
+         display header info for the currently selected team
+ -->
+    <div class="row row--padding-wide" id="teamheader"></div>   
+
+<!--
+         display the listed fixtures for the current sesson for this team
+ -->
+    <div class="row" id="main"></div>
+
+<!--
+         display the summary table for the current sesson for this team
+ -->
+    <div class="row" id="summary"></div>
+
+    <div class="row">
+
+      <div class="large-6 medium-6 hide-for-small large-offset-3 medium-offset-3 columns">
+        <a href="/leagueresults.html" class="medium info button radius fullwidth">
+          Up-to-date Coventry League results &raquo;
+        </a><br />
+      </div>
+
+    </div>
+
+    <div class="panel">
+      <h3>Notes</h3>
+      <ul>
+        <li>
+          <p>
+          If you are unsure of the address of another club that we play against, don't get
+          lost! Why not check our list of <a href="/otherclubs.html"> club addresses</a>.
+          </p>
+        </li>
+      </ul>
+    </div>
+
+      </div>    <!--   /large-10    -->
+
+    </div>
+
+  <!--     end of Main Content Area    -->
+ 
+  <!--   Define the footer area  -->
+  
+  <footer class="footer" role="contentinfo">
+
+    <div class="row joinus">
+      <div class="large-3 medium-3 small-12 columns">
+        <a class="large fullwidth info button" href="/juniors/joinus.html">Join Us</a>
+      </div>
+      <div class="large-9 medium-9 small-12 columns">
+        <p>
+          There are many benefits to becoming a member of Hampton-in-Arden Tennis Club, whether you are an adult or a child. These include preferential pricing on certain activities and web access to all club communications. See what we have to offer - click Join Us now!
+        </p>
+      </div>
+    </div>
+
+    <div class="row toprow">
+        <div class="large-9 bigfooter columns">
+          <div class="row">
+            <div class="large-3 medium-3 small-12 clublogo columns">
+                <p class="footermenuhead">&nbsp;</p>
+                <a href="http://hamptontennis.org.uk/index.html"><img src="./img/small_logo.gif" /></a>
+                <br />
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns">
+              <p class="footermenuhead">Our Club</p>
+              <ul>
+                <li><a href="juniors/contact.html" title="Contact the club">Contact Us</a></li>
+                <li><a href="ourclub.html" title="Facilities at our club">Facilities</a></li>
+                <li><a href="juniors/joinus.html" title="Join the club">Join Us</a></li>
+                <li><a href="juniors/faqs.html" title="Frequently asked questions">FAQ&apos;s</a></li>
+                <li><a href="juniors/clubmark.html" title="Policies and procedures for running the club">Policies &amp; Procedures</a></li>
+              </ul>
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns">
+              <p class="footermenuhead">Playing</p>
+              <ul>
+                <li><a href="league.html" title="Playing for Hampton in the Coventry and Disytrict League">Coventry League</a></li>
+                <li><a href="boxleagues.html" title="Internal box leagues">Box Leagues</a></li>
+                <li><a href="tournaments.html" title="Tournaments">Tournaments</a></li>
+                <li><a href="juniors/socialtennis.html" title="Provision for social tennis at our club">Social Tennis</a></li>
+                <li><a href="juniors/coaching.html" title="Opportunities for coaching at our club whatever your age or ability">Coaching</a></li>
+              </ul>
+            </div>
+            <div class="large-3 medium-3 small-12 columns">
+              <p class="footermenuhead">Members</p>
+               <ul class="signedin noshow">
+                <li><a href="renewprofile.html" title="My details held by the club">My Details</a></li>
+                <li><a href="directory.html" title="Search the club members list">Directory</a></li>
+                <li><a href="galleryindex.html" title="Photo galleries">Galleries</a></li>
+                <li><a href="juniors/documents.html" title="Archive for documents and forms used at the club">Document Library</a></li>
+                <li><a href="signout.asp" title="Sign-out from the members area">Sign-Out &raquo;</a></li>
+               </ul>
+               <ul class="notsignedin noshow">
+                <li><a href="#" data-reveal-id="loginModal" title="Sign-in to the members area" id="loginmenu">Sign In &raquo;</a></li>
+              </ul>
+            </div>
+
+          </div>
+      </div>
+        <div class="large-3 medium-3 social hide-for-small columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <h3 class"footermenuhead">Stay in Touch</h3>
+              <ul class="inline-list">
+                <li class="facebook"><a href="http://facebook.com/hamptontennis" title="Facebook"></a></li>
+                <li class="twitter"><a href="http://twitter.com/hamptontennis" title="Twitter"></a></li>
+                <li class="wordpress"><a href="http://hamptontennis.wordpress.com" title="Wordpress"></a></li>
+                <li class="flickr"><a href="http://www.flickr.com/photos/103781054@N07/" title="Flickr"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Second row - with copyright info etc -->
+    <div class="row bottomrow hide-for-small">
+      <div class="large-4 columns">
+        <p>Hampton-in-Arden Tennis Club</p>
+      </div>
+      <div class="large-4 columns">
+          &nbsp;
+      </div>
+      <div class="large-4 columns">
+          <p>&copy; JC 2016. All rights reserved</p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!--  end of footer definition  -->
+
+  <!--  Handlebars templates      -->
+
+  <script id="teamheader-template" type="x-handlebars-template">
+
+    <div class="row">
+      <div class="large-10 medium-10 small-12 large-offset-1 medium-offset-1 panel columns">
+        {{#if teamDetails }}
+          {{#each teamDetails}}
+          <h4>{{teamname}}  <small>{{division}}</small></h4>
+          <p>
+            Captain: <strong>{{teamcaptain}}</strong>,&nbsp;&nbsp;&nbsp;{{teamnote}} 
+          </p>
+          {{/each}}
+        {{else}}
+          <p>
+            Couldnt retrieve team details
+          </p>
+        {{/if}}
+      </div>
+    </div>
+  </script>   
+
+  <script id="fixturelist-template" type="x-handlebars-template">
+
+    <div class="row">
+      <div class="large-10 medium-10 small-12 large-offset-1 medium-offset-1 columns">
+
+      {{#if allFixtures }}
+       <table width="100%" class="responsive">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Opponents<br /><small>Our team</small></th>
+            <th>Our<br />Score</th>
+            <th>Their<br />Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each allFixtures}}
+          <tr>
+            <td>{{fixturedate}}</td>
+            <td>{{opponents}}
+            {{#if pair1}}
+              <br /><small>{{pair1}}, {{pair2}}</small>
+            {{/if}}
+            </td>
+            <td>{{hamptonresult}}</td>
+            <td>{{opponentresult}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+        <p>
+          No league tennis fixtures found to list
+        </p>
+      {{/if}}
+
+      </div>
+    </div>
+  </script>   
+
+
+
+  <!--    Reveal Modals begin                         -->
+
+  <div id="loginModal" class="reveal-modal small" data-reveal>
+
+    <h2>Sign-In</h2>
+    <p>
+      Please sign-in below with your User ID and PIN (that you use for booking courts)
+    </p>
+    <div id="signinpanel">
+      <form name="signin" action="#" method="POST" data-abide>
+        <div class="userid-field">
+          <label>User ID:
+            <input type="text" name="frmUserId" id="frmUserId" placeholder="Your User ID" required pattern="[0-9]+" />
+          </label>
+          <small class="error">Your User ID must be a number</small>
+        </div>
+        <div class="pin-field">
+          <label>PIN:
+            <input type="password" name="frmPassword" id="frmPassword" placeholder="Your PIN number" required pattern="[0-9]+" />
+          </label>
+          <small class="error">Your PIN number must be a 4-digit number</small>
+        </div>
+        <button name="loginSubmit" id="loginSubmit">Sign-In</button>
+      </form>   
+      <p>
+        <a href="#" data-reveal-id="forgotPasswordModal" title="Forgotten User ID or password"> I have forgotten my User ID and/or password&raquo;</a>
+      </p>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>    <!--    /signinpanel    -->
+
+  </div>   <!--    /loginModal    -->
+
+  <!--   forgotPasswordModal    -->
+
+    <div id="forgotPasswordModal" class="reveal-modal small" data-reveal>
+
+    <h3>Forgot User ID or PIN</h3>
+    <p>
+      Complete and submit the form below and your User ID and PIN will be sent to your email address.
+    </p>
+    <div id="forgotpanel">
+      <form name="forgot" action="reminduser.asp" method="POST" data-abide>
+        <div class="forename-field">
+          <label>First name:
+            <input type="text" name="frmForename" id="frmForename" placeholder="Your first name" required />
+          </label>
+          <small class="error">Your first name must be completed</small>
+        </div>
+        <div class="surname-field">
+          <label>Surname:
+            <input type="text" name="frmSurname" id="frmSurname" placeholder="Your surname" required />
+          </label>
+          <small class="error">You must supply your surname</small>
+        </div>
+        <div class="email-field">
+          <label>Email address from your application / renewal form:
+            <input type="text" name="frmEmail" id="frmEmail" placeholder="Your email address that you supplied when joining or renewing your membership" required />
+          </label>
+          <small class="error">You must supply the email address you gave us when joining or renewing your membership at the club</small>
+        </div>
+        <button name="forgotSubmit" id="forgotSubmit">Remind Me</button>
+        <a class="close-reveal-modal">&#215;</a>
+      </form>   
+    </div>    <!--    /forgotpanel    -->
+
+  </div>   <!--    /forgotPasswordModal    -->
+  
+  <!--    Reveal Modals end                           -->
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/sammy/lib/sammy.js"></script>
+    <script src="/js/responsive-tables.js"></script>    
+    <script src="/js/app.js"></script>
+    <!-- <script src="http://l2.io/ip.js?var=myip"></script> -->
+    <script src="/js/sessions.js"></script>
+    <script src="/js/leaguefixtures.js"></script>
+
+      <!--    Google Analytics    -->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65278110-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    
+</body>
+</html>
+
