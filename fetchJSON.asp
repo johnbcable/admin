@@ -116,7 +116,7 @@ If queryref > -1 Then
 	querylist(14) = "SELECT * FROM {{p1}}"
 	querylist(15) = "SELECT * from allmembers where mobilephone = '{{p1}}'"
 	querylist(16) = "SELECT title FROM winners WHERE year = {{p1}}"
-	querylist(17) = "SELECT Format(fixturedate,'YYYY-mm-dd') AS fixturedate, homeoraway, opponents,hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM fixturesetup where [teamname] = '{{p1}}' ORDER BY fixtureid ASC"
+	querylist(17) = "SELECT Format(fixturedate,'YYYY-mm-dd') AS fixturedate, homeoraway, opponents, hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM fixturesetup where [teamname] = '{{p1}}' ORDER BY fixtureid ASC"
 
 	querylist(19) = "SELECT [Name], [Type] FROM MSysObjects where [Type] = {{p1}} AND [Flags] = 0;"
 
