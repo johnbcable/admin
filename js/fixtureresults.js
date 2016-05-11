@@ -1,5 +1,5 @@
 //
-//    fixturesetup.js
+//    fixtureresults.js
 //
 
 var debugthis = false;    // Production = false
@@ -23,7 +23,7 @@ function debugWrite(message) {
 // Display this seasons fixtures
 function displayFixtures(gender,team) {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=17";
+	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=18";
 	var offset = (gender == "Ladies" ? 0 : 3);
 	var myindex = team + offset;
 	var teamnames = ["",
@@ -45,7 +45,8 @@ function displayFixtures(gender,team) {
 		year = "2016";
 	}
 	
-	url += "&p1="+myteam
+	url += "&p1="+year+"&p2="+myteam;
+	
 	debugWrite("URL = "+url);
 
 	// Now, set display text at top of the screen area

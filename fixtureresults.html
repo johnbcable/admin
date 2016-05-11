@@ -65,14 +65,14 @@
         <div class="row">
 
           <ul class="breadcrumbs hide-for-small">
-            <li><a href="fixturesetup.html#/fixtures/ladies/1">Ladies 1st</a></li>
-            <li><a href="fixturesetup.html#/fixtures/ladies/2">Ladies 2nd</a></li>
-            <li><a href="fixturesetup.html#/fixtures/ladies/3">Ladies 3rd</a></li>
-            <li><a href="fixturesetup.html#/fixtures/mens/1">Mens 1st</a></li>
-            <li><a href="fixturesetup.html#/fixtures/mens/2">Mens 2nd</a></li>
-            <li><a href="fixturesetup.html#/fixtures/mens/3">Mens 3rd</a></li>
-            <li><a href="fixturesetup.html#/fixtures/mens/4">Mens 4th</a></li>
-            <li><a href="fixturesetup.html#/fixtures/mens/5">Mens 5th</a></li>
+            <li><a href="fixtureresults.html#/fixtures/ladies/1">Ladies 1st</a></li>
+            <li><a href="fixtureresults.html#/fixtures/ladies/2">Ladies 2nd</a></li>
+            <li><a href="fixtureresults.html#/fixtures/ladies/3">Ladies 3rd</a></li>
+            <li><a href="fixtureresults.html#/fixtures/mens/1">Mens 1st</a></li>
+            <li><a href="fixtureresults.html#/fixtures/mens/2">Mens 2nd</a></li>
+            <li><a href="fixtureresults.html#/fixtures/mens/3">Mens 3rd</a></li>
+            <li><a href="fixtureresults.html#/fixtures/mens/4">Mens 4th</a></li>
+            <li><a href="fixtureresults.html#/fixtures/mens/5">Mens 5th</a></li>
           </ul>
 
         </div>
@@ -87,7 +87,7 @@
       <div class="row">
         <div class="large-10 medium-10 large-offset-1 medium-offset-1 columns">
           <p style="padding: 10px 30px;">
-            Please check over the information shown below about the forthcoming fixture schedule. Make changes as necessary.
+            Please check over the information shown below about the current fixture schedule. Make changes as necessary save them.
           </p>
         </div>
       </div>
@@ -115,7 +115,7 @@
 
       <script id="fixturesetup-template" type="x-handlebars-template">
       {{#if allFixtures}}
-      <form method="POST" action="./updatefixtures.asp">
+      <form method="POST" action="./updatefixtureresults.asp">
 
         <fieldset>
 
@@ -137,6 +137,12 @@
             <div class="large-5 medium-5 small-12 columns">
               <label for="opponents_{{@index}}">Opponents:</label>
               <input type="text" name="opponents_{{@index}}" id="opponents_{{@index}}" size="30" maxlength="60" tabindex="{{@index}}" value="{{opponents}}"  placeholder="Opposing team name" />
+                <br />
+              <label for="pair1_{{@index}}">Our first pair:</label>
+              <input type="text" name="pair1_{{@index}}" id="pair1_{{@index}}" size="40" maxlength="80" tabindex="{{@index}}" value="{{pair1}}"  placeholder="Who were our first pair for this fixture" />
+                <br />
+              <label for="pair2_{{@index}}">Our second pair:</label>
+              <input type="text" name="pair2_{{@index}}" id="pair2_{{@index}}" size="40" maxlength="80" tabindex="{{@index}}" value="{{pair2}}"  placeholder="Who were our second pair for this fixture" />
             </div>
             <div class="large-1 medium-1 small-6 columns">
               <label for="hamptonresult_{{@index}}">Us:</label>
@@ -152,6 +158,7 @@
 
             </div>
 
+
           </div>
           {{/each}}
 
@@ -160,7 +167,7 @@
 
         <div id="submitblock" align="right" style="margin-top: 10px;">
               <p>
-                <input align="right" class="large button" type="submit" value="Save changes to the fixture schedule &raquo;" />
+                <input align="right" class="large button" type="submit" value="Save changes  &raquo;" />
               </p>
         </div>
 
@@ -179,7 +186,7 @@
     <!-- <script src="http://l2.io/ip.js?var=myip"></script> -->
     <script src="/js/app.js"></script>    <!-- Foundation kicks in -->
     <script src="/js/sessions.js"></script>
-    <script src="./js/fixturesetup.js"></script>
+    <script src="./js/fixtureresults.js"></script>
 
       <!--    Google Analytics    -->
 

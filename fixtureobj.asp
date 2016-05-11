@@ -16,8 +16,8 @@ function FixtureObject(id,fixturedate,teamname,season) {
 	this.opponents = new String("NONE").toString();
 	this.hamptonresult = 0;
 	this.opponentresult = 0;
-	this.fixturenote = new String("").toString();
-	this.matchreport = new String("").toString();
+	this.fixturenote = new String("NONE").toString();
+	this.matchreport = new String("NONE").toString();
 	this.pair1 = new String("").toString();
 	this.pair2 = new String("").toString();
 };
@@ -43,5 +43,17 @@ FixtureObject.prototype.setMatchReport = function(reportext) {
 	this.matchreport = new String(reporttext).toString();
 };
 
+FixtureObject.prototype.setPairs = function(pair1, pair2) {
+	this.pair1 = new String(pair1).toString();
+	this.pair2 = new String(pair2).toString();
+};
+
+FixtureObject.prototype.setPair1 = function(pair1) {
+	this.pair1 = new String(pair1).toString();
+};
+
+FixtureObject.prototype.setPair2 = function(pair2) {
+	this.pair2 = new String(pair2).toString();
+};
 
 %>
