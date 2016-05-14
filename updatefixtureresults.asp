@@ -111,12 +111,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_0"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_0"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 // Line 1
@@ -164,12 +177,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_1"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_1"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 // Line 2
@@ -216,12 +242,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_2"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_2"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -269,12 +308,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_3"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_3"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -328,12 +380,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_4"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_4"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -381,12 +446,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_5"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_5"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -434,12 +512,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_6"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_6"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -487,12 +578,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_7"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_7"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -540,12 +644,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_8"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_8"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -593,14 +710,26 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_9"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_9"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
-
 
 // Line 10
 
@@ -646,12 +775,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_10"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_10"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -699,12 +841,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_11"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_11"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -752,12 +907,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_12"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_12"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -805,12 +973,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_13"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_13"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -858,12 +1039,25 @@ if (pair2 == "" || pair2 =="null" || pair2 == "undefined")
 	pair2 = new String("").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"]<br />");
+hamptonresult = new Number(Request.Form("hamptonresult_14"));
+if (hamptonresult == "" || hamptonresult =="null" || hamptonresult == "undefined")
+{
+	hamptonresult = 0;
+} 
+
+opponentresult = new Number(Request.Form("opponentresult_14"));
+if (opponentresult == "" || opponentresult =="null" || opponentresult == "undefined")
+{
+	opponentresult = 0;
+} 
+
+debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"], pair1 = ["+pair1+"], pair2 = ["+pair2+"], hamptonresult = ["+hamptonresult+"], opponentresult = ["+opponentresult+"]<br />");
 
 fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
 fixturedetail.setOpponents(opponents);
 fixturedetail.setVenue(homeoraway);
 fixturedetail.setPairs(pair1, pair2);
+fixturedetail.setResult(hamptonresult, opponentresult)
 fixtures.push(fixturedetail);
 
 
@@ -890,6 +1084,8 @@ for (var j=0; j<fixtures.length; j++) {
 		SQLmiddle += " opponents='"+fixturedetail.opponents+"', ";
 		SQLmiddle += " pair1='"+fixturedetail.pair1+"', ";
 		SQLmiddle += " pair2='"+fixturedetail.pair2+"', ";
+		SQLmiddle += " hamptonresult="+fixturedetail.hamptonresult+", ";
+		SQLmiddle += " opponentresult="+fixturedetail.opponentresult+", ";
 
 		// Now do date fields. If null dont insert them as part of the update clause
 		//  Access doesnt like setting date fields to ''
