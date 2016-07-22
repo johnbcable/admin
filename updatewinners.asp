@@ -8,14 +8,14 @@ Response.AddHeader("Access-Control-Allow-Origin", "*");
 <!--#include file="json2.js.asp" -->
 <!--#include file="functions.asp" -->
 <!--#include file="strings.asp" -->
-<!--#include file="fixtureobj.asp" -->
+<!--#include file="winnerobj.asp" -->
 <!--#include file="emailfuncs.asp" -->
 <!--#include file="datefuncs.asp" -->
 <%
 
 var strtime, strdate, title2;
 var clubname = new String("Hampton-In-Arden Sports Club");
-var pagetitle = new String("Updating Fixture Schedule");
+var pagetitle = new String("Updating Tournament Titles");
 // Now for any variables local to this page
 var RS, Conn, SQL1, SQL2;
 var dbconnect=Application("hamptonsportsdb"); 
@@ -23,10 +23,10 @@ var SQLstart, SQLmiddle, SQLend;
 var resultObj = new Object();
 var uniqueref;
 var today = new Date();
-var fixturedetail = new Object(); 
-var fixtureyear, homeoraway, fixturenote, teamname;
-var fixturedate, fixtureid, opponents;
-var fixtures = new Array();
+var winnerdetail = new Object(); 
+var winneryear, homeoraway, winnernote, teamname;
+var winnerdate, winnerid, opponents;
+var winners = new Array();
 var defaultyear = currentYear();
 
 var debugging = false;  // Production = false
@@ -41,7 +41,7 @@ function debugWrite(message) {
 Conn = Server.CreateObject("ADODB.Connection");
 RS = Server.CreateObject("ADODB.RecordSet");
 Conn.Open(dbconnect);
-SQLstart = new String("UPDATE fixturesetup ")
+SQLstart = new String("UPDATE winnersetup ")
 
 // Retrieve POST'ed data
 
@@ -55,13 +55,13 @@ if (teamname == "" || teamname == "null" || teamname == "undefined")
 	teamname = new String("").toString();
 } 
 
-fixtureyear = Trim(new String(Request.Form("fixtureyear_0")));
-if (fixtureyear == "" || fixtureyear =="null" || fixtureyear == "undefined")
+winneryear = Trim(new String(Request.Form("winneryear_0")));
+if (winneryear == "" || winneryear =="null" || winneryear == "undefined")
 {
-	fixtureyear = new String("").toString();
+	winneryear = new String("").toString();
 } 
 
-debugWrite("teamname = ["+teamname+"], fixtureyear = ["+fixtureyear+"]<br />");
+debugWrite("teamname = ["+teamname+"], winneryear = ["+winneryear+"]<br />");
 
 
 // Then a line at a time
@@ -69,16 +69,16 @@ debugWrite("teamname = ["+teamname+"], fixtureyear = ["+fixtureyear+"]<br />");
 
 // Line 0
 
-fixtureid = Trim(new String(Request.Form("fixtureid_0")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_0")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_0")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_0")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_0")));
@@ -87,10 +87,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_0")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_0")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_0")));
@@ -99,26 +99,26 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 1
 
 
-fixtureid = Trim(new String(Request.Form("fixtureid_1")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_1")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_1")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_1")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_1")));
@@ -127,10 +127,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_1")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_1")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_1")));
@@ -139,25 +139,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 2
 
-fixtureid = Trim(new String(Request.Form("fixtureid_2")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_2")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_2")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_2")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_2")));
@@ -166,10 +166,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_2")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_2")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_2")));
@@ -178,25 +178,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 3
 
-fixtureid = Trim(new String(Request.Form("fixtureid_3")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_3")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_3")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_3")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_3")));
@@ -205,10 +205,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_3")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_3")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_3")));
@@ -217,31 +217,31 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 4
 
-fixtureid = Trim(new String(Request.Form("fixtureid_4")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_4")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_4")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_4")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
-fixtureyear = Trim(new String(Request.Form("fixtureyear_4")));
-if (fixtureyear == "" || fixtureyear =="null" || fixtureyear == "undefined")
+winneryear = Trim(new String(Request.Form("winneryear_4")));
+if (winneryear == "" || winneryear =="null" || winneryear == "undefined")
 {
-	fixtureyear = new String("00:00:00").toString();
+	winneryear = new String("00:00:00").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_4")));
@@ -250,10 +250,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_4")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_4")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_4")));
@@ -262,25 +262,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 5
 
-fixtureid = Trim(new String(Request.Form("fixtureid_5")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_5")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_5")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_5")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_5")));
@@ -289,10 +289,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_5")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_5")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_5")));
@@ -301,25 +301,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 6
 
-fixtureid = Trim(new String(Request.Form("fixtureid_6")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_6")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_6")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_6")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_6")));
@@ -328,10 +328,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_6")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_6")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_6")));
@@ -340,25 +340,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 7
 
-fixtureid = Trim(new String(Request.Form("fixtureid_7")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_7")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_7")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_7")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_7")));
@@ -367,10 +367,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_7")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_7")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_7")));
@@ -379,25 +379,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 8
 
-fixtureid = Trim(new String(Request.Form("fixtureid_8")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_8")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_8")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_8")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_8")));
@@ -406,10 +406,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_8")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_8")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_8")));
@@ -418,25 +418,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 9
 
-fixtureid = Trim(new String(Request.Form("fixtureid_9")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_9")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_9")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_9")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_9")));
@@ -445,10 +445,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_9")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_9")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_9")));
@@ -457,25 +457,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 10
 
-fixtureid = Trim(new String(Request.Form("fixtureid_10")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_10")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_10")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_10")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_10")));
@@ -484,10 +484,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_10")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_10")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_10")));
@@ -496,25 +496,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 11
 
-fixtureid = Trim(new String(Request.Form("fixtureid_11")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_11")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_11")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_11")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_11")));
@@ -523,10 +523,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_11")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_11")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_11")));
@@ -535,25 +535,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 12
 
-fixtureid = Trim(new String(Request.Form("fixtureid_12")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_12")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_12")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_12")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_12")));
@@ -562,10 +562,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_12")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_12")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_12")));
@@ -574,25 +574,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 13
 
-fixtureid = Trim(new String(Request.Form("fixtureid_13")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_13")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_13")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_13")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_13")));
@@ -601,10 +601,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_13")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_13")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_13")));
@@ -613,25 +613,25 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
 // Line 14
 
-fixtureid = Trim(new String(Request.Form("fixtureid_14")));
-if (fixtureid == "" || fixtureid =="null" || fixtureid == "undefined")
+winnerid = Trim(new String(Request.Form("winnerid_14")));
+if (winnerid == "" || winnerid =="null" || winnerid == "undefined")
 {
-	fixtureid = new String("").toString();
+	winnerid = new String("").toString();
 } 
 
-fixturedate = Trim(new String(Request.Form("fixturedate_14")));
-if (fixturedate == "" || fixturedate =="null" || fixturedate == "undefined")
+winnerdate = Trim(new String(Request.Form("winnerdate_14")));
+if (winnerdate == "" || winnerdate =="null" || winnerdate == "undefined")
 {
-	fixturedate = new String("").toString();
+	winnerdate = new String("").toString();
 } 
 
 homeoraway = Trim(new String(Request.Form("homeoraway_14")));
@@ -640,10 +640,10 @@ if (homeoraway == "" || homeoraway =="null" || homeoraway == "undefined")
 	homeoraway = new String("H").toString();
 } 
 
-fixturenote = Trim(new String(Request.Form("fixturenote_14")));
-if (fixturenote == "" || fixturenote =="null" || fixturenote == "undefined")
+winnernote = Trim(new String(Request.Form("winnernote_14")));
+if (winnernote == "" || winnernote =="null" || winnernote == "undefined")
 {
-	fixturenote = new String("").toString();
+	winnernote = new String("").toString();
 } 
 
 opponents = Trim(new String(Request.Form("opponents_14")));
@@ -652,42 +652,42 @@ if (opponents == "" || opponents =="null" || opponents == "undefined")
 	opponents = new String("NONE").toString();
 } 
 
-debugWrite("fixture Id = ["+fixtureid+"], fixturedate = ["+fixturedate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
+debugWrite("winner Id = ["+winnerid+"], winnerdate = ["+winnerdate+"], venue = ["+homeoraway+"], opponents = ["+opponents+"]<br />");
 
-fixturedetail = new FixtureObject(fixtureid,fixturedate,teamname,fixtureyear);
-fixturedetail.setOpponents(opponents);
-fixturedetail.setVenue(homeoraway);
-fixtures.push(fixturedetail);
+winnerdetail = new winnerObject(winnerid,winnerdate,teamname,winneryear);
+winnerdetail.setOpponents(opponents);
+winnerdetail.setVenue(homeoraway);
+winners.push(winnerdetail);
 
-//      End of the potential fixtures
+//      End of the potential winners
 
-debugWrite("fixtures = "+JSON.stringify(fixtures)+"<br /><hr />");
+debugWrite("winners = "+JSON.stringify(winners)+"<br /><hr />");
 
-// Update fixture details from POST'ed data
-// Loop through all the fixtures, update via fixtureid as unique row identifier
+// Update winner details from POST'ed data
+// Loop through all the winners, update via winnerid as unique row identifier
 
-for (var j=0; j<fixtures.length; j++) {
+for (var j=0; j<winners.length; j++) {
 
-	fixturedetail = fixtures[j];
+	winnerdetail = winners[j];
 
-	if (! (fixturedetail.opponents == "NONE")) {   // ignore if no opponents
+	if (! (winnerdetail.opponents == "NONE")) {   // ignore if no opponents
 
-		SQLend = new String(" WHERE fixtureid = "+fixturedetail.fixtureid).toString();
+		SQLend = new String(" WHERE winnerid = "+winnerdetail.winnerid).toString();
 
 		SQLmiddle = new String("SET ").toString();
-		SQLmiddle += " fixtureyear="+fixturedetail.fixtureyear+",";
-		SQLmiddle += " homeoraway='"+fixturedetail.homeoraway+"',";
-		SQLmiddle += " fixturenote='"+fixturedetail.fixturenote+"',";
-		SQLmiddle += " teamname='"+fixturedetail.teamname+"', ";
-		SQLmiddle += " opponents='"+fixturedetail.opponents+"', ";
+		SQLmiddle += " winneryear="+winnerdetail.winneryear+",";
+		SQLmiddle += " homeoraway='"+winnerdetail.homeoraway+"',";
+		SQLmiddle += " winnernote='"+winnerdetail.winnernote+"',";
+		SQLmiddle += " teamname='"+winnerdetail.teamname+"', ";
+		SQLmiddle += " opponents='"+winnerdetail.opponents+"', ";
 
 		// Now do date fields. If null dont insert them as part of the update clause
 		//  Access doesnt like setting date fields to ''
 
-		if (! (fixturedetail.fixturedate == ""))
-			SQLmiddle += " fixturedate='"+fixturedetail.fixturedate+"' ";
+		if (! (winnerdetail.winnerdate == ""))
+			SQLmiddle += " winnerdate='"+winnerdetail.winnerdate+"' ";
 		else
-			SQLmiddle += " fixturedate=null ";
+			SQLmiddle += " winnerdate=null ";
 
 		// Default values into result object
 		resultObj.result = true;
@@ -718,7 +718,7 @@ for (var j=0; j<fixtures.length; j++) {
 // On completion, redirect appropriately
 
 if (! debugging) {
-	Response.Redirect("./fixturesetup.html#/");
+	Response.Redirect("./winnersetup.html#/");
 }
 
 Response.End();
