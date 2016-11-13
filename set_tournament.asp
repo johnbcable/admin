@@ -26,7 +26,6 @@ var SQLresult = new String("").toString();
 var newEventID = -1;
 var editURL = new String("").toString();
 var dateArray;
-<<<<<<< HEAD
 
 // var debugging=current_debug_status();
 var updating=false;  // if true we will update the database
@@ -38,20 +37,7 @@ if (m_id == "" || m_id =="null" || m_id == "undefined")
 {
 	m_id = Trim(new String(Request.QueryString("tourid")));
 	if (m_id == "" || m_id =="null" || m_id == "undefined")
-=======
-var resultObject = new Object();
 
-// var debugging=current_debug_status();
-var updating=true;  // if true we will update the database
-debugging = false;   // if true we will display debug info
-
-// Process form/querystring parameters
-m_id = Trim(new String(Request.Form("tourid")));
-if (m_id == "" || m_id =="null" || m_id == "undefined" || m_id == "-1")
-{
-	m_id = Trim(new String(Request.QueryString("tourid")));
-	if (m_id == "" || m_id =="null" || m_id == "undefined" || m_id == "-1")
->>>>>>> 81b3a992287fd6b8d25be33382accd45158013e1
 	{
 		m_id = new String("0").toString();
 	}
