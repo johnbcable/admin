@@ -26,20 +26,6 @@ var SQLresult = new String("").toString();
 var newEventID = -1;
 var editURL = new String("").toString();
 var dateArray;
-<<<<<<< HEAD
-
-// var debugging=current_debug_status();
-var updating=false;  // if true we will update the database
-debugging = true;   // if true we will display debug info
-
-// Process form/querystring parameters
-m_id = Trim(new String(Request.Form("tourid")));
-if (m_id == "" || m_id =="null" || m_id == "undefined")
-{
-	m_id = Trim(new String(Request.QueryString("tourid")));
-	if (m_id == "" || m_id =="null" || m_id == "undefined")
-=======
-var resultObject = new Object();
 
 // var debugging=current_debug_status();
 var updating=true;  // if true we will update the database
@@ -47,13 +33,13 @@ debugging = false;   // if true we will display debug info
 
 // Process form/querystring parameters
 m_id = Trim(new String(Request.Form("tourid")));
-if (m_id == "" || m_id =="null" || m_id == "undefined" || m_id == "-1")
+if (m_id == "" || m_id =="null" || m_id == "undefined")
 {
 	m_id = Trim(new String(Request.QueryString("tourid")));
-	if (m_id == "" || m_id =="null" || m_id == "undefined" || m_id == "-1")
->>>>>>> 81b3a992287fd6b8d25be33382accd45158013e1
+	if (m_id == "" || m_id =="null" || m_id == "undefined")
+
 	{
-		m_id = new String("0").toString();
+		m_id = new String("-1").toString();
 	}
 }
 // Now get other form/querystring variables
@@ -90,7 +76,7 @@ if (m_finalsday == "" || m_finalsday =="null" || m_finalsday == "undefined")
 	m_finalsday = Trim(new String(Request.QueryString("tourfinalsday")));
 	if (m_finalsday == "" || m_finalsday =="null" || m_finalsday == "undefined")
 	{
-		m_finalsday = new String("null").toString();
+		m_finalsday = new String("").toString();
 	}
 }
 m_who = Trim(new String(Request.Form("tourwho")));
@@ -99,7 +85,7 @@ if (m_who == "" || m_who =="null" || m_who == "undefined")
 	m_who = Trim(new String(Request.QueryString("tourwho")));
 	if (m_who == "" || m_who =="null" || m_who == "undefined")
 	{
-		m_who = new String("null").toString();
+		m_who = new String("").toString();
 	}
 }
 m_contact = Trim(new String(Request.Form("tourcontact")));
@@ -182,6 +168,9 @@ if (m_category == "" || m_category =="null" || m_category == "undefined")
 		m_category = new String("JUNIOR").toString();
 	}
 }
+if (m_category == "SOCIAL") {
+	m_url = new String("socialtennis.html").toString();
+}
 
 // OK, now pick up the two checkbox fields so we know what workflow 
 // we need to do afterwards
@@ -262,7 +251,7 @@ if (m_finalsday == "") {
 // if this is a new one, add skeleton record and get its unique id back into m_id
 // or now retrieve existing tournament details
 
-if (! (m_id == "0"))  {
+if (! (m_id == "-1"))  {
 	tourObj = getTour(m_id);  // Retrieve the existing tournament record
 }  
 else {
@@ -323,7 +312,7 @@ if (debugging)
 	if (m_email == checkboxon)
 		Response.Write("We WILL be sending out quick message re this tournament.<br />");
 	if (m_email == checkboxoff)
-		Response.Write("We will NOT be sending out quick message re this tournament.<br />");
+		Response.Write("We will NOT be sending out a quick message re this tournament.<br />");
 	if (m_event == checkboxon)
 		Response.Write("We WILL be inserting/amending an entry in the event calendar for this tournament.<br />");
 	if (m_event == checkboxoff)

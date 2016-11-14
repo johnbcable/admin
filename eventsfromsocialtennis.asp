@@ -62,8 +62,8 @@ Conn.Open(dbconnect);
 // Initial implementation - hard-code start and end date
 // new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
-start_date = new Date("March 5, 2016 01:15:00");
-end_date = new Date("December 31, 2016 23:15:00");
+start_date = new Date("January 2, 2017 01:15:00");
+end_date = new Date("December 31, 2017 23:15:00");
 
 if (debugging) {
 	Response.Write("<h4>Period for Social Tennis Events</h4>");
@@ -140,6 +140,8 @@ while (mydate < real_end )
 		}
 
 	}   /// end of inserting check
+
+	// Sunday afternoon social?
 
 	mydate.setDate(mydate.getDate() + 1);  // Move on to the next day
 
