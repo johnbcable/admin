@@ -103,22 +103,22 @@ If queryref > -1 Then
 	querylist(1) = "SELECT * FROM coaches WHERE [uniqueref] = {{p1}};"
 	querylist(2) = "SELECT * FROM futureevents ORDER BY [sortabledate] ASC;"
 	querylist(3) = "SELECT Format([eventdate],'yyyy-mm-dd') as eventdate, eventtime, eventtype, eventnote, eventreport, Format([enddate],'yyyy-mm-dd') as enddate, endtime FROM futureevents WHERE [eventid] = {{p1}};"
-	querylist(4) = "SELECT * FROM futuretournaments ORDER BY [tourstart] ASC;"
-	querylist(5) = "SELECT * FROM alltournaments WHERE [tournamentid] = {{p1}};"
+	querylist(4) = "SELECT * FROM futuretournaments ORDER BY tourstart ASC;"
+	querylist(5) = "SELECT tourtitle, Format([tourstart],'yyyy-mm-dd') as tourstart, Format([tourend],'yyyy-mm-dd') as tourend, Format([tourfinalsday],'yyyy-mm-dd') as tourfinalsday, tourwho, tourcontact, tourstarttime, tourendtime, finalsstarttime, finalsendtime, tourcost, toururl, tourcategory, tourblurb FROM alltournaments WHERE tournamentid = {{p1}};"
 	querylist(6) = "SELECT * FROM allmembers WHERE [onlinebookingid] < 5000 ORDER BY [surname], [forename1];"
 	querylist(7) = "SELECT * FROM allmembers WHERE [homephone] NOT LIKE '' AND [adultphone] = [homephone] ORDER BY [surname], [forename1];"
-	querylist(8) = "SELECT * FROM tournaments ORDER BY [tourstart] ASC;"
+	querylist(8) = "SELECT * FROM alltournaments ORDER BY tourstart ASC;"
 	querylist(9) = "SELECT * FROM clubcommunications ORDER by [datesent] DESC;"
 	querylist(10) = "SELECT [membergrade], [forename1], [surname], [britishtennisno] FROM {{p1}} WHERE [membergrade] = '{{p2}}' ORDER BY [surname], [forename1];"
 	querylist(11) = "SELECT [membergrade], COUNT(*) as categorytotal FROM notinbritishtennis GROUP BY [membergrade] ORDER BY [membergrade];"
 	querylist(12) = "SELECT * FROM alltournaments;"
 	querylist(13) = "SELECT * FROM allmembers WHERE email LIKE '{{p1}}';"
 	querylist(14) = "SELECT * FROM {{p1}}"
-	querylist(15) = "SELECT * from allmembers where mobilephone = '{{p1}}'"
+	querylist(15) = "SELECT * from allmembers WHERE mobilephone = '{{p1}}'"
 	querylist(16) = "SELECT title FROM winners WHERE year = {{p1}}"
-	querylist(17) = "SELECT Format(fixturedate,'YYYY-mm-dd') AS fixturedate, homeoraway, opponents, hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM fixturesetup where [teamname] = '{{p1}}' ORDER BY fixtureid ASC"
-	querylist(18) = "SELECT Format(fixturedate,'YYYY-mm-dd') AS fixturedate, homeoraway, opponents, hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM tennisfixtures where [fixtureyear] = {{p1}} AND [teamname] = '{{p2}}' ORDER BY fixtureid ASC"
-	querylist(19) = "SELECT [year],[title],[winners],[section],[member1],[member2],[winnerid],[runnerup],[displayorder] FROM winnerssetup ORDER BY displayorder ASC"
+	querylist(17) = "SELECT Format([fixturedate],'YYYY-mm-dd') AS fixturedate, homeoraway, opponents, hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM fixturesetup WHERE [teamname] = '{{p1}}' ORDER BY fixtureid ASC"
+	querylist(18) = "SELECT Format([fixturedate],'YYYY-mm-dd') AS fixturedate, homeoraway, opponents, hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM tennisfixtures where [fixtureyear] = {{p1}} AND [teamname] = '{{p2}}' ORDER BY fixtureid ASC"
+	querylist(19) = "SELECT [year],title],[winners],[section],[member1],[member2],[winnerid],[runnerup],[displayorder] FROM winnerssetup ORDER BY displayorder ASC"
 
 	querylist(39) = "SELECT [Name], [Type] FROM MSysObjects where [Type] = {{p1}} AND [Flags] = 0;"
 
@@ -151,11 +151,11 @@ Else
 End If
 
 If debugging Then
-	Response.Write("p1 = [" & p1 & "]<br />")
-	Response.Write("p2 = [" & p2 & "]<br />")
-	Response.Write("p3 = [" & p3 & "]<br />")
-	Response.Write("origSQL = [" & origSQL & "]<br />")
-	Response.Write("strSQL = [" & strSQL & "]<br />")
+	Response.Write("p1 = " & p1 & "]<br />")
+	Response.Write("p2 = " & p2 & "]<br />")
+	Response.Write("p3 = " & p3 & "]<br />")
+	Response.Write("origSQL = " & origSQL & "]<br />")
+	Response.Write("strSQL = " & strSQL & "]<br />")
 	Response.End
 End If
 
