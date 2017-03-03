@@ -22,7 +22,7 @@
 	this.around(function(callback) {
 		var context = this;
 		// Reload coach list data
-   		this.load('http://hamptontennis.org.uk/admin/fetchJSON.asp?id=0')
+   		this.load('https://hamptontennis.org.uk/admin/fetchJSON.asp?id=0')
   			.then(function(items) {
         		$.each(this.json(items), function(i, item) {
           			context.log(item);

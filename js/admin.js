@@ -16,7 +16,7 @@ Handlebars.registerHelper('equalsTo', function(v1, v2, options) {
 // Display coach list
 function displayCoachList() {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=0";
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=0";
 	// var eventsfound = false;
 	$.getJSON(url,function(data){
 
@@ -50,7 +50,7 @@ function editCoach(id) {
 
 	$("#main").append ("<p>Editing coach with an ID of "+id+"</p>"); 
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=1&p1="+id;
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=1&p1="+id;
 
 	// var eventsfound = false;
 	$.getJSON(url,function(data){
@@ -83,7 +83,7 @@ function editCoach(id) {
 // Display future event list
 function displayEventList() {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=2";
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=2";
 
 	console.log("Inside displayEventList");
 
@@ -118,7 +118,7 @@ function displayEventList() {
 // Edit selected event
 function editEvent(id) {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=3&p1="+id;
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=3&p1="+id;
 
 	console.log("Inside editEvent");
 
@@ -154,7 +154,7 @@ function editEvent(id) {
 // Display future tournament list
 function displayTournamentList() {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=4";
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=4";
 
 	console.log("Inside displayTournamentList");
 
@@ -190,7 +190,7 @@ function editTournament(id) {
 
 	// $("#main").append ("<p>Editing tournament with an ID of "+id+"</p>"); 
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=5&p1="+id;
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=5&p1="+id;
 
 	// var eventsfound = false;
 	$.getJSON(url,function(data){

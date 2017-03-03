@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	var jsonstring = new String("");
-	var url = "http://hamptontennis.org.uk/juniors/fetchJSON.asp?id=6";
+	var url = "https://hamptontennis.org.uk/juniors/fetchJSON.asp?id=6";
 	// var eventsfound = false;
 	$.getJSON(url,function(data){
 

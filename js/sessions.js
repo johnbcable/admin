@@ -11,7 +11,7 @@ var debugthis = false;      // set to true to get console output
 function setSignedIn() {
 
 	var jsonstring = new String("");
-	var url = "http://hamptontennis.org.uk/fetchJSON.asp?id=7";
+	var url = "https://hamptontennis.org.uk/fetchJSON.asp?id=7";
 	
 	// var ip = new String(Request.UserHostAddress);
 	// var hostname = new String(Request.UserHostName);

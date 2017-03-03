@@ -8,7 +8,7 @@ $(function() {
 	alert('Just before $.ajax call and thing = ['+thing+']');
 	$.ajax({
 	        type: "POST",
-	        url: 'http://hamptontennis.org.uk/admin/processJSON.asp',
+	        url: 'https://hamptontennis.org.uk/admin/processJSON.asp',
 	        data: "{'userName':'" + thing + "'}",
 	        contentType: "application/json; charset=utf-8",
 	        dataType: "json",

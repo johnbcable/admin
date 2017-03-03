@@ -396,7 +396,7 @@ if (m_event == checkboxon) {
 
 	// Now edit the event data using existing admin screen
 
-	editURL = "http://hamptontennis.org.uk/admin/#/events/"+eventid;
+	editURL = "https://hamptontennis.org.uk/admin/#/events/"+eventid;
 	if (debugging) {
 		Response.Write("<br /><br />");
 		Response.Write("URL to use for edit = ["+editURL+"]<br />");		
@@ -419,7 +419,7 @@ if (debugging) {
 if (debugging)
 	Response.End();
 
-Response.Redirect("http://hamptontennis.org.uk/admin/#/tournaments");
+Response.Redirect("https://hamptontennis.org.uk/admin/#/tournaments");
 
 %>
 
