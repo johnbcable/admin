@@ -23,7 +23,7 @@ function debugWrite(message) {
 // Display this seasons fixtures
 function displayWinnerSetup() {
 
-	var url = "http://hamptontennis.org.uk/admin/fetchJSON.asp?id=19";
+	var url = "https://hamptontennis.org.uk/admin/fetchJSON.asp?id=19";
 
 	debugWrite("URL = "+url);
 

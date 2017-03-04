@@ -103,7 +103,7 @@ function logAdminIn() {
     var adminSigninData = new Object();
     var signinurl = new String("").toString();
 
-	var url = "http://hamptontennis.org.uk/fetchJSON.asp?id=11&p1="+userid+"&p2="+pin;
+	var url = "https://hamptontennis.org.uk/fetchJSON.asp?id=11&p1="+userid+"&p2="+pin;
 	var goodlogin = "N";
 
 	// Re-initialise global variables on new login
@@ -186,7 +186,7 @@ function logAdminIn() {
 			sessionStorage.setItem("adminsignin", JSON.stringify(adminSigninData));
 
 			// Complete signin process using server-side ASP page
-			// signinurl = new String("http://hamptontennis.org.uk/adminsignin.asp?u="+userid+"&p="+pin+"&d="+refurl).toString();
+			// signinurl = new String("https://hamptontennis.org.uk/adminsignin.asp?u="+userid+"&p="+pin+"&d="+refurl).toString();
 
 			// if (debugthis) {
 			//	console.log("Signin server-side URL = "+signinurl);
@@ -216,7 +216,7 @@ function logAdminOut() {
 	myName = new String("").toString();    // Set my name in global variable
 
 	// Complete signout process using server-side ASP page
-	signouturl = new String("http://hamptontennis.org.uk/adminsignout.asp").toString();
+	signouturl = new String("https://hamptontennis.org.uk/adminsignout.asp").toString();
 
 	if (debugthis) {
 		console.log("Sign-out server-side admin URL = "+signouturl);
