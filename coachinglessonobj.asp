@@ -23,12 +23,14 @@ CoachingLessonObject.prototype.setLessonText = function(lessontext) {
 
 CoachingLessonObject.prototype.setDisplayOrder = function() {
 
-	var groups = ["","TOTS","RED","ORANGE","GREEN","FULL BALL","UNDER 14","UNDER 16","UNDER 18"]
+	var groups = ["","-","TOTS","RED","ORANGE","GREEN","FULL BALL","UNDER 14","UNDER 16","UNDER 18"]
 	for (var i=0; i<groups.length; i++) {
 		if (groups[i] == this.group_code) {
 			this.group_display_order = i;
 		}
 	}
+	if (this.group_display_order < 2)
+		this.group_display_order = 99;
 };
 
 
