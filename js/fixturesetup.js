@@ -42,7 +42,7 @@ function displayFixtures(gender,team) {
 	debugWrite("gender = "+gender+", team="+team+", myindex="+myindex+", teamname="+myteam);
 
 	if (debugthis) {
-		year = "2016";
+		year = "2018";
 	}
 	
 	url += "&p1="+myteam
