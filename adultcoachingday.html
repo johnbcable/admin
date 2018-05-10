@@ -1,0 +1,208 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hampton-in-Arden Tennis Club - Coaching Schedule Maintenance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta name="Description" lang="en" content="Hampton in Arden Tennis Club web site">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Hampton in Arden Tennis Club web site">
+    <meta itemprop="description" content="Hampton in Arden tennis club is a family-friendly tennis club in the green belt area around Solihull ">
+    <meta itemprop="image" content="https://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@hamptontennis">
+    <meta name="twitter:title" content="Hampton in Arden Tennis Club web site">
+    <meta name="twitter:description" content="Your family-friendly tennis club in Solihull">
+    <meta name="twitter:creator" content="@author_handle">
+    <meta name="twitter:image:src" content="https://hamptontennis.org.uk/img/logos/logo.gif">
+    <!-- Open Graph meta information -->
+    <meta property="og:title" content="Hampton in Arden Tennis Club">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hamptontennis.org.uk/fullindex.html">
+    <meta property="og:image" content="https://hamptontennis.org.uk/img/logos/logo.gif">
+    <meta property="og:description" content="Your family-friendly tennis club in Solihull">
+    <!-- Apple touch icon links -->
+    <link rel="icon" sizes="192x192" href="/img/logos/icon192.png">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/logos/icon180.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/logos/icon152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/logos/icon144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/logos/icon120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/logos/icon114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/img/logos/icon76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/logos/icon72.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/logos/apple-touch-icon-precomposed.png">
+    <!-- Favicon link -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- IE tile icon links -->
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/img/logos/icon144.png">
+    <meta name="msapplication-square310x310logo" content="/img/logos/icon310.png">
+    <meta name="msapplication-wide310x150logo" content="/img/logos/tile-wide.png">
+    <meta name="msapplication-square150x150logo" content="/img/logos/icon150.png">
+    <meta name="msapplication-square70x70logo" content="/img/logos/icon70.png">
+    <!-- CSS links -->
+    <link rel="stylesheet" href="/bower_components/foundation/css/normalize.css" />
+    <!-- <link rel="stylesheet" href="css/base.css" />  -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/js/CSJSRequestObject.js"></script>
+    <style type="text/css">
+    li.current a {
+      background-color: white;
+      font-weight: bold;
+    }
+    </style>
+  </head>
+  <body>
+   
+    <div class="row">
+
+      <div class="large-10 medium-10 small-11 large-offset-1 medium-offset-1 columns">
+        <div class="row">
+
+          <ul class="breadcrumbs hide-for-small">
+            <li><a href="https://hamptontennis.org.uk/admin/coachingsetup.html">Dates</a></li>
+            <li><a href="https://hamptontennis.org.uk/admin/coachingday.html?day=MON">Mondays</a></li>
+            <li><a href="https://hamptontennis.org.uk/admin/coachingday.html?day=TUE">Tuesdays</a></li>
+            <li><a href="https://hamptontennis.org.uk/admin/coachingday.html?day=WED">Wednesdays</a></li>
+            <li><a href="https://hamptontennis.org.uk/admin/coachingday.html?day=THU">Thursdays</a></li>
+            <li><a href="https://hamptontennis.org.uk/admin/coachingday.html?day=FRI">Fridays</a></li>
+            <li><a href="https://hamptontennis.org.uk/admin/coachingday.html?day=SAT">Saturdays</a></li>
+          </ul>
+
+        </div>
+
+        <div class="large-1 medium-1 columns">
+          <img src="./img/small_logo.gif" style="vertical-align: middle; display: inline-block;"/>
+        </div>
+        <div class="large-10 medium-10 columns">
+          <h3 class="daytitle" style="vertical-align: middle; padding: 0;"></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-10 medium-10 large-offset-1 medium-offset-1 columns">
+          <p style="padding: 10px 30px;">
+            Please check over the information shown below about the NEXT coaching schedule. Make changes as necessary.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!--  main content area re-used for each type of content  -->
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+
+      <div id="main"></div>
+      
+      <!-- <div id="receivedjson"></div> -->
+
+    </div>
+  </div>
+
+ 
+    <!--  Handlebars template definitions -->
+
+    <!--  coachdates-template              -->
+
+      <script id="coachinglessons-template" type="x-handlebars-template">
+      {{#if allCoachingLessons}}
+      <form method="POST" action="./updatecoachinglessons.asp">
+        <fieldset>
+
+          {{#each allCoachingLessons}}
+          <div class="row">
+
+            <div class="large-2 medium-2 small-6 columns">
+              <label for="start_time_{{@index}}">Start Time:</label>
+              <input type="time" name="start_time_{{@index}}" id="start_time_{{@index}}" size="8" maxlength="8" tabindex="{{@index}}" value="{{start_time}}"  placeholder="HHmm" autofocus/>
+            </div>
+            <div class="large-2 medium-2 small-6 columns">
+              <label for="end_time_{{@index}}">Start Time:</label>
+              <input type="time" name="end_time_{{@index}}" id="end_time_{{@index}}" size="8" maxlength="8" tabindex="{{@index}}" value="{{end_time}}"  placeholder="HHmm" />
+            </div>
+            <div class="large-5 medium-5 small-12 columns">
+              <label for="lesson_text_{{@index}}">Lesson text:</label>
+              <input type="text" name="lesson_text_{{@index}}" id="lesson_text_{{@index}}" size="30" maxlength="60" tabindex="{{@index}}" value="{{lesson_text}}"  placeholder="Describe who is in the lesson" />
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns">
+              <label for="group_code_{{@index}}">Group Code:</label>
+              <select name="group_code_{{@index}}" id="group_code_{{@index}}" tabindex="{{@index}}" >
+                <option value="-" {{#equalsTo group_code "-"}}selected{{/equalsTo}}>- Select -</option>
+                <option value="TOTS" {{#equalsTo group_code "TOTS"}}selected{{/equalsTo}}>Tots Tennis</option>
+                <option value="RED" {{#equalsTo group_code "RED"}}selected{{/equalsTo}}>Mini-Tennis Red</option>
+                <option value="ORANGE" {{#equalsTo group_code "ORANGE"}}selected{{/equalsTo}}>Mini-Tennis Orange</option>
+                <option value="GREEN" {{#equalsTo group_code "GREEN"}}selected{{/equalsTo}}>Mini-Tennis Green</option>
+                <option value="FULL BALL" {{#equalsTo group_code "FULL BALL"}}selected{{/equalsTo}}>Full Ball</option>
+                <option value="UNDER 14" {{#equalsTo group_code "UNDER 14"}}selected{{/equalsTo}}>Under 14</option>
+                <option value="UNDER 16" {{#equalsTo group_code "UNDER 16"}}selected{{/equalsTo}}>Under 16</option>
+                <option value="UNDER 18" {{#equalsTo group_code "UNDER 18"}}selected{{/equalsTo}}>Under 18</option>
+              </select>
+              <input type="hidden" name="lesson_id_{{@index}}" id="lesson_id_{{@index}}" value="{{lesson_id}}" >
+            </div>
+
+          </div>
+          {{/each}}
+
+          <div class="row">
+
+            <div class="large-10 medium-10 small-12 large-offset-1 medium-offset-1 panel columns">
+
+              <div class="row">
+
+                <h4>Notes</h4>
+                <ol>
+                  <li>Leave any unused lines blank</li>
+                  <li>If a lesson is shared by more than one group, fill in one line for each group that shares it</li>
+                </ol>
+
+              </div>
+
+              <div class="row">
+
+                <!-- <div id="receivedjson" class="row"></div>  -->
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </fieldset>   <!--   end coaching lesson setup area  -->
+
+
+        <div id="submitblock" align="right" style="margin-top: 10px;">
+          <input type="hidden" name="schedule_role" id="schedule_role" value="{{schedule_role}}" >
+          <input type="hidden" name="lesson_day" id="lesson_day" value="{{lesson_day}}" >
+              <p>
+                <input align="right" class="large button" type="submit" value="Save changes to the next schedule &raquo;" />
+              </p>
+        </div>
+
+      </form>
+      {{else}}
+        <h3>No coaching lesson details on file</h3>
+      {{/if}}
+    </script>
+
+    <!--  end of myprofile-template       -->
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/foundation/js/foundation.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    
+    <script src="/js/app.js"></script>    <!-- Foundation kicks in -->
+    <script src="/js/sessions.js"></script>
+    <script src="/js/coachingday.js"></script>
+
+  </body>
+</html>
