@@ -1,21 +1,8 @@
 //
 //    fixtureresults.js
 //
-//		Using Handlebars 
-//
-//
-//  Variables
-//
-var jsonstring = new String("");
-var baseurl = new String("https://hamptontennis.org.uk/fetchJSON.asp");
-var curseason = 2016;  	// get the current value from the year
 
-// Now create the required URLs for the team and its fixtures
-var fixturesurl = new String("").toString();	// holds string for URL for fixtures query
-var teamurl = new String("").toString();		// holds information about team
-
-// Now set up local debugging flag
-var debugthis = true;    	// Set to false for normal production use
+var debugthis = false;    // Production = false
 
 // Utility functions
 
@@ -32,60 +19,6 @@ function debugWrite(message) {
 		console.log(message);
 	}
 }
-
-//==================================================
-function paramSetup() {
-
-	curteam = $('#myteam').val();     // get the team name from form
-	curseason = currentSeason();   		// get the current value from todays date
-
-	// Now create the URL's for the team and its fixtures
-	teamurl = new String(baseurl + "?id=36&p1="+encodeURIComponent(curteam));
-	fixturesurl = new String(baseurl + "?id=18&p1="+encodeURIComponent(curseason)+"&p2="+encodeURIComponent(curteam));
-
-}
-
-
-function displayTeamHeader(teamname) {
-
-	// var eventsfound = false;
-	$.getJSON(teamurl,function(data){
-
-		// console.log(url);
-
-		var jsonstring = JSON.stringify(data);
-
-		jsonstring = new String("{teamDetails:"+jsonstring+"}");
-
-		// var eventdata = $.parseJSON(jsonstring);
-		var teamdata = eval("(" + jsonstring + ")");
-
-		if (debugthis) {
-			console.log('Before inside displayTeamHeader ........................');
-			console.log('teamname is '+teamname);
-			console.log('teamurl is '+teamurl);
-			console.log('teamDetails.captain is '+teamdata.teamcaptain);
-			console.log('teamDetails.division is '+teamdata.division);
-		}
-
-		// Set the boolean if we have data
-		// if (eventdata.length > 1)
-		//	eventsfound = true;
-
-		//Get the HTML from the template   in the script tag
-	    var theTemplateScript = $("#teamheader-template").html(); 
-
-	   //Compile the template
-	    var theTemplate = Handlebars.compile (theTemplateScript); 
-		// Handlebars.registerPartial("description", $("#shoe-description").html()); 
-		$("#teamheader").empty();   
-		$("#teamheader").append (theTemplate(teamdata)); 
-
-
-	});  // end of function(data)
-
-}
-
 
 // Display this seasons fixtures
 function displayFixtures(gender,team) {
