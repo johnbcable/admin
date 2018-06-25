@@ -7,8 +7,9 @@
 //  Variables
 //
 var jsonstring = new String("");
-var baseurl = new String("https://hamptontennis.org.uk/fetchJSON.asp");
+var baseurl = new String("https://hamptontennis.org.uk/admin/fetchJSON.asp");
 var curseason = 2016;  	// get the current value from the year
+var curteam = new String("").toString();
 
 // Now create the required URLs for the team and its fixtures
 var fixturesurl = new String("").toString();	// holds string for URL for fixtures query
@@ -18,7 +19,59 @@ var teamurl = new String("").toString();		// holds information about team
 var debugthis = true;    	// Set to false for normal production use
 
 // Utility functions
-
+//==================================================
+function currentYear()
+{
+	var today = new Date();
+	var s = new String("").toString();
+	s += today.getFullYear();
+	return(s);
+}
+//==================================================
+function currentMonth()
+{
+	var today = new Date();
+	var month;
+	var s = 0;
+	month = today.getMonth()+1;
+	if (month < 10)
+		s+= "0";
+	s += month;
+	return(s);
+}
+//==================================================
+function currentMonthAsString()
+{
+	var today = new Date();
+	var month;
+	var s = new String("").toString();
+	month = today.getMonth()+1;
+	if (month < 10)
+		s+= "0";
+	s += month;
+	return(s);
+}
+//==================================================
+function currentDate()
+{
+	var today = new Date();
+	var day;
+	var s = new String("").toString();
+	day = today.getDate();
+	if (day < 10)
+		s += "0";
+	s += day;
+	return(s);
+}
+//==================================================
+function currentSeason()
+{
+	var thisyear = currentYear();
+	var thismonth = currentMonth();
+	if (thismonth < 4)
+		thisyear = thisyear - 1;
+	return(thisyear);
+}
 // Register Handlebars helpers
 
 Handlebars.registerHelper('equalsTo', function(v1, v2, options) { 
@@ -36,7 +89,7 @@ function debugWrite(message) {
 //==================================================
 function paramSetup() {
 
-	curteam = $('#myteam').val();     // get the team name from form
+	// curteam = $('#myteam').val();     // get the team name from form
 	curseason = currentSeason();   		// get the current value from todays date
 
 	// Now create the URL's for the team and its fixtures
@@ -64,8 +117,11 @@ function displayTeamHeader(teamname) {
 			console.log('Before inside displayTeamHeader ........................');
 			console.log('teamname is '+teamname);
 			console.log('teamurl is '+teamurl);
-			console.log('teamDetails.captain is '+teamdata.teamcaptain);
-			console.log('teamDetails.division is '+teamdata.division);
+			console.log(curseason);
+			console.log(jsonstring);
+			console.log(teamdata);
+			console.log('teamDetails[0].captain is '+teamdata.teamDetails[0].teamcaptain);
+			console.log('teamDetails[0].division is '+teamdata.teamDetails[0].division);
 		}
 
 		// Set the boolean if we have data
@@ -102,26 +158,26 @@ function displayFixtures(gender,team) {
 		"Mens 3rd Team",
 		"Mens 4th Team",
 		"Mens 5th Team"];
-	var today = new Date();
-	var year = today.getFullYear();
-	var myteam = new String(teamnames[myindex]).toString();
-
-	debugWrite("gender = "+gender+", team="+team+", myindex="+myindex+", teamname="+myteam);
-
-	if (debugthis) {
-		year = "2016";
-	}
+	// var year = curseason;
 	
-	url += "&p1="+year+"&p2="+myteam;
-	
-	debugWrite("URL = "+url);
+	curteam = new String(teamnames[myindex]).toString();
 
+	debugWrite("gender = "+gender+", team="+team+", myindex="+myindex+", teamname="+curteam);
+
+	// url += "&p1="+curseason+"&p2="+curteam;
 	// Now, set display text at top of the screen area
-	var displaytext = year+" fixtures for the "+myteam;
-	$('.fixturetitle').html(displaytext);
+
+	paramSetup();
+	
+	debugWrite("URL = "+fixturesurl);
+
+	displayTeamHeader(curteam);
+
+	// var displaytext = year+" fixtures for the "+myteam;
+	// $('.fixturetitle').html(displaytext);
 
 	// var eventsfound = false;
-	$.getJSON(url,function(data){
+	$.getJSON(fixturesurl,function(data){
 
 		// console.log(url);
 
@@ -141,8 +197,8 @@ function displayFixtures(gender,team) {
 
 			var dummy = {
 				"fixturedate":null,
-				"fixtureyear":year,
-				"teamname":myteam,
+				"fixtureyear":curseason,
+				"teamname":curteam,
 				"homeoraway":"H",
 				"opponents":"NONE",
 				"fixturenote":"",
@@ -159,8 +215,8 @@ function displayFixtures(gender,team) {
 			}
 			lengthactual = fixturedata.allFixtures.length;
 			for (var i=0; i<14; i++) {
-				fixturedata.allFixtures[i].teamname = myteam;
-				fixturedata.allFixtures[i].fixtureyear = year;
+				fixturedata.allFixtures[i].teamname = curteam;
+				fixturedata.allFixtures[i].fixtureyear = curseason;
 			}
 
 		}
@@ -207,7 +263,7 @@ function displayFixtures(gender,team) {
 
 	this.get('#/fixtures/ladies/1', function(context) { 
 		context.app.swap('');   // clears HTML content
-		// Redisplay coaches home page
+		curteam = "Ladies 1st Team";
 		displayFixtures("Ladies",1);
 
 
@@ -280,6 +336,9 @@ function displayFixtures(gender,team) {
 	// End of route definition
 
 $(function() { 
+
+	curteam = new String("Ladies 1st Team");
+	curseason = currentSeason();
 
 	// Now run the main Sammy route
 	app.run('#/');

@@ -120,6 +120,7 @@ If queryref > -1 Then
 	querylist(18) = "SELECT Format([fixturedate],'YYYY-mm-dd') AS fixturedate, homeoraway, opponents, hamptonresult, opponentresult, fixtureyear, teamname, fixturenote, fixtureid, matchreport, pair1, pair2 FROM tennisfixtures where [fixtureyear] = {{p1}} AND [teamname] = '{{p2}}' ORDER BY fixtureid ASC"
 	querylist(19) = "SELECT [year],title],[winners],[section],[member1],[member2],[winnerid],[runnerup],[displayorder] FROM winnerssetup ORDER BY displayorder ASC"
 
+	querylist(36) = "SELECT * FROM tennisteams WHERE teamcategory = 'ADULT' AND teamname ='{{p1}}';"
 	querylist(39) = "SELECT [Name], [Type] FROM MSysObjects where [Type] = {{p1}} AND [Flags] = 0;"
 
 
