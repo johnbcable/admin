@@ -95,7 +95,6 @@ function paramSetup() {
 	// Now create the URL's for the team and its fixtures
 	teamurl = new String(baseurl + "?id=36&p1="+encodeURIComponent(curteam));
 	fixturesurl = new String(baseurl + "?id=18&p1="+encodeURIComponent(curseason)+"&p2="+encodeURIComponent(curteam));
-
 }
 
 

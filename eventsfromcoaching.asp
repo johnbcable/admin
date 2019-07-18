@@ -1,4 +1,10 @@
 <%@language="JScript" CODEPAGE="65001"%>
+<%
+Response.AddHeader("Access-Control-Allow-Origin", "*");
+Response.AddHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+Response.AddHeader("Pragma", "no-cache");
+Response.AddHeader("Expires", 0);
+%>
 <!--#include file="json2.js.asp" -->
 <!--#include file="functions.asp" -->
 <!--#include file="strings.asp" -->
@@ -6,12 +12,6 @@
 <!--#include file="emailfuncs.asp" -->
 <!--#include file="datefuncs.asp" -->
 <%
-
-// Set up cache control on this page
-Response.AddHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-Response.AddHeader("Pragma", "no-cache");
-Response.AddHeader("Expires", 0);
-
 var strtime, strdate, title2;
 var clubname = new String("Hampton-In-Arden Sports Club");
 var pagetitle = new String("Generate Events From Coaching Lesson Schedule");
